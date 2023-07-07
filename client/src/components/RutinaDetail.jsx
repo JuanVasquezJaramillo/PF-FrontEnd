@@ -26,7 +26,7 @@ const RutinaDetail=()=>{
                 training.titulo?
                 <>
                     <div>{training.titulo}</div>
-                    <p>{training.trainer}</p>
+                    <p>Entrenador: {training.trainer}</p>
                     <p>{training.descPublica}</p>
                     <p>{training.descPrivada}</p>
                     <p>Precio: {training.precio}</p>
