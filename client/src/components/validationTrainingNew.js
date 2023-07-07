@@ -10,6 +10,8 @@ const validation=(data)=>{
         errors.descPublica='No puede estar vacio'
     else if (data.descPublica.length>200)
         errors.descPublica='Muy largo'
+    else if (data.descPublica.length>200)
+        errors.descPublica='Muy corto'
     else errors.descPublica=''
 
     return errors;

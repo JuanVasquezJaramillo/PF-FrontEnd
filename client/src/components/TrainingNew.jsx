@@ -1,5 +1,5 @@
 import {useState } from "react" 
-import validation from "./validation.js"
+import validation from "./validationTrainingNew.js"
 // import axios from 'axios';
 import { useNavigate} from 'react-router-dom'
 const TrainingNew =()=>{
