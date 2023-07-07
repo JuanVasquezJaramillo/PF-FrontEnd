@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 // import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-const RutinaDetail=()=>{
-    const {idTraining} = useParams();
+const TrainingDetail=()=>{
+    // const {idTraining} = useParams();
     const [training,setTraining]=useState({});
     useEffect(()=>{
         // const URL_BASE='http://127.0.0.1:3000/training'
@@ -56,4 +56,4 @@ const RutinaDetail=()=>{
         </div>
     )
 }
-export default RutinaDetail;
+export default TrainingDetail;

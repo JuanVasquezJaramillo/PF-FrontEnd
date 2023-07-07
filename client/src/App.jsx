@@ -4,7 +4,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Navbar from './components/Navbar';
-import RutinaDetail from './components/RutinaDetail';
+import TrainingDetail from './components/TrainingDetail';
+import TrainingNew from './components/TrainingNew';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
-        <Route path='/rutina' element={<RutinaDetail />} />
+        <Route path='/trainingnew' element={<TrainingNew />} />
+        <Route path='/training' element={<TrainingDetail />} />
       </Routes>
     </>
   )
