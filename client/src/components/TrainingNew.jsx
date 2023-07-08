@@ -89,6 +89,13 @@ const TrainingNew =()=>{
                     <label htmlFor="">Videos: </label>
                     <input  type="text" placeholder='Ingrese la url del video...' name="videos" value={training.videos} onChange={handleChange} />     
                 </div>
+                <div>       
+                    <label htmlFor="">Videos: </label>
+                    <input  type="text" placeholder='Ingrese la url del video...' name="videos" value={training.videos} onChange={handleChange} />   
+                    <button type="button">Subir</button>  
+                </div>
+                
+                               
                 <button disabled ={errors.titulo || errors.descPublica} type="submit">Crear Entrenamiento</button>
                 <button type="button" onClick={()=>handleCancel()}>Cancelar</button> 
             </form>
