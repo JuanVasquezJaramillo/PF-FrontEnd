@@ -20,6 +20,7 @@ const TrainingNew =()=>{
             descPrivada: "",
             precio: 0,
             etiquetas:"",
+            video:"",
             videos:[]
         }
     )
@@ -56,43 +57,63 @@ const TrainingNew =()=>{
     const handleCancel=()=>{
         navigate('/home')
     }
+    const handleSubirVideo=()=>{
+        setTraining(
+            {
+                ...training,                
+                videos:[...training.videos,{url:training.video,descripcion:"",publico:false}],
+                video:""
+            }
+            
+        )
+        console.log(training.videos)//el video debe ser:[{url:"asdf",publico:true,descripcion:"sdf"},{url:"avvsdf",publico:true,descripcion:"svvvdf"}]
+    }
     return(
-        <div>
+        <main>
             {trainingCreado===''
             ?   
             <form onSubmit={handleSubmit} >
-                <label>Crear nueva actividad</label><br /><br />
+                <h1>Crear nueva actividad</h1><br /><br />
                 <div>
-                    <label htmlFor="">Titulo: </label>
+                    <label htmlFor=""></label>
                     <input onChange={handleChange} placeholder='Ingrese nombre del titulo...' type="text" name="titulo" value={training.titulo} />
                     {errors.titulo? <span>{errors.titulo}</span>: null}                    
                 </div>
                 <div>
-                    <label htmlFor="">Descripcion: </label>
+                    <label htmlFor=""></label>
                     { <input onChange={handleChange} placeholder='Ingrese una descripcion de su entrenamiento...' type="text" name="descPublica" value={training.descPublica} /> }
                     {errors.descPublica? <span>{errors.descPublica}</span>: <span></span> }         
                 </div>
                 <div>
-                    <label htmlFor="">Detalles: </label>
+                    <label htmlFor=""></label>
                     { <input onChange={handleChange} placeholder='Ingrese una descripcion detallada de su entrenamiento...' type="text" name="descPrivada" value={training.descPrivada} /> }        
                 </div>
                 <div>
-                    <label htmlFor="">Etiquetas: </label>
-                    { <input onChange={handleChange} placeholder='Ingrese palabras claves que serviran para encontrar tu entrenamiento...' type="text" name="etiquetas" value={training.etiquetas} /> }        
+                    <label htmlFor=""> </label>
+                    { <input onChange={handleChange} placeholder='Ingrese palabras claves para buscar...' type="text" name="etiquetas" value={training.etiquetas} /> }        
                 </div>
                 <div>
-                    <label htmlFor="">Precio: </label>
+                    <label htmlFor=""> </label>
                     { <input onChange={handleChange} placeholder='Ingrese el precio...' type="number" name="precio" value={training.precio} /> }        
                 </div>
 
                 <div>       
-                    <label htmlFor="">Videos: </label>
-                    <input  type="text" placeholder='Ingrese la url del video...' name="videos" value={training.videos} onChange={handleChange} />     
-                </div>
-                <div>       
-                    <label htmlFor="">Videos: </label>
-                    <input  type="text" placeholder='Ingrese la url del video...' name="videos" value={training.videos} onChange={handleChange} />   
-                    <button type="button">Subir</button>  
+                    <label htmlFor=""> </label>
+                    <input  onChange={handleChange}  type="text" placeholder='Ingrese la url del video...' name="video" value={training.video} />   
+                    <button type="button" onClick={() => handleSubirVideo()}>Subir</button> 
+                    {training.videos.length !== 0
+                        ?
+                            <div>
+                                {
+                                    training.videos.map((video,index) => (
+                                        <h2 key={index}>• {video.url}</h2>
+                                    ))
+                                }
+                            
+                            </div>
+                        :
+                            null
+                    }   
                 </div>
                 
                                
@@ -105,7 +126,7 @@ const TrainingNew =()=>{
                 <button onClick={() => setTrainingCreado('')}>Atras</button>
             </div>
             }
-        </div>
+        </main>
     )
     
 }
