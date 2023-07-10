@@ -1,0 +1,22 @@
+.lista {
+    display: flex;
+    padding: 5px 2px;
+  }
+.contenedor {
+    display: inline-flex;
+    justify-content: center;
+    width: 50px;
+    background-color:#fdddca;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+.buttonpage{
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+  }

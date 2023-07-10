@@ -1,6 +1,10 @@
 import React from 'react'
 import Card from './Card'
+<<<<<<< HEAD
 import style from "./Cards.module.css"
+=======
+import style from "../modules/Cards.module.css"
+>>>>>>> 189c3927ec1995cc16077f650a4d8757b52d2298
 
 
 const Cards = ({clases}) => {

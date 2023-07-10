@@ -1,39 +1,42 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
-
-export const orderPrecios = createAction('precios/orderPrecios');
+import { createSlice } from "@reduxjs/toolkit";
+import clases from "../../jsonClases";
 
 const initialState = {
-    precios: []
+    precios: clases
     ,
 };
 
-const orderReducer = createReducer(initialState, (builder) => {
-    builder.addCase(orderPrecios, (state, action) => {
-        const ordenarPrecios = state.precios;
-        const preciosFiltrados = 
-        action.payload === 'TO-DO (por hacer)'
-        ? ordenarPrecios.sort( (a, b) => {
-            if (a > b){ //al tener la info, poner: a.precio > b.precio
-                return 1;
-            }
-            if (b > a){ //al tener la info, poner: b.precio > a.precio
-                return -1;
-            }
-            return 0;
-        })
-        : ordenarPrecios.sort((a, b) => {
-            if (a > b){ //al tener la info, poner: a.precio > b.precio
-                return -1;
-            }
-            if (b > a){ //al tener la info, poner:  b.precio > a.precio
-                return 1;
-            }
-            return 0;
-        });
-        state.precios = ordenarPrecios;
+const orderSlice = createSlice({
+    name: 'order',
+    initialState,
+    reducers: {
+        orderByPrice: (state, action) => {
+            const ordenarPrecios = state.precios;
+            const preciosFiltrados = 
+            action.payload === 'Menor'
+            ? ordenarPrecios.sort( (a, b) => {
+                if (a.precio > b.precio){ //al tener la info, poner: a.precio > b.precio
+                    return 1;
+                }
+                if (b.precio > a.precio){ //al tener la info, poner: b.precio > a.precio
+                    return -1;
+                }
+                return 0;
+            })
+            : ordenarPrecios.sort((a, b) => {
+                if (a.precio > b.precio){ //al tener la info, poner: a.precio > b.precio
+                    return -1;
+                }
+                if (b.precio > a.precio){ //al tener la info, poner:  b.precio > a.precio
+                    return 1;
+                }
+                return 0;
+            });
+            state.precios = preciosFiltrados;
+        }
+    },
     });
-});
 
+export const { orderByPrice } = orderSlice.actions;
 
-
-export default orderReducer;
+export default orderSlice.reducer;
