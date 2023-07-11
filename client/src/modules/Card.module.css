@@ -1,28 +1,26 @@
-
-
-
-.cardcontainer{
-    border-radius: 2%; 
-    background-color:black;
-    width: 64rem;
-    margin: 1rem;
-    display:grid;
-    color: white;
-    font-size:small;
-    
+.cardcontainer {
+  border-radius: 2%;
+  background-color: black;
+  width: 64rem;
+  margin: 1rem;
+  display: grid;
+  color: white;
+  font-size: small;
 }
 
-
+.videoContainer video {
+  width: 5vw;
+}
 
 .cardcontainer:hover {
-    transform: scale(1.09)  ;
-    box-shadow: 5px 5px 15px rgba ( 0 , 0 , 0 , 0.6 ) ;
-    background-color: rgb(13, 233, 222);
-    color: red;
-  }
- 
-  .cardcontainer:hover {
-    transition:  0 .5s  ease ;
-   
-   margin: 30px;
-  }
+  transform: scale(1.09);
+  box-shadow: 5px 5px 15px rgba (0, 0, 0, 0.6);
+  background-color: rgb(13, 233, 222);
+  color: red;
+}
+
+.cardcontainer:hover {
+  transition: 0 0.5s ease;
+
+  margin: 30px;
+}
