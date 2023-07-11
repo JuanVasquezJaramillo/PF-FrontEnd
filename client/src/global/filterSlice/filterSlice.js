@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import clases from '../../jsonClases';
-
 const initialState = {
-  clasesF: clases,
+  clasesF: [],
 };
 
 const filterSlice = createSlice({

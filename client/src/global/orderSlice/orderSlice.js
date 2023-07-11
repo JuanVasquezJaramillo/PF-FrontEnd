@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import clases from "../../jsonClases";
-
 const initialState = {
-    precios: clases
+    precios: []
     ,
 };
 

@@ -11,12 +11,13 @@ import estilo from '../modules/homePage.module.css'
 
 export default function HomePage() {
 
-  //const clases = useSelector((state) => state.clases.list) 
+  const clases = useSelector((state) => state.clases.list) 
   const dispatch = useDispatch()
   const [defaultExercise, setDefaultExercise] = useState('filterPorDefect');
   const [defaultOrder, setDefaultOrder] = useState('porDefecto')
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
-  const filter = useSelector((state) => state.order.precios ) //Ordenamiento
+  //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
+
 
   useEffect(() => {
     dispatch(getAllClases())
@@ -27,7 +28,7 @@ export default function HomePage() {
   const [cantidadPorPag] = useState(2);
   const indiceUltimaReceta = currentPag * cantidadPorPag
   const indicePrimerReceta = indiceUltimaReceta - cantidadPorPag
-  const currentClases = filter.slice(indicePrimerReceta, indiceUltimaReceta)
+  const currentClases = clases.slice(indicePrimerReceta, indiceUltimaReceta)
 
   const paginado = (pageNumber) => {
     setCurrentPag(pageNumber)
@@ -60,7 +61,7 @@ export default function HomePage() {
       <h1>HomePage</h1>
       <div className={estilo.contenedor}>
       <Paginado cantidadPorPag={cantidadPorPag}
-        clases={filter.length}
+        clases={clases.length}
         paginado={paginado} />
       </div>
 
