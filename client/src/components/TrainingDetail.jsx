@@ -10,14 +10,11 @@ const TrainingDetail=()=>{
         // axios(`${URL_BASE}/${idTraining}`)
         // .then(response=>setTraining(response.data))}
         setTraining(
-            
                 {
                     titulo:"Entrenamiento Futbol",trainer:"Juan Perez",descPublica:"Aca te vamos a enseñar todo sobre futbol"
                     ,descPrivada:"Gracias por comprar este entrenamiento, espero te guste las clases",precio:"$123",tipo:"Entrenamiento",etiquetas:"futbol velocidad delantero"
                     ,videos:[{url:"https://www.youtube.com/embed/tg25chxV6jY",desc:"En la primer clase veremos..."},{url:"https://www.youtube-nocookie.com/embed/k4QMNkNV26A",desc:"En la segunda clase veremos..."}]
-                }
-            
-        )
+                } )
     }
     ,[])
     return(

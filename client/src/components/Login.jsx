@@ -90,8 +90,6 @@ const dispatch = useDispatch()
       [event.target.name]: event.target.value
     }, event.target.name)
   }
-
-
   const handleSubmit = (event) => {
 
     event.preventDefault()// Esta funcion no permite que el formulario se  resetee cuando se hace el submit
@@ -112,6 +110,20 @@ const dispatch = useDispatch()
 
 
   }
+
+
+  const disable = () => {
+    let disabled = true;
+    for (let error in errors) {
+      if (errors[error] === "") disabled = false
+      else {
+        disabled = true
+        break
+      }
+    }
+    return disabled
+  }
+
 
   return (
     <div  className={style.container}>
@@ -158,7 +170,7 @@ const dispatch = useDispatch()
               <input autoComplete="true" type="password" name="password" onChange={inputsChange} placeholder="********" />
             </>
         }
-        <button  className={style.button}>{option === "register" ? "Sig up" : "Sign in"}</button>
+        <button  disabled={disable()} className={style.button}>{option === "register" ? "Sig up" : "Sign in"}</button>
       </form>
     // </div>
   );
