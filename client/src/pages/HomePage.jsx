@@ -9,7 +9,7 @@ import clases from '../jsonClases.js'
 
 export default function HomePage() {
 
-  const clases = useSelector((state) => state.clases.list) 
+  const clases = useSelector((state) => state.clases.list)
   const dispatch = useDispatch()
   const [defaultExercise, setDefaultExercise] = useState('filterPorDefect');
   const [defaultOrder, setDefaultOrder] = useState('porDefecto')
@@ -21,7 +21,7 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(getAllClass())
   }, [])
-  
+
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
   const [cantidadPorPag] = useState(2);
@@ -53,28 +53,13 @@ export default function HomePage() {
     setDefaultOrder('porDefecto')
     setDefaultExercise('filterPorDefect')
   };
-
-import { getAllClases } from "../global/clasesSlice/clasesSlice"; 
-import Cards from "../components/Cards";
-import { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux"
-export default function HomePage() {
-
-  const clases = useSelector((state) => state.clases.list)
-
-
-const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getAllClases())
-  }, [])
   return (
     <>
       <h1>HomePage</h1>
- <div className={estilo.contenedor}>
-      <Paginado cantidadPorPag={cantidadPorPag}
-        clases={clases.length}
-        paginado={paginado} />
+      <div className={estilo.contenedor}>
+        <Paginado cantidadPorPag={cantidadPorPag}
+          clases={clases.length}
+          paginado={paginado} />
       </div>
 
       <div>
@@ -92,13 +77,14 @@ const dispatch = useDispatch()
             <option value='Pierna'>Pierna</option>
           </select>
         </div>
-        
+
         <div className={estilo.contenedor}>
-          <button  onClick={clearFilters} className={estilo.boton}>LIMPIAR FILTROS</button>
+          <button onClick={clearFilters} className={estilo.boton}>LIMPIAR FILTROS</button>
         </div>
 
       </div>
 
       <Cards clases={currentClases} />
-);
+    </>
+  );
 }
