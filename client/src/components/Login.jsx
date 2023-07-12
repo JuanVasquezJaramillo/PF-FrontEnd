@@ -96,6 +96,7 @@ const dispatch = useDispatch()
 
     event.preventDefault()// Esta funcion no permite que el formulario se  resetee cuando se hace el submit
     dispatch(postUsers(inputs))
+    console.log('inputs login',inputs)
     setInputs({
       userName: "", // falta usuario
       firstName: "",
