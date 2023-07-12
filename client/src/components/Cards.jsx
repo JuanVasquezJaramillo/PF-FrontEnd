@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
+import style from "../modules/Cards.module.css"
 import style from "./Cards.module.css"
-
 
 const Cards = ({clases}) => {
  
@@ -10,8 +10,9 @@ const Cards = ({clases}) => {
     <div>
     <div className={style.cardscontainer}>
       {clases.map((c) => <Card
+        idEntrenador={c.idEntrenador}
         idEntrenador={c.idUser}
-        precio={c.precio}
+       precio={c.precio}
         descPublica={c.descPublica}
         descPrivada={c.descPrivada}
         etiquetas={c.etiquetas}
