@@ -4,8 +4,9 @@ import style from "../modules/Card.module.css"
 import { Link } from 'react-router-dom'
 
 const Card = (props) => {
-  const arrayvideo = props.video
-  console.log(arrayvideo)
+  const arrayvideo = props.url
+  console.log("UR", arrayvideo)
+  console.log("CARD", props);
   return (
     
     <Link to={"/training"}>
@@ -23,6 +24,7 @@ const Card = (props) => {
 
     </div>
       </Link>
+      
   )
 }
 

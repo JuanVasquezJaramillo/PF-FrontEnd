@@ -1,13 +1,11 @@
-import { getAllClases } from "../global/clasesSlice/clasesSlice";
-import Cards from "../components/Cards.jsx";
-import { useEffect } from "react";
+import { getAllClass, filterTypeExercise, orderByPrice } from "../global/clasesSlice/clasesSlice";
 import { useDispatch, useSelector } from "react-redux"
-import clases from '../jsonClases.js'
-import Paginado from "./paginado/paginado";
+import { useEffect } from "react";
 import { useState } from "react";
-import { filterTypeExercise } from "../global/filterSlice/filterSlice";
-import { orderByPrice } from "../global/orderSlice/orderSlice";
+import Cards from "../components/Cards.jsx";
 import estilo from '../modules/homePage.module.css'
+import Paginado from "./paginado/paginado";
+import clases from '../jsonClases.js'
 
 export default function HomePage() {
 
@@ -18,9 +16,10 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
+  console.log("HOMEPAGE", clases);
 
   useEffect(() => {
-    dispatch(getAllClases())
+    dispatch(getAllClass())
   }, [])
   
   //LÓGICA PAGINADO
