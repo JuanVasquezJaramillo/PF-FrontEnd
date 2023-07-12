@@ -54,11 +54,24 @@ export default function HomePage() {
     setDefaultExercise('filterPorDefect')
   };
 
+import { getAllClases } from "../global/clasesSlice/clasesSlice"; 
+import Cards from "../components/Cards";
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux"
+export default function HomePage() {
 
+  const clases = useSelector((state) => state.clases.list)
+
+
+const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllClases())
+  }, [])
   return (
     <>
       <h1>HomePage</h1>
-      <div className={estilo.contenedor}>
+ <div className={estilo.contenedor}>
       <Paginado cantidadPorPag={cantidadPorPag}
         clases={clases.length}
         paginado={paginado} />
@@ -87,6 +100,5 @@ export default function HomePage() {
       </div>
 
       <Cards clases={currentClases} />
-    </>
-  );
+);
 }

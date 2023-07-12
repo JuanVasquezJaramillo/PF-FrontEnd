@@ -19,6 +19,7 @@ function App() {
         <Route path='profile' element={<UserProfile/>} />
         <Route path='/trainingnew' element={<TrainingNew />} />
         <Route path='/training' element={<TrainingDetail />} />
+      
       </Routes>
     </>
   )
