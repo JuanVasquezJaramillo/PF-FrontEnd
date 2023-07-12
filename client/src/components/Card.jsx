@@ -10,8 +10,8 @@ const Card = (props) => {
   console.log(arrayvideo)
   return (
     <div className={style.cardcontainer}>
-       <Link to={`/TrainingDetail/${id}`}>
-      <h2>Id entrenador {props.idEntrenador}</h2>
+       <Link to={`/planDetail/${id}`}>
+      <h2>Id entrenador {props.idUser}</h2>
       <h2>Precio {props.precio}</h2>
       <h2>Desc Publica{props.descPublica}</h2>
       </Link>

@@ -10,7 +10,7 @@ const Cards = ({clases}) => {
     <div>
     <div className={style.cardscontainer}>
       {clases.map((c) => <Card
-        idEntrenador={c.idEntrenador}
+        idEntrenador={c.idUser}
         precio={c.precio}
         descPublica={c.descPublica}
         descPrivada={c.descPrivada}
