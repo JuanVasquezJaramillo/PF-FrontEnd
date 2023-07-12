@@ -1,9 +1,8 @@
 import axios from "axios";
 export function postUsers(info) {
-    return async function () {
+    return async function () {  
         try {
-            const response = (await axios.post("http://localhost:3001/users/createuser/", info));
-           console.log("RESPUESTA",response)
+        const response = await axios.post("http://localhost:5000/user/", info);
             alert("la informacion se guardo de forma exitosa")
         } catch (error) {
            
