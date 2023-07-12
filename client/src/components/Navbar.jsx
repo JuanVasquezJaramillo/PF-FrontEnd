@@ -8,6 +8,7 @@ export default function Navbar() {
       <NavLink to='/register'>Sign up</NavLink>
       <NavLink to='/trainingnew'>NuevaRutina</NavLink>
       <NavLink to='/training'>DetalleRutina</NavLink>
+     
     </nav>
   );
 }
