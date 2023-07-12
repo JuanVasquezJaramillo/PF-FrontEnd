@@ -42,8 +42,6 @@ const TrainingNew =()=>{
     const handleSubmit=(event)=>{
         event.preventDefault();
          createTraining(training)
-         console.log(training)
-
     }
     const handleChange=(event)=>{
         let value= event.target.value
@@ -70,9 +68,6 @@ const TrainingNew =()=>{
         )
         console.log(training.videos)//el video debe ser:[{url:"asdf",publico:true,descripcion:"sdf"},{url:"avvsdf",publico:true,descripcion:"svvvdf"}]
     }
-
-
-    
     return(
         <main>
             {trainingCreado===''

@@ -1,0 +1,60 @@
+.containerSomos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 30px;
+  font-style: italic;
+  text-align: center;
+}
+
+.titleBis {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-style: italic;
+}
+
+.parrafo {
+  width: 400px;
+}
+
+.somos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: 20px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  background-color: aqua;
+}
+
+.sectionCreadores {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.caracteristicas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.parrafoSection {
+  width: 200px;
+  text-align: center;
+  margin-top: 15px;
+  line-height: 13px;
+}

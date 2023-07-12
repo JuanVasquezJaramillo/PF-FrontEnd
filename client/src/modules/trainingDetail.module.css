@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.containerVideos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.descripcionTraining {
+  display: flex;
+}
+
+.datos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: gray;
+  width: fit-content;
+  margin: 10px;
+  padding: 5px;
+  line-height: 15px;
+  font-size: 15px;
+  color: black;
+}
+
+.titulo {
+  font-size: 25px;
+  font-style: italic;
+}
+.parrafos {
+  font-size: 15px;
+  font-weight: 800;
+}
