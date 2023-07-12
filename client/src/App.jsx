@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import UserProfile from "./components/userProfile";
 import TrainingDetail from "./components/TrainingDetail";
 import TrainingNew from "./components/TrainingNew";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="profile" element={<UserProfile />} />
         <Route path="/trainingnew" element={<TrainingNew />} />
         <Route path="/training" element={<TrainingDetail />} />
+        <Route path="/nosotros" element={<AboutUs />} />
       </Routes>
     </>
   );
