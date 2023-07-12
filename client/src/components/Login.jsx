@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
 import style from "./Login.module.css"
-export default function Login({ option }) {
+export default function Login() {
 
 const dispatch = useDispatch()
   
@@ -131,9 +131,8 @@ const dispatch = useDispatch()
       <h1 className={style.h1}>Register Users</h1>
       <form className={style.form} onSubmit={handleSubmit}>
         
-        {
-          option === "register"
-            ? <>
+        
+           <>
               <input  className={style.input} autoFocus autoComplete="true" type="text" name="userName" onChange={inputsChange} placeholder="userName" /> 
                
               <span className={style.span}>  {errors.userName}</span> <br />
@@ -166,12 +165,9 @@ const dispatch = useDispatch()
 
 
             </>
-            : <>
-              <input autoFocus autoComplete="true" type="email" name="email" onChange={inputsChange} placeholder="example@example.com" />
-              <input autoComplete="true" type="password" name="password" onChange={inputsChange} placeholder="********" />
-            </>
-        }
-        <button  disabled={disable()} className={style.button}>{option === "register" ? "Sig up" : "Sign in"}</button>
+           
+        
+        <button  disabled={disable()} className={style.button}></button>
       </form>
     // </div>
   );
