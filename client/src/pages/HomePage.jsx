@@ -5,7 +5,7 @@ import { useState } from "react";
 import Cards from "../components/Cards.jsx";
 import estilo from '../modules/homePage.module.css'
 import Paginado from "./paginado/paginado";
-import clases from '../jsonClases.js'
+
 
 export default function HomePage() {
 

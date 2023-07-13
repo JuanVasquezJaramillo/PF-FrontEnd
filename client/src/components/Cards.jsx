@@ -11,12 +11,12 @@ const Cards = ({clases}) => {
       {clases.map((c) => <Card
         idEntrenador={c.idEntrenador}
         idUser={c.idUser}
-       precio={c.precio}
+        price={c. price}
         descPublica={c.descPublica}
         descPrivada={c.descPrivada}
         etiquetas={c.etiquetas}
-        video={c.video}
-        key={c.idVideo}
+        title={c.title}
+        key={c.idPlan}
       
         />)}
       
