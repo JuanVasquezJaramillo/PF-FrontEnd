@@ -1,10 +1,10 @@
 import Login from "../components/Login";
+import LoginUsers from "../components/LoginUsers";
 
 export default function LoginPage() {
   return (
-    <div >
-      <h1>Login Page</h1>
-      <Login option='login' />
+    <div>
+      <LoginUsers />
     </div>
   );
 }
