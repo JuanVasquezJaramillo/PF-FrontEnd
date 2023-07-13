@@ -4,7 +4,7 @@ export default function RegisterPage() {
   return (
     <div className={style.registerpage}>
       
-      <Login option="register" />
+      <Login  />
     </div>
   );
 }
