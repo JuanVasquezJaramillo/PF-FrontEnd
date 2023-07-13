@@ -21,8 +21,7 @@ export default function Login() {
     }
 
     if (name === "email") {
-      const regexRating =
-        /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
+      const regexRating =  /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
       if (inputs.email !== "") setErrors({ ...errors, email: "" });
       else {
         setErrors({ ...errors, email: "Digite un correo" });
@@ -211,7 +210,7 @@ export default function Login() {
         </button>
 
       </form>
-      //{" "}
+      {" "}
     </div>
   );
 }
