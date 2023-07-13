@@ -5,6 +5,7 @@ import style from "./Login.module.css";
 export default function Login() {
   const dispatch = useDispatch();
 
+
   const validate = (inputs, name) => {
     if (name === "userName") {
       if (inputs.userName !== "") setErrors({ ...errors, userName: "" });
@@ -208,6 +209,7 @@ export default function Login() {
         <button disabled={disable()} className={style.button}>
           Registrar
         </button>
+
       </form>
       //{" "}
     </div>
