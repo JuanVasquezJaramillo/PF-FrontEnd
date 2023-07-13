@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
 import style from "./Login.module.css";
+import { useLocalStorage } from "./useLocalStorage";
 export default function Login() {
   const dispatch = useDispatch();
 
@@ -51,7 +52,7 @@ export default function Login() {
       else setErrors({ ...errors, typeUser: "campo requerido" });
     }
   };
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useLocalStorage("inputs", {
     userName: "", // falta usuario
     firstName: "",
     lastName: "",
@@ -63,15 +64,15 @@ export default function Login() {
     typeUser: "",
   });
   const [errors, setErrors] = useState({
-    userName: "Campo Requerido", // falta usuario
-    firstName: "Campo Requerido",
-    lastName: "Campo Requerido",
-    email: "Campo Requerido",
-    password: "Campo Requerido",
-    Birthdate: "Campo Requerido",
-    nationality: "Campo Requerido",
-    sex: "Campo Requerido",
-    typeUser: "Campo Requerido",
+    userName: "", // falta usuario
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    Birthdate: "",
+    nationality: "",
+    sex: "",
+    typeUser: "",
   });
 
   function inputsChange(event) {
@@ -128,6 +129,7 @@ export default function Login() {
             autoComplete="true"
             type="text"
             name="userName"
+            value={inputs.userName}
             onChange={inputsChange}
             placeholder="userName"
           />
@@ -137,6 +139,7 @@ export default function Login() {
             autoComplete="true"
             type="text"
             name="firstName"
+            value={inputs.firstName}
             onChange={inputsChange}
             placeholder="First name"
           />
@@ -146,6 +149,7 @@ export default function Login() {
             autoComplete="true"
             type="text"
             name="lastName"
+            value={inputs.lastName}
             onChange={inputsChange}
             placeholder="Last name"
           />
@@ -155,6 +159,7 @@ export default function Login() {
             autoComplete="true"
             type="email"
             name="email"
+            value={inputs.email}
             onChange={inputsChange}
             placeholder="example@example.com"
           />
@@ -164,6 +169,7 @@ export default function Login() {
             autoComplete="true"
             type="password"
             name="password"
+            value={inputs.password}
             onChange={inputsChange}
             placeholder="********"
           />
@@ -173,6 +179,7 @@ export default function Login() {
             autoComplete="true"
             type="date"
             name="Birthdate"
+            value={inputs.Birthdate}
             onChange={inputsChange}
           />
           <span className={style.span}>{errors.Birthdate}</span> <br />
@@ -181,11 +188,12 @@ export default function Login() {
             autoComplete="true"
             type="text"
             name="nationality"
+            value={inputs.nationality}
             onChange={inputsChange}
             placeholder="Ej: Argentina"
           />
           <span className={style.span}>{errors.nationality}</span> <br />
-          <select className={style.select} name="sex" onChange={inputsChange}>
+          <select className={style.select} name="sex" value={inputs.sex} onChange={inputsChange}>
             <option value="">Select Sex</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -196,6 +204,7 @@ export default function Login() {
           <select
             className={style.select}
             name="typeUser"
+            value={inputs.typeUser}
             onChange={inputsChange}
           >
             <option value="">Select type User</option>
