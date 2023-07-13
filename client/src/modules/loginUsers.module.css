@@ -1,0 +1,43 @@
+.container {
+  background-color: aqua;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60vh;
+  margin: 50px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px black;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input {
+  margin: 2rem;
+  width: 40rem;
+  height: 3.9rem;
+  border-radius: 5px;
+  color: aqua;
+  border: 1px solid aqua;
+  text-align: center;
+  font-size: large;
+}
+
+.button {
+  width: 30rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: 1px solid aqua;
+  font-size: large;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: green;
+}
