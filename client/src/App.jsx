@@ -8,20 +8,23 @@ import UserProfile from "./components/userProfile";
 import TrainingDetail from "./components/TrainingDetail";
 import TrainingNew from "./components/TrainingNew";
 import AboutUs from "./pages/AboutUs";
+import { AuthProvider } from "./context/authContext";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="profile" element={<UserProfile />} />
-        <Route path="/trainingnew" element={<TrainingNew />} />
-        <Route path="/training" element={<TrainingDetail />} />
-        <Route path="/nosotros" element={<AboutUs />} />
-      </Routes>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="/trainingnew" element={<TrainingNew />} />
+          <Route path="/training" element={<TrainingDetail />} />
+          <Route path="/nosotros" element={<AboutUs />} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
