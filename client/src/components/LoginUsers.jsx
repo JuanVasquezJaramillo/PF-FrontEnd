@@ -1,65 +1,52 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { useAuth } from "../context/authContext";
+import { signin } from "../global/userSlice";
 import style from "../modules/loginUsers.module.css";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { postUsers } from "../global/userSlice/postUsers";
 
-const LoginUsers = () => {
+const LoginUsers  = () => {
+
+  const auth = useAuth();
+  const {displayName} = auth.user;
+  console.log(displayName);
+
+  const dispatch = useDispatch()
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
 
-  function inputsChange(event) {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    });
-    validate(
-      {
-        ...inputs,
-        [event.target.name]: event.target.value,
-      },
-      event.target.name
-    );
+  const handleChange = ({target: {name, value}}) => {
+    setInputs({...inputs, [name]: value})
   }
-  const [errors, setErrors] = useState({
-    email: "Campo Requerido",
-    password: "Campo Requerido",
-  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    dispatch(postUsers(inputs));
-    console.log("inputs login", inputs);
-    setInputs({
-      email: "",
-      password: "",
-    });
-    console.log(inputs);
-  };
+  // register with mail
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   auth.register(inputs.email, inputs.password)
+  // }
 
-  const disable = () => {
-    let disabled = true;
-    for (let error in errors) {
-      if (errors[error] === "") disabled = false;
-      else {
-        disabled = true;
-        break;
-      }
-    }
-    return disabled;
-  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    auth.login(inputs.email, inputs.password);
+    dispatch(signin());
+  }
 
+  const handleGoogle = (e) => {
+    e.preventDefault();
+    auth.loginWithGoogle()
+    dispatch(signin());
+  }
   return (
     <div className={style.container}>
-      <form className={style.form} onSubmit={handleSubmit}>
+      <form className={style.form} onSubmit={handleLogin}>
         <input
           autoFocus
           autoComplete="true"
           type="email"
           name="email"
-          onChange={inputsChange}
+          onChange={(e) => handleChange(e)}
           placeholder="example@example.com"
           className={style.input}
         />
@@ -67,11 +54,18 @@ const LoginUsers = () => {
           autoComplete="true"
           type="password"
           name="password"
-          onChange={inputsChange}
+          onChange={(e) => handleChange(e)}
           placeholder="********"
           className={style.input}
         />
-        <button className={style.button}>sign in</button>
+        <button
+          type="submit"
+          className={style.Link}
+        >sign in</button>
+        <button
+          onClick={(e) => handleGoogle(e)}
+          className={style.button}
+        >sign in for google</button>
       </form>
     </div>
   );
