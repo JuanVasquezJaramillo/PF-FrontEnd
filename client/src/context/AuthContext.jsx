@@ -47,9 +47,7 @@ export function AuthProvider ({children}){
     }
 
     const loginWithGoogle = async () => {
-
-
-        const responseGoogle = await GoogleAuthProvider();
+    const responseGoogle = new GoogleAuthProvider();
         return await signInWithPopup(auth, responseGoogle)
     }
 

@@ -13,6 +13,9 @@ export default function HomePage() {
   const auth = useAuth();
   const {displayName} = auth.user;
 
+  const auth = useAuth();
+  const {displayName} = auth.user;
+
   const clases = useSelector((state) => state.clases.list)
   const dispatch = useDispatch()
   const [defaultExercise, setDefaultExercise] = useState('filterPorDefect');
