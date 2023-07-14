@@ -20,7 +20,7 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
-  console.log("HOMEPAGE", clases);
+  
 
   useEffect(() => {
     dispatch(getAllClass())

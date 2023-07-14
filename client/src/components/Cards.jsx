@@ -11,7 +11,8 @@ const Cards = ({clases}) => {
         idUser={c.idUser}
          title={c.title}
          price={c. price}
-         publicDescriptio={c.publicDescription}
+         publicDescription ={c.publicDescription}
+         
         privateDescription={c.privateDescription}
         tags={c.tags}
         userName={c.userName }

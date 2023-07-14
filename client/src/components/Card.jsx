@@ -4,7 +4,7 @@ import style from "../modules/Card.module.css"
 import { Link } from 'react-router-dom'
  
 const Card = (props) => {
-  console.log("PROPSSSSSS",props)
+  
   const id = props.idEntrenador
   
   return (
@@ -16,6 +16,7 @@ const Card = (props) => {
       <h2> price {props. price}</h2>
       
       <h2>Desc Publica{props.publicDescription}</h2>
+      
       </Link>
      <ReactPlayer
       url = {props.primerVideoUrl}
