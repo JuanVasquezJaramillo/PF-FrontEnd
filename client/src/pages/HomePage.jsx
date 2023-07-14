@@ -11,9 +11,7 @@ import { useAuth } from "../context/authContext";
 export default function HomePage() {
   
   const auth = useAuth();
-  const {displayName} = auth.user;
 
-  const auth = useAuth();
   const {displayName} = auth.user;
 
   const clases = useSelector((state) => state.clases.list)
@@ -27,7 +25,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllClass())
-  }, [])
+  },[])
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
