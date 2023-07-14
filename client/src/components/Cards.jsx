@@ -17,6 +17,7 @@ const Cards = ({clases}) => {
         tags={c.tags}
         userName={c.userName }
         primerVideoUrl={c.primerVideoUrl }
+        idPlan={c.idPlan }
         key={c.idPlan}
       
         />)}

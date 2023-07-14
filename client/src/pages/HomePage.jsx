@@ -9,7 +9,7 @@ import { useAuth } from "../context/authContext";
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
-
+  
   const auth = useAuth();
   const {displayName} = auth.user;
 

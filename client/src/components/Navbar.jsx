@@ -31,7 +31,7 @@ export default function Navbar() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/trainingnew">NuevaRutina</NavLink>
           <NavLink to="/training">DetalleRutina</NavLink>
-          <NavLink to="/profile">perfil</NavLink>
+          <NavLink to="/profile">profile</NavLink>
           <NavLink to="/" onClick={() => handleSignout()}>Logout</NavLink>
             <div style={{ display: "flex", justifyContent: "center" }}>
             <input

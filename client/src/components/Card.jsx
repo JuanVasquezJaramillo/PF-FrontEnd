@@ -4,17 +4,17 @@ import style from "../modules/Card.module.css"
 import { Link } from 'react-router-dom'
  
 const Card = (props) => {
-  
-  const id = props.idEntrenador
+const id = props.idPlan
   
   return (
 
     <div className={style.cardcontainer}>
 
-       <Link to={`/planDetail/${props.userName}`}>    
+       <Link to={`/LoginPage/${id}`}>    
+       <h2> {id}</h2>
       
-      <h2>Users {props.userName}</h2>
       </Link>
+      <h2>Users {props.userName}</h2>
       <h2>Title  {props.title}</h2>
       <h2> price {props. price}</h2>
       

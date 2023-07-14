@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  background-color: #030000;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid rgb(214, 3, 3);
+  flex-direction: column;
+  margin-top: 5px;
+}
+.form {
+  width: 100%;
+  max-width: auto;
+  margin: 10 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: deepskyblue;
+  margin-top: 30px;
+}
+
+.input {
+  width: 40rem;
+  height: 3.9rem;
+  margin: 0.5rem;
+  border: 1px solid rgb(4, 5, 4);
+  border-radius: 5px;
+  border: 1px solid rgb(32, 209, 76);
+  font-size: large;
+  color: black;
+}
+
+.label {
+  width: 30px;
+  height: 10px;
+  border-radius: 8px;
+  text-decoration-color: blueviolet;
+  color: rgb(255, 242, 240);
+  font-size: large;
+}
+
+.select {
+  width: 40rem;
+  height: 3.9rem;
+  margin: 0.5rem;
+  border: 1px solid rgb(4, 5, 4);
+  border-radius: 5px;
+  border: 1px solid rgb(32, 209, 76);
+  color: black;
+}
+
+.button {
+  width: 30rem;
+  height: 3.06rem;
+  margin: 0.5rem;
+  border: 1px solid rgb(4, 5, 4);
+  border-radius: 8px;
+  border: 1px solid rgb(32, 209, 76);
+  font-size: large;
+  background-color: rgba(201, 198, 198, 0.473);
+  color: black;
+  background-color: red;
+}
+.button:hover {
+  background-color: rgba(51, 179, 39, 0.918);
+  cursor: pointer;
+}
+.span {
+  color: red;
+  font-size: 3ch;
+}
+.h1 {
+  color: white;
+}
