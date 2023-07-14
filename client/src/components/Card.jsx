@@ -10,14 +10,17 @@ const Card = (props) => {
   return (
 
     <div className={style.cardcontainer}>
-       <Link to={`/planDetail/${id}`}>   
+
+       <Link to={`/planDetail/${props.userName}`}>    
+      
       <h2>Users {props.userName}</h2>
+      </Link>
       <h2>Title  {props.title}</h2>
       <h2> price {props. price}</h2>
       
       <h2>Desc Publica{props.publicDescription}</h2>
       
-      </Link>
+      
      <ReactPlayer
       url = {props.primerVideoUrl}
       light
