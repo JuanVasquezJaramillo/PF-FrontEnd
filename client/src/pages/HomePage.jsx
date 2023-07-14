@@ -5,9 +5,13 @@ import { useState } from "react";
 import Cards from "../components/Cards.jsx";
 import estilo from '../modules/homePage.module.css'
 import Paginado from "./paginado/paginado";
-
+import { useAuth } from "../context/authContext";
+// import clases from '../jsonClases.js'
 
 export default function HomePage() {
+
+  const auth = useAuth();
+  const {displayName} = auth.user;
 
   const clases = useSelector((state) => state.clases.list)
   const dispatch = useDispatch()
@@ -24,7 +28,7 @@ export default function HomePage() {
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
-  const [cantidadPorPag] = useState(2);
+  const [cantidadPorPag] = useState(5);
   const indiceUltimaReceta = currentPag * cantidadPorPag
   const indicePrimerReceta = indiceUltimaReceta - cantidadPorPag
   const currentClases = clases.slice(indicePrimerReceta, indiceUltimaReceta)
@@ -56,6 +60,7 @@ export default function HomePage() {
   return (
     <>
       <h1>HomePage</h1>
+      {displayName && <h1>Hello!! {displayName}</h1>}
       <div className={estilo.contenedor}>
         <Paginado cantidadPorPag={cantidadPorPag}
           clases={clases.length}

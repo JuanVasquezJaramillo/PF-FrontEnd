@@ -16,7 +16,16 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {}
+  reducers: {
+    signin: (state) => {
+      state.access = true
+    },
+    signout: (state) => {
+      state.access = false
+    }
+  }
 });
+
+export const { signin, signout } = userSlice.actions;
 
 export default userSlice.reducer;
