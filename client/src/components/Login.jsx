@@ -1,8 +1,8 @@
+import style from "./Login.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
-import style from "./Login.module.css";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 export default function Login() {
   const dispatch = useDispatch();
 
