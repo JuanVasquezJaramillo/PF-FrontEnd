@@ -41,8 +41,8 @@ export const clasesSlice = createSlice({
 })
 
 export const getAllClass = createAsyncThunk("clases/getAllClass", async () => {
-    const { data } = await axios("http://localhost:5000/plan");
-    console.log(data)
+    const { data } = await axios("http://localhost:5000/plans");
+    
     return data;
 })
 

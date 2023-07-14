@@ -9,6 +9,9 @@ import { useAuth } from "../context/authContext";
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
+  
+  const auth = useAuth();
+  const {displayName} = auth.user;
 
   const auth = useAuth();
   const {displayName} = auth.user;
@@ -20,7 +23,7 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
-  console.log("HOMEPAGE", clases);
+  
 
   useEffect(() => {
     dispatch(getAllClass())
@@ -28,7 +31,7 @@ export default function HomePage() {
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
-  const [cantidadPorPag] = useState(2);
+  const [cantidadPorPag] = useState(5);
   const indiceUltimaReceta = currentPag * cantidadPorPag
   const indicePrimerReceta = indiceUltimaReceta - cantidadPorPag
   const currentClases = clases.slice(indicePrimerReceta, indiceUltimaReceta)

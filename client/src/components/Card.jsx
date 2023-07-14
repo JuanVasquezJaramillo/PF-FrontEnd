@@ -4,17 +4,25 @@ import style from "../modules/Card.module.css"
 import { Link } from 'react-router-dom'
  
 const Card = (props) => {
-  const id = props.idEntrenador
-  const arrayvideo = props.video
+const id = props.idPlan
+  
   return (
+
     <div className={style.cardcontainer}>
-       <Link to={`/planDetail/${id}`}>
-      <h2>Id entrenador {props.idUser}</h2>
-      <h2>Precio {props.precio}</h2>
-      <h2>Desc Publica{props.descPublica}</h2>
+
+       <Link to={`/LoginPage/${id}`}>    
+       <h2> {id}</h2>
+      
       </Link>
+      <h2>Users {props.userName}</h2>
+      <h2>Title  {props.title}</h2>
+      <h2> price {props. price}</h2>
+      
+      <h2>Desc Publica{props.publicDescription}</h2>
+      
+      
      <ReactPlayer
-      url = {arrayvideo}
+      url = {props.primerVideoUrl}
       light
       />
  </div>
