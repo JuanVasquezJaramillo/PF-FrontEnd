@@ -3,20 +3,22 @@ import Card from './Card'
 import style from "../modules/Cards.module.css"
 
 const Cards = ({clases}) => {
- 
+  
   return (
-
-    <div>
+ <div>
     <div className={style.cardscontainer}>
       {clases.map((c) => <Card
-        idEntrenador={c.idEntrenador}
         idUser={c.idUser}
-       precio={c.precio}
-        descPublica={c.descPublica}
-        descPrivada={c.descPrivada}
-        etiquetas={c.etiquetas}
-        video={c.video}
-        key={c.idVideo}
+         title={c.title}
+         price={c. price}
+         publicDescription ={c.publicDescription}
+         
+        privateDescription={c.privateDescription}
+        tags={c.tags}
+        userName={c.userName }
+        primerVideoUrl={c.primerVideoUrl }
+        idPlan={c.idPlan }
+        key={c.idPlan}
       
         />)}
       
