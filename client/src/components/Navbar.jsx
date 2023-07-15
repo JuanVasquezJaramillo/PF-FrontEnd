@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../context/authContext";
 import { signOut } from "firebase/auth";
+import SearchBar from "./SearchBar/SearchBar";
+
 
 export default function Navbar() {
   const auth = useAuth();
@@ -71,6 +73,9 @@ export default function Navbar() {
           <NavLink to="/login">Sign in</NavLink>
           <NavLink to="/register">Sign up</NavLink>
           <NavLink to="/nosotros">Nosotros</NavLink>
+          <NavLink to="/alternativeProfile">altPerfil</NavLink> {/*Solo es una vista.*/}
+          <NavLink to="/paycheck">Pagos</NavLink> {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
+          <SearchBar/> {/*Añadido por Pablo, Searchbar funcional*/}
         </>
       )}
     </nav>

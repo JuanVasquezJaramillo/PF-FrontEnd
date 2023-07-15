@@ -8,7 +8,11 @@ import UserProfile from "./components/userProfile";
 import TrainingDetail from "./components/TrainingDetail";
 import TrainingNew from "./components/TrainingNew";
 import AboutUs from "./pages/AboutUs";
+import Market from "./pages/Pasarela/market"
+import ViewProfile from './components/vistaPerfil/viewProfile'
 import { AuthProvider } from "./context/authContext";
+import axios from 'axios';
+axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
   return (
@@ -23,6 +27,8 @@ function App() {
           <Route path="/trainingnew" element={<TrainingNew />} />
           <Route path="/training" element={<TrainingDetail />} />
           <Route path="/nosotros" element={<AboutUs />} />
+          <Route path='/paycheck' element={<Market/>}/>
+          <Route path="/alternativeProfile" element={<ViewProfile/>}/>
         </Routes>
       </AuthProvider>
     </>
