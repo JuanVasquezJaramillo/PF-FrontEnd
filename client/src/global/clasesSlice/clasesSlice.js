@@ -49,6 +49,18 @@ export const clasesSlice = createSlice({
             state.loading = false;
             state.error = action.error.message
         })
+        builder.addCase(getById.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(getById.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.loading = false;
+        })
+        .addCase(getById.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message
+        })
     }
 })
 
@@ -59,6 +71,11 @@ export const getAllClass = createAsyncThunk("clases/getAllClass", async () => {
 
 export const getByNameTag = createAsyncThunk("clases/getByNameTag", async (param) => {
     const { data } = await axios(`/search?search=${param}`);
+    return data;
+})
+
+export const getById = createAsyncThunk("clases/getById", async (param) => {
+    const {data} = await axios(`/plan/${param}`)
     return data;
 })
 
