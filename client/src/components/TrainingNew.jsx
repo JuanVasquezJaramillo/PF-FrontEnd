@@ -90,7 +90,7 @@ const TrainingNew =()=>{
                 </div>
                 <div>
                     <label htmlFor=""> </label>
-                    { <input onChange={handleChange} placeholder='Ingrese palabras claves para buscar...' type="text" name="etiquetas" value={training.etiquetas} /> }        
+                    { <input onChange={handleChange} placeholder='Ingrese palabras claves para buscar..' type="text" name="etiquetas" value={training.etiquetas} /> }        
                 </div>
                 <div>
                     <label htmlFor=""> </label>
