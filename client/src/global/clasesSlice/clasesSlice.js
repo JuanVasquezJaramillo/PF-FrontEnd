@@ -37,15 +37,30 @@ export const clasesSlice = createSlice({
             state.loading = false;
             state.error = action.error.message;
         })
+        builder.addCase(getByNameTag.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(getByNameTag.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.loading = false;
+        })
+        .addCase(getByNameTag.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message
+        })
     }
 })
 
 export const getAllClass = createAsyncThunk("clases/getAllClass", async () => {
-    const { data } = await axios("http://localhost:5000/plans");
-    
+    const { data } = await axios("/plans");
     return data;
 })
 
+export const getByNameTag = createAsyncThunk("clases/getByNameTag", async (param) => {
+    const { data } = await axios(`/search?search=${param}`);
+    return data;
+})
 
-export const {filterTypeExercise, orderByPrice } = clasesSlice.actions
+export const {filterTypeExercise, orderByPrice} = clasesSlice.actions
 export default clasesSlice.reducer;

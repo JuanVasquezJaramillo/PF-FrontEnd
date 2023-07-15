@@ -1,0 +1,22 @@
+.inputSearch{ 
+    display: 'block';
+    font-Size: 16px; 
+    width: 400px; 
+    max-width: 100%; 
+    box-sizing: 'border-box'; 
+    border: 1px solid #aaa; 
+    border-radius: .3em; 
+    cursor: 'text'; 
+    padding: .4em 1.4em .3em .8em;
+}
+
+.btnSearch{
+    background-image: url(../assets/icons8-search-35.png);
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+}
