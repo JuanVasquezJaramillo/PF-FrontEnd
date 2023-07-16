@@ -21,13 +21,14 @@ export default function Login() {
     }
 
     if (name === "email") {
-      const regexRating =  /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
+      const regexEmail = /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/
+
       if (inputs.email !== "") setErrors({ ...errors, email: "" });
       else {
         setErrors({ ...errors, email: "Digite un correo" });
         return;
       }
-      if (regexRating.test(inputs.email)) setErrors({ ...errors, email: "" });
+      if (regexEmail.test(inputs.email)) setErrors({ ...errors, email: "" });
       else setErrors({ ...errors, email: "Digite un correo valido" });
     }
     if (name === "password") {
