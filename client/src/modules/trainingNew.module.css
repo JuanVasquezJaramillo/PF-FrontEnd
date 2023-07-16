@@ -1,0 +1,18 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  height: 80vh;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aqua;
+  width: 80%;
+  height: 90%;
+  border-radius: 20px;
+}

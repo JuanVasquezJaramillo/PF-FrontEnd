@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../context/authContext";
 import { signOut } from "firebase/auth";
 import SearchBar from "./SearchBar/SearchBar";
-
+import style from "../modules/navbar.module.css";
 
 export default function Navbar() {
   const auth = useAuth();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
 
-  const userAcces = useSelector((state) =>  state.user.access)
+  const userAcces = useSelector((state) => state.user.access);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -22,34 +22,40 @@ export default function Navbar() {
   // funcion para cerrar session
   const handleSignout = () => {
     auth.logout();
-    dispatch(signOut())
-  }
+    dispatch(signOut());
+  };
 
   return (
-    <nav>
-      {userAcces? (
+    <nav className={style.navBar}>
+      <h1 className={style.marca}>OnlyTrainers</h1>
+      {userAcces ? (
         <>
-          {/* Rutas de usuario logeado */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/trainingnew">NuevaRutina</NavLink>
-          <NavLink to="/training">DetalleRutina</NavLink>
+          <div className={style.linkContainer}>
+            {/* Rutas de usuario logeado */}
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/trainingnew">NuevaRutina</NavLink>
+            <NavLink to="/training">DetalleRutina</NavLink>
 
-
-          <NavLink to="/profile">perfil</NavLink>
-
-          <NavLink to="/" onClick={() => handleSignout()}>Logout</NavLink>
-          <SearchBar/>
+            <NavLink to="/profile">perfil</NavLink>
+            <NavLink to="/" onClick={() => handleSignout()}>
+              Logout
+            </NavLink>
+          </div>
+          <div className={style.logout}></div>
         </>
       ) : (
         <>
-          {/* rutas usarios sin logearse */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/login">Sign in</NavLink>
-          <NavLink to="/register">Sign up</NavLink>
-          <NavLink to="/nosotros">Nosotros</NavLink>
-          <NavLink to="/alternativeProfile">altPerfil</NavLink> {/*Solo es una vista.*/}
-          <NavLink to="/paycheck">Pagos</NavLink> {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
-          <SearchBar/> {/*Añadido por Pablo, Searchbar funcional*/}
+          <div>
+            {/* rutas usarios sin logearse */}
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/login">Sign in</NavLink>
+            <NavLink to="/register">Sign up</NavLink>
+            <NavLink to="/nosotros">Nosotros</NavLink>
+            <NavLink to="/alternativeProfile">altPerfil</NavLink>{" "}
+            {/*Solo es una vista.*/}
+            <NavLink to="/paycheck">Pagos</NavLink>{" "}
+            {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
+          </div>
         </>
       )}
     </nav>
