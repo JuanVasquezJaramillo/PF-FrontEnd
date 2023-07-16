@@ -1,5 +1,5 @@
 nav {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
   padding: 6px;
 }
 
@@ -9,7 +9,7 @@ nav a {
   padding: 3px;
   text-decoration: none;
   font-size: 2rem;
-  color: #FFF;
+  color: #fff;
   margin-right: 10px;
 }
 
@@ -34,33 +34,34 @@ main form input {
   height: 30px;
   text-align: center;
   font-size: 1.8rem;
-  color: #FFF;
+  color: #fff;
   margin-bottom: 10px;
-  background-color: #0D0D0D80;
-  transition: all .3s linear;
+  background-color: #0d0d0d80;
+  transition: all 0.3s linear;
 }
 
 main form input::placeholder {
-  color: #FFF;
+  color: #fff;
 }
 
-main form input:hover, main form input:focus {
-  background-color: #0D0D0D;
+main form input:hover,
+main form input:focus {
+  background-color: #0d0d0d;
 }
 
 main form button {
   outline: none;
   border: none;
-  background-color: #0D0D0D80;
+  background-color: #0d0d0d80;
   width: 200px;
   height: 30px;
   font-size: 1.8rem;
-  color: #FFF;
+  color: #fff;
   border-radius: 10px;
   cursor: pointer;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 
 main form button:hover {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
