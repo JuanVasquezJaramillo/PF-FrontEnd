@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import style from "../modules/trainingNew.module.css";
+import ReactPlayer from "react-player/youtube";
 
 const TrainingNew = () => {
   const dispatch = useDispatch();
@@ -111,12 +112,13 @@ const TrainingNew = () => {
     // <main>
     <div className={style.formContainer}>
       <form onSubmit={handleSubmit} className={style.form}>
-        <h1>Crear Nuevo Plan</h1>
+        <h1 className={style.title}>Crear Nuevo Plan</h1>
         <input
           onChange={handleChange}
           placeholder="Titulo de tu Entrenamiento..."
           type="text"
           name="title"
+          className={style.input}
         />{" "}
         {errors.title ? <span>{errors.title}</span> : null}
         <input
@@ -124,6 +126,7 @@ const TrainingNew = () => {
           placeholder="Descripcion Publica de  entrenamiento..."
           type="text"
           name="publicDescription"
+          className={style.input}
         />{" "}
         {errors.publicDescription ? (
           <span>{errors.publicDescription}</span>
@@ -135,6 +138,7 @@ const TrainingNew = () => {
           placeholder="Descripcion Privada de entrenamiento..."
           type="text"
           name="privateDescription"
+          className={style.input}
         />{" "}
         {errors.privateDescription ? (
           <span>{errors.privateDescription}</span>
@@ -146,6 +150,7 @@ const TrainingNew = () => {
           placeholder="Ingrese el precio..."
           type="text"
           name="price"
+          className={style.input}
         />{" "}
         {errors.price ? <span>{errors.price}</span> : <span></span>}
         <select name="tags" onChange={handleChange}>
@@ -165,18 +170,24 @@ const TrainingNew = () => {
           type="text"
           placeholder="Ingrese la url del video..."
           name="video"
+          className={style.input}
         />
         <input
           onChange={handleChange}
           type="text"
           placeholder="Descripcion del video"
           name="description"
+          className={style.input}
         />
         <button type="button" onClick={() => handleSubirVideo()}>
           Subir
         </button>
+        <input disabled={disable()} type="submit" />
+      </form>
+      <div className={style.form}>
         {inputs.videos.length !== 0 ? (
           <div>
+            <h2 className={style.title}>Videos subidos</h2>
             {inputs.videos.map((video, index) => (
               <h2 key={index}>
                 • {video.url} {video.description}
@@ -184,8 +195,7 @@ const TrainingNew = () => {
             ))}
           </div>
         ) : null}
-        <input disabled={disable()} type="submit" />
-      </form>
+      </div>
     </div>
 
     // </main>

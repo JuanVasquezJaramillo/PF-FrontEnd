@@ -27,7 +27,9 @@ export default function Navbar() {
 
   return (
     <nav className={style.navBar}>
-      <h1 className={style.marca}>OnlyTrainers</h1>
+      <NavLink to="/">
+        <h1 className={style.marca}>OnlyTrainers</h1>
+      </NavLink>
       {userAcces ? (
         <>
           <div className={style.linkContainer}>
