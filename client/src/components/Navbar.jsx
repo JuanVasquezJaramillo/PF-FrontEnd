@@ -32,6 +32,7 @@ export default function Navbar() {
           {/* Rutas de usuario logeado */}
           <NavLink to="/">Home</NavLink>
           <NavLink to="/trainingnew">NuevaRutina</NavLink>
+          
           <NavLink to="/training">DetalleRutina</NavLink>
 
 
@@ -50,6 +51,7 @@ export default function Navbar() {
           <NavLink to="/alternativeProfile">altPerfil</NavLink> {/*Solo es una vista.*/}
           <NavLink to="/paycheck">Pagos</NavLink> {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
           <SearchBar/> {/*Añadido por Pablo, Searchbar funcional*/}
+         
         </>
       )}
     </nav>

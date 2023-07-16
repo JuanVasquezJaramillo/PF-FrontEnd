@@ -8,6 +8,7 @@ const store = configureStore({
     user: userReducer,
     clases: clasesReducer, 
     userId: userIdReducer,
+    
      
   }
 });

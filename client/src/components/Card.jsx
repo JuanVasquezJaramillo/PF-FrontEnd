@@ -10,8 +10,8 @@ const Card = (props) => {
 
     <div className={style.cardcontainer}>
 
-      <Link to={`/LoginPage/${id}`}>
-        <h2> {id}</h2>
+      <Link to={`/IdDetailsTraining/${id}`}>
+        <h1> {id}</h1>
       </Link>
 
       <Link to={`/alternativeDetail/${id}`}>
