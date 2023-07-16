@@ -16,7 +16,8 @@ const Detail = () => {
 
 
     console.log("DETALLE", detail);
-
+    let probando =  detail[1]?.[0]?.url;
+    console.log("BANDERAAAA", probando);
     return (
         <>
             <div>
@@ -30,8 +31,8 @@ const Detail = () => {
                                 </h1>
                                 <div>
                                     {/* {detail[1] ? <Carrousel videos={detail[1]} /> : null} */}
-                                    {detail[1]?.[0]?.url ? <Carrousel videos={detail[1]?.[1]?.url} /> : null}
-
+                                    {/* {detail[1]?.[0]?.url ? <Carrousel videos={detail[1]?.[1]?.url} /> : null} */}
+                                    {detail[1]?.[0]?.url ? <Carrousel videos={detail[1]}/> : null}                             
                                 </div>
                             </div>
                             :

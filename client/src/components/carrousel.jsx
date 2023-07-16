@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactPlayer from "react-player";
 
 const Carrousel = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
