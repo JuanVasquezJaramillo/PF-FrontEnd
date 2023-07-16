@@ -38,33 +38,7 @@ export default function Navbar() {
           <NavLink to="/profile">perfil</NavLink>
 
           <NavLink to="/" onClick={() => handleSignout()}>Logout</NavLink>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-            <input
-              style={{
-                display: "block",
-                fontSize: "16px",
-                width: "400px",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                border: "1px solid #aaa",
-                borderRadius: ".3em",
-                cursor: "text",
-                padding: ".4em 1.4em .3em .8em",
-              }}
-              type="search"
-              placeholder="Buscar..."
-              onChange={(event) => handleChange(event)}
-              value={name}
-            ></input> 
-            <button
-              style={{
-                display: "block",
-                cursor: "pointer",
-                border: "1px solid #aaa",
-              }}>
-              Buscar
-            </button>
-          </div>
+          <SearchBar/>
         </>
       ) : (
         <>

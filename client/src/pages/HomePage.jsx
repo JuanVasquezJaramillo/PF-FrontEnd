@@ -9,10 +9,10 @@ import { useAuth } from "../context/authContext";
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
-  
+
   const auth = useAuth();
 
-  const {displayName} = auth.user;
+  const { displayName } = auth.user;
 
   const clases = useSelector((state) => state.clases.list)
   const dispatch = useDispatch()
@@ -21,11 +21,11 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
-  
+  console.log("Homepage", clases);
 
   useEffect(() => {
     dispatch(getAllClass())
-  },[])
+  }, [])
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
@@ -77,10 +77,18 @@ export default function HomePage() {
           </select>
           <select className={estilo.select} onChange={event => handleFilterExercises(event)}>
             <option value='filterPorDefect'>Seleccionar filtro</option>
-            <option value='Abdomen'>Abdomen</option>
+            {/* <option value='Abdomen'>Abdomen</option>
             <option value='Brazos'>Brazos</option>
             <option value='Gluteos'>Gluteos</option>
-            <option value='Pierna'>Pierna</option>
+            <option value='Pierna'>Pierna</option> */}
+            <option value="Natacion">Natacion</option>
+            <option value="Futbol">Futbol</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Meditacion">Meditacion</option>
+            <option value="Ejercicio fisico">Ejercicio fisico</option>
+            <option value="Ajedrez">Ajedrez</option>
+            <option value="Boxeo">Boxeo</option>
+            <option value="	Ciclismo de ruta">	Ciclismo de ruta</option>
           </select>
         </div>
 

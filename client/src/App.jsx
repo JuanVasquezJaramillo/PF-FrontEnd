@@ -12,6 +12,7 @@ import Market from "./pages/Pasarela/market"
 import ViewProfile from './components/vistaPerfil/viewProfile'
 import { AuthProvider } from "./context/authContext";
 import axios from 'axios';
+import Detail from "./components/alternativeDetail";
 axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path='/paycheck' element={<Market/>}/>
           <Route path="/alternativeProfile" element={<ViewProfile/>}/>
+          <Route path="/alternativeDetail/:id" element={<Detail/>}/>
         </Routes>
       </AuthProvider>
     </>
