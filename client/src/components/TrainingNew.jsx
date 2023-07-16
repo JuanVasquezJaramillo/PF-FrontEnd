@@ -1,12 +1,10 @@
-
 import { useState } from "react";
-import { postPlan } from "../global/userSlice/postPlan.js";
+import { postPlan } from "../global/clasesSlice/postPlan";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import style from "../modules/trainingNew.module.css";
 import ReactPlayer from "react-player/youtube";
-
 
 const TrainingNew = () => {
   const dispatch = useDispatch();

@@ -32,26 +32,24 @@ export default function Navbar() {
       </NavLink>
       {userAcces ? (
         <>
-          {/* Rutas de usuario logeado */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/trainingnew">NuevaRutina</NavLink>
-          
-          <NavLink to="/training">DetalleRutina</NavLink>
+          <div>
+            {/* Rutas de usuario logeado */}
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/trainingnew">NuevaRutina</NavLink>
 
+            <NavLink to="/training">DetalleRutina</NavLink>
 
-          <NavLink to="/profile">perfil</NavLink>
-
+            <NavLink to="/profile">perfil</NavLink>
 
             <NavLink to="/profile">perfil</NavLink>
             <NavLink to="/" onClick={() => handleSignout()}>
               Logout
             </NavLink>
           </div>
-          <div className={style.logout}></div>
+          <div className={style.logout}> log out</div>
         </>
       ) : (
         <>
-
           <div>
             {/* rutas usarios sin logearse */}
             <NavLink to="/">Home</NavLink>
@@ -63,7 +61,6 @@ export default function Navbar() {
             <NavLink to="/paycheck">Pagos</NavLink>{" "}
             {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
           </div>
-
         </>
       )}
     </nav>
