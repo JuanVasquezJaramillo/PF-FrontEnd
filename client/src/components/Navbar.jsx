@@ -32,19 +32,11 @@ export default function Navbar() {
       </NavLink>
       {userAcces ? (
         <>
-<<<<<<< HEAD
-          {/* Rutas de usuario logeado */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/trainingnew">NuevaRutina</NavLink>
-          
-          <NavLink to="/training">DetalleRutina</NavLink>
-=======
           <div className={style.linkContainer}>
             {/* Rutas de usuario logeado */}
             <NavLink to="/">Home</NavLink>
             <NavLink to="/trainingnew">NuevaRutina</NavLink>
             <NavLink to="/training">DetalleRutina</NavLink>
->>>>>>> 6663ec1865c31eeb4ef050e028c681fbc5f2444b
 
             <NavLink to="/profile">perfil</NavLink>
             <NavLink to="/" onClick={() => handleSignout()}>
@@ -55,17 +47,6 @@ export default function Navbar() {
         </>
       ) : (
         <>
-<<<<<<< HEAD
-          {/* rutas usarios sin logearse */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/login">Sign in</NavLink>
-          <NavLink to="/register">Sign up</NavLink>
-          <NavLink to="/nosotros">Nosotros</NavLink>
-          <NavLink to="/alternativeProfile">altPerfil</NavLink> {/*Solo es una vista.*/}
-          <NavLink to="/paycheck">Pagos</NavLink> {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
-          <SearchBar/> {/*Añadido por Pablo, Searchbar funcional*/}
-         
-=======
           <div>
             {/* rutas usarios sin logearse */}
             <NavLink to="/">Home</NavLink>
@@ -77,7 +58,6 @@ export default function Navbar() {
             <NavLink to="/paycheck">Pagos</NavLink>{" "}
             {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
           </div>
->>>>>>> 6663ec1865c31eeb4ef050e028c681fbc5f2444b
         </>
       )}
     </nav>

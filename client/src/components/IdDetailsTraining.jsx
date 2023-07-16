@@ -171,19 +171,19 @@ const IdDetailsTraining =()=>{
                 <h1>Detalle del Plan</h1><br /><br />
                 <div>
                     
-                    <input onChange={handleChange} placeholder='Titulo de tu Entrenamiento...' type="text" name="title" value={...title} />  <br />
+                    <input onChange={handleChange} placeholder='Titulo de tu Entrenamiento...' type="text" name="title" value={title} />  <br />
                     {errors.title? <span>{errors.title}</span>: null}
                                      
                 </div>
                 <br />   
                 <div>
                    
-                    <input onChange={handleChange} placeholder='Descripcion Publica de  entrenamiento...' type="text" name="publicDescription" value={...publicDescription} />   <br />
+                    <input onChange={handleChange} placeholder='Descripcion Publica de  entrenamiento...' type="text" name="publicDescription" value={publicDescription} />   <br />
                    {errors.publicDescription? <span>{errors.publicDescription}</span>: <span></span> }         
                 </div>
                 <br />   
                 <div>
-                   <input onChange={handleChange} placeholder='Descripcion Privada de entrenamiento...' type="text" name="description" value={...description} />  <br />
+                   <input onChange={handleChange} placeholder='Descripcion Privada de entrenamiento...' type="text" name="description" value={description} />  <br />
                     {errors.description? <span>{errors.description}</span>: <span></span> }         
                 </div>
                 <br />   
