@@ -8,9 +8,9 @@ const Card = (props) => {
 
   return (
     <div className={style.cardcontainer}>
-      <Link to={`/LoginPage/${id}`} className={style.link}>
-        {/* <h2> {id}</h2> */}
-        <h2 className={style.userName}>{props.userName}</h2>
+
+      <Link to={`/IdDetailsTraining/${id}`}>
+        <h1> {id}</h1>
       </Link>
 
       <Link to={`/alternativeDetail/${id}`} className={style.link}>

@@ -32,11 +32,15 @@ export default function Navbar() {
       </NavLink>
       {userAcces ? (
         <>
-          <div className={style.linkContainer}>
-            {/* Rutas de usuario logeado */}
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/trainingnew">NuevaRutina</NavLink>
-            <NavLink to="/training">DetalleRutina</NavLink>
+          {/* Rutas de usuario logeado */}
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/trainingnew">NuevaRutina</NavLink>
+          
+          <NavLink to="/training">DetalleRutina</NavLink>
+
+
+          <NavLink to="/profile">perfil</NavLink>
+
 
             <NavLink to="/profile">perfil</NavLink>
             <NavLink to="/" onClick={() => handleSignout()}>
@@ -47,6 +51,7 @@ export default function Navbar() {
         </>
       ) : (
         <>
+
           <div>
             {/* rutas usarios sin logearse */}
             <NavLink to="/">Home</NavLink>
@@ -58,6 +63,7 @@ export default function Navbar() {
             <NavLink to="/paycheck">Pagos</NavLink>{" "}
             {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
           </div>
+
         </>
       )}
     </nav>

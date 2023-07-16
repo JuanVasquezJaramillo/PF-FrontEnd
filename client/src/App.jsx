@@ -13,7 +13,8 @@ import ViewProfile from "./components/vistaPerfil/viewProfile";
 import { AuthProvider } from "./context/authContext";
 import axios from "axios";
 import Detail from "./components/alternativeDetail";
-axios.defaults.baseURL = "http://localhost:5000";
+import IdDetailsTraining from "./components/IdDetailsTraining";
+axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
   return (
@@ -28,9 +29,10 @@ function App() {
           <Route path="/trainingnew" element={<TrainingNew />} />
           <Route path="/training" element={<TrainingDetail />} />
           <Route path="/nosotros" element={<AboutUs />} />
-          <Route path="/paycheck" element={<Market />} />
-          <Route path="/alternativeProfile" element={<ViewProfile />} />
-          <Route path="/alternativeDetail/:id" element={<Detail />} />
+          <Route path='/paycheck' element={<Market/>}/>
+          <Route path="/alternativeProfile" element={<ViewProfile/>}/>
+          <Route path="/alternativeDetail/:id" element={<Detail/>}/>
+          <Route  path="/IdDetailsTraining/:id" element={<IdDetailsTraining/>}/>
         </Routes>
       </AuthProvider>
     </>
