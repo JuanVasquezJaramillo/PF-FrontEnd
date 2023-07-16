@@ -11,7 +11,7 @@ const Card = (props) => {
     <div className={style.cardcontainer}>
 
       <Link to={`/IdDetailsTraining/${id}`}>
-        <h2> {id}</h2>
+        <h1> {id}</h1>
       </Link>
 
       <Link to={`/alternativeDetail/${id}`}>
