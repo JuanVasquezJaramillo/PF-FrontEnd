@@ -5,7 +5,6 @@ import style from "./Login.module.css";
 export default function Login() {
   const dispatch = useDispatch();
 
-
   const validate = (inputs, name) => {
     if (name === "userName") {
       if (inputs.userName !== "") setErrors({ ...errors, userName: "" });
@@ -21,7 +20,8 @@ export default function Login() {
     }
 
     if (name === "email") {
-      const regexEmail = /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/
+      const regexEmail =
+        /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
 
       if (inputs.email !== "") setErrors({ ...errors, email: "" });
       else {
@@ -120,8 +120,8 @@ export default function Login() {
 
   return (
     <div className={style.container}>
-      <h1 className={style.h1}>Register Users</h1>
       <form className={style.form} onSubmit={handleSubmit}>
+        <h1 className={style.h1}>Register Users</h1>
         <>
           <input
             className={style.input}
@@ -209,9 +209,7 @@ export default function Login() {
         <button disabled={disable()} className={style.button}>
           Registrar
         </button>
-
-      </form>
-      {" "}
+      </form>{" "}
     </div>
   );
 }
