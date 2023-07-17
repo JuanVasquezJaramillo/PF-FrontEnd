@@ -59,10 +59,9 @@ export default function Navbar() {
             <NavLink to="/login">Sign in</NavLink>
             <NavLink to="/register">Sign up</NavLink>
             <NavLink to="/nosotros">Nosotros</NavLink>
-            <NavLink to="/alternativeProfile">altPerfil</NavLink>{" "}
+            <NavLink to="/alternativeProfile">altPerfil</NavLink>
             {/*Solo es una vista.*/}
-            <NavLink to="/paycheck">Pagos</NavLink>{" "}
-            {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
+            <NavLink to="/paycheck">Pagos</NavLink>
           </div>
         </>
       )}

@@ -3,6 +3,7 @@ import { postPlan } from "../global/clasesSlice/postPlan.js"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import { getById } from '../global/clasesSlice/clasesSlice';
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
 
 const IdDetailsTraining =()=>{
  
@@ -120,7 +121,7 @@ const IdDetailsTraining =()=>{
       if (inputs.tags !== "") setErrors({ ...errors, tags: "" });
       else setErrors({ ...errors, tags: "Campo requerido" });
     } };
-    const [inputs,setInputs]=useState(
+    const [inputs,setInputs]=useLocalStorage(
         {
             idUser:"154dab00-b81d-4bdc-892a-ad7acda6929d",
             title: "",
@@ -130,8 +131,7 @@ const IdDetailsTraining =()=>{
             tags:"",
             video:"",
             publico:"",
-            description:"",
-             videos:[]
+            description:""
         }
     )
  const handleSubmit=(event)=>{
