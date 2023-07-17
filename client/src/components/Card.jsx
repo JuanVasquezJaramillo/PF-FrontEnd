@@ -11,7 +11,7 @@ const Card = (props) => {
       <Link to={`/IdDetailsTraining/${id}`} className={style.link}>
         <h1> {id}</h1>
       </Link>
-
+      {/* probando merge */}
       <Link to={`/alternativeDetail/${id}`} className={style.link}>
         <h2 className={style.userName}>{props.userName}</h2>
         <h2 className={style.title}>{props.title}</h2>
