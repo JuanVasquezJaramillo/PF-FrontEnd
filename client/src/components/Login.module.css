@@ -1,78 +1,41 @@
 .container {
   display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-  background-color: #020101;
-  padding: 20px;
-  border-radius: 20px;
-  border: 2px solid rgb(214, 3, 3);
-  flex-direction: column;
-  margin-top: 5px;
-}
-.form {
-  width: 100%;
-  max-width: auto;
-  margin: 10 auto;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  background-color: deepskyblue;
-  margin-top: 30px;
+  flex-direction: column;
+  background: url(https://images.pexels.com/photos/6593721/pexels-photo-6593721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  padding-bottom: 10px;
+  width: 100%;
+  height: 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.h1 {
+  font-size: 30px;
+  color: #023047;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #8ecae669;
+  width: 50%;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 10px;
 }
 
 .input {
-  width: 40rem;
-  height: 3.9rem;
-  margin: 0.5rem;
-  border: 1px solid rgb(4, 5, 4);
-  border-radius: 5px;
-  border: 1px solid rgb(32, 209, 76);
-  font-size: large;
-  color: black;
-}
-
-.label {
-  width: 30px;
-  height: 10px;
-  border-radius: 8px;
-  text-decoration-color: blueviolet;
-  color: rgb(255, 242, 240);
-  font-size: large;
-}
-
-.select {
-  width: 40rem;
-  height: 3.9rem;
-  margin: 0.5rem;
-  border: 1px solid rgb(4, 5, 4);
-  border-radius: 5px;
-  border: 1px solid rgb(32, 209, 76);
-  color: black;
+  width: 20rem;
+  height: 3rem;
+  text-align: center;
 }
 
 .button {
-  width: 30rem;
-  height: 3.06rem;
-  margin: 0.5rem;
-  border: 1px solid rgb(4, 5, 4);
-  border-radius: 8px;
-  border: 1px solid rgb(32, 209, 76);
-  font-size: large;
-  background-color: rgba(201, 198, 198, 0.473);
-  color: black;
-  background-color: red;
-}
-.button:hover {
-  background-color: rgba(51, 179, 39, 0.918);
+  width: 10rem;
+  height: 2rem;
   cursor: pointer;
-}
-.span {
-  color: red;
-  font-size: 3ch;
-}
-.h1 {
-  color: white;
 }

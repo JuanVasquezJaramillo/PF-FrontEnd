@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Kaushan+Script&family=Roboto:ital,wght@1,500&display=swap");
+.navBar {
+  background-color: #023047;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 5px black;
+}
+
+.marca {
+  font-size: 25px;
+  font-weight: 800;
+  font-style: italic;
+  color: #8ecae6;
+  font-family: "Dancing Script", cursive;
+  text-shadow: 2px 2px 2px black;
+}

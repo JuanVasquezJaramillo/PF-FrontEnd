@@ -1,28 +1,47 @@
-
-
-
-.cardcontainer{
-    border-radius: 2%; 
-    background-color:black;
-    width: 64rem;
-    margin: 1rem;
-    display:grid;
-    color: white;
-    font-size:small;
-    
+.cardcontainer {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin: 10px;
+  box-shadow: 2px 2px 5px black;
+  transition: 1s;
+  overflow: hidden;
 }
 
-
-
 .cardcontainer:hover {
-    transform: scale(1.09)  ;
-    box-shadow: 5px 5px 15px rgba ( 0 , 0 , 0 , 0.6 ) ;
-    background-color: rgb(13, 233, 222);
-    color: red;
-  }
- 
-  .cardcontainer:hover {
-    transition:  0 .5s  ease ;
-   
-   margin: 30px;
-  }
+  box-shadow: 2px 2px 5px #ffb703;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.userName {
+  font-size: 15px;
+  transition: 1s;
+  width: 100%;
+  color: #000;
+}
+
+.userName:hover {
+  color: #ffb703;
+}
+
+.title {
+  font-size: 15px;
+  text-align: center;
+  color: #000;
+}
+.price {
+  text-align: center;
+  color: #000;
+}
+
+.publicDescription {
+  text-align: center;
+  font-size: small;
+  color: #000;
+}
