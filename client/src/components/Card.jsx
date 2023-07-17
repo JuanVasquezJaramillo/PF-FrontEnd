@@ -18,7 +18,7 @@ const Card = (props) => {
       <h2 className={style.userName}>{props.userName}</h2>
         <h2 className={style.title}>{props.title}</h2>
         <h2 className={style.price}>${props.price}</h2>
-        <h2 className={style.publicDescription}>{props.publicDescription}</h2>
+        {/* <h2 className={style.publicDescription}>{props.publicDescription}</h2> */}
       </Link>
 
       <ReactPlayer

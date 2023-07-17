@@ -74,11 +74,11 @@ const IdDetailsTraining =()=>{
       
       const [errors,setErrors]=useState(
         { 
-            title: "titulo requerido",
-            publicDescription: "Descripcion publica requerida",
-            privateDescription:"Descripcion privada requerida",
-            price: "Precio requerido",
-            tags:"Tags requerido",
+            title: "",
+            publicDescription: "",
+            privateDescription:"",
+            price: "",
+            tags:"",
              
          
         }
@@ -121,9 +121,9 @@ const IdDetailsTraining =()=>{
       if (inputs.tags !== "") setErrors({ ...errors, tags: "" });
       else setErrors({ ...errors, tags: "Campo requerido" });
     } };
-    const [inputs,setInputs]=useLocalStorage(
+    const [inputs,setInputs]=useState(
         {
-            idUser:"154dab00-b81d-4bdc-892a-ad7acda6929d",
+            idUser:"49ca9088-953d-4be5-b36e-902b4630438a",
             title: "",
             publicDescription: "",
             privateDescription:"",
@@ -137,10 +137,7 @@ const IdDetailsTraining =()=>{
  const handleSubmit=(event)=>{
         event.preventDefault();
         dispatch(postPlan(inputs))
-        console.log(inputs)
-
-         
-    }
+   }
 
     const handleChange=(event)=>{
        
