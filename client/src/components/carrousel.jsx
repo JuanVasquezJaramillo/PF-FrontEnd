@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
+import style from "../modules/carrousel.module.css";
 
 const Carrousel = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,10 +16,10 @@ const Carrousel = ({ videos }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={style.container}>
+      <div className={style.containerVideo}>
         <iframe
-          width="560"
+          width="600"
           height="315"
           src={videos[currentIndex].url}
           title="Video Player"
@@ -26,8 +27,14 @@ const Carrousel = ({ videos }) => {
           allowFullScreen
         ></iframe>
       </div>
-      <button onClick={prevVideo}>Video anterior</button>
-      <button onClick={nextVideo}>Próximo video</button>
+      <div className={style.containerButton}>
+        <button onClick={prevVideo} className={style.button}>
+          Video anterior
+        </button>
+        <button onClick={nextVideo} className={style.button}>
+          Próximo video
+        </button>
+      </div>
     </div>
   );
 };

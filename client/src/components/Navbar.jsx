@@ -41,7 +41,6 @@ export default function Navbar() {
 
             <NavLink to="/profile">perfil</NavLink>
 
-            <NavLink to="/profile">perfil</NavLink>
             <NavLink to="/" onClick={() => handleSignout()}>
               Logout
             </NavLink>
