@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
- import style from "./UserProfile.module.css";
- import { Link, useParams } from "react-router-dom";
- import { getUserId } from "../global/userSlice/getUsersId";
+import style from "./UserProfile.module.css";
+import { useParams } from "react-router-dom";
+import { getUserId } from "../global/userSlice/getUsersId";
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
- 
 const UserProfile = () => {
   const { id } = useParams()
   console.log(id)
- 
-   const usersId = useSelector((state) => state.userId.listId)
-   console.log("APAAAAA", usersId)
+  const usersId = useSelector((state) => state.userId.listId)
+  console.log("APAAAAA", usersId)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -65,8 +64,8 @@ const UserProfile = () => {
         else setErrors({ ...errors, typeUser: "campo requerido" });
       }
     };
-    const [inputs, setInputs] = useState({
-      userName: "", // falta usuario
+    const [inputs, setInputs] = useLocalStorage({
+      userName: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -77,15 +76,15 @@ const UserProfile = () => {
       typeUser: "",
     });
     const [errors, setErrors] = useState({
-      userName: "Campo Requerido", // falta usuario
-      firstName: "Campo Requerido",
-      lastName: "Campo Requerido",
-      email: "Campo Requerido",
-      password: "Campo Requerido",
-      Birthdate: "Campo Requerido",
-      nationality: "Campo Requerido",
-      sex: "Campo Requerido",
-      typeUser: "Campo Requerido",
+      userName: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      Birthdate: "",
+      nationality: "",
+      sex: "",
+      typeUser: "",
     });
   
     function inputsChange(event) {
@@ -106,7 +105,7 @@ const UserProfile = () => {
       dispatch(postUsers(inputs));
       console.log("inputs login", inputs);
       setInputs({
-        userName: "", // falta usuario
+        userName: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -116,7 +115,17 @@ const UserProfile = () => {
         sex: "",
         typeUser: "",
       });
-      console.log(inputs);
+      setErrors({
+        userName: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        Birthdate: "",
+        nationality: "",
+        sex: "",
+        typeUser: "",
+      });
     };
   
     const disable = () => {
@@ -139,7 +148,6 @@ const UserProfile = () => {
         <>
           <input
             className={style.input}
-           
             autoFocus
             autoComplete="true"
             type="text"
