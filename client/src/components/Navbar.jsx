@@ -43,13 +43,15 @@ export default function Navbar() {
 
           <NavLink to="/profile">perfil</NavLink>
 
+            <NavLink to="/training">DetalleRutina</NavLink>
 
             <NavLink to="/profile">perfil</NavLink>
+
             <NavLink to="/" onClick={() => handleSignout()}>
               Logout
             </NavLink>
           </div>
-          <div className={style.logout}></div>
+          <div className={style.logout}> log out</div>
         </>
       ) : (
         <>
