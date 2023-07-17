@@ -31,7 +31,9 @@ export default function Navbar() {
         <h1 className={style.marca}>OnlyTrainers</h1>
       </NavLink>
       {userAcces ? (
+        
         <>
+        <div>
           {/* Rutas de usuario logeado */}
           <NavLink to="/">Home</NavLink>
           <NavLink to="/trainingnew">NuevaRutina</NavLink>
@@ -51,19 +53,16 @@ export default function Navbar() {
         </>
       ) : (
         <>
-
           <div>
             {/* rutas usarios sin logearse */}
             <NavLink to="/">Home</NavLink>
             <NavLink to="/login">Sign in</NavLink>
             <NavLink to="/register">Sign up</NavLink>
             <NavLink to="/nosotros">Nosotros</NavLink>
-            <NavLink to="/alternativeProfile">altPerfil</NavLink>{" "}
+            <NavLink to="/alternativeProfile">altPerfil</NavLink>
             {/*Solo es una vista.*/}
-            <NavLink to="/paycheck">Pagos</NavLink>{" "}
-            {/*Esto está solo para hacer más fácil el desarrollo. Borrar al terminar*/}
+            <NavLink to="/paycheck">Pagos</NavLink>
           </div>
-
         </>
       )}
     </nav>

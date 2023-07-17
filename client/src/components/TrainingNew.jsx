@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { postPlan } from "../global/userSlice/postPlan.js";
+import { postPlan } from "../global/clasesSlice/postPlan";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
@@ -82,6 +82,17 @@ const TrainingNew = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postPlan(inputs));
+    setInputs({
+    title: "",
+    publicDescription: "",
+    privateDescription: "",
+    price: "",
+    tags: "",
+    video: "",
+    publico: "",
+    description: "",
+    videos: [],
+  });
     console.log(inputs);
   };
 
