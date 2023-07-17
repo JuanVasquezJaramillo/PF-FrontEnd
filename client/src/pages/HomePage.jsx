@@ -64,7 +64,9 @@ export default function HomePage() {
   return (
     <>
       <section className={estilo.hero}>
-        {displayName && <h1>Hello!! {displayName}</h1>}
+        {displayName && (
+          <h1 className={estilo.saludoHome}>Hello!! {displayName}</h1>
+        )}
         <div className={estilo.divHero}>
           <h2 className={estilo.tituloHero}>
             {" "}
