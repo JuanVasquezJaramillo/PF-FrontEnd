@@ -7,17 +7,15 @@ const Card = (props) => {
   const id = props.idPlan;
 
   return (
-    <div className={style.cardcontainer}>
-      <Link to={`/IdDetailsTraining/${id}`}>
-      <h2> {id}</h2>
-      </Link>
+    <div className={style.cardcontainer} >
 
-      <Link to={`/LoginPage/${id}`} className={style.link}>
+      <Link  to={`/IdDetailsTraining/${id}`} className={style.link}>
+        <h2 className={style.id}> {id}</h2>
         
-        <h2 className={style.userName}>{props.userName}</h2>
       </Link>
 
       <Link to={`/alternativeDetail/${id}`} className={style.link}>
+      <h2 className={style.userName}>{props.userName}</h2>
         <h2 className={style.title}>{props.title}</h2>
         <h2 className={style.price}>${props.price}</h2>
         <h2 className={style.publicDescription}>{props.publicDescription}</h2>

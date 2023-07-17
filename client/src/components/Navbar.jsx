@@ -31,12 +31,18 @@ export default function Navbar() {
         <h1 className={style.marca}>OnlyTrainers</h1>
       </NavLink>
       {userAcces ? (
+        
         <>
-          <div className={style.linkContainer}>
-            {/* Rutas de usuario logeado */}
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/trainingnew">NuevaRutina</NavLink>
-            <NavLink to="/training">DetalleRutina</NavLink>
+        <div>
+          {/* Rutas de usuario logeado */}
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/trainingnew">NuevaRutina</NavLink>
+          
+          <NavLink to="/training">DetalleRutina</NavLink>
+
+
+          <NavLink to="/profile">perfil</NavLink>
+
 
             <NavLink to="/profile">perfil</NavLink>
             <NavLink to="/" onClick={() => handleSignout()}>
