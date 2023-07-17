@@ -103,26 +103,14 @@ const IdDetailsTraining = () => {
       else setErrors({ ...errors, tags: "Campo requerido" });
 
     } };
-    const [inputs,setInputs]=useLocalStorage(
-        {
-            idUser:"154dab00-b81d-4bdc-892a-ad7acda6929d",
-            title: "",
-            publicDescription: "",
-            privateDescription:"",
-            price: "",
-            tags:"",
-            video:"",
-            publico:"",
-            description:""
-        }
-    )
+
  const handleSubmit=(event)=>{
         event.preventDefault();
         dispatch(postPlan(inputs))
         console.log(inputs)
 
     }
-  };
+
   const [inputs, setInputs] = useState({
     idUser: "154dab00-b81d-4bdc-892a-ad7acda6929d",
     title: "",
@@ -135,13 +123,6 @@ const IdDetailsTraining = () => {
     description: "",
     videos: [],
   });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(postPlan(inputs));
-    console.log(inputs);
-  };
-
-
     const handleChange=(event)=>{
        
         setInputs({
@@ -164,8 +145,7 @@ const IdDetailsTraining = () => {
             }
              )    
     }
-    return(
-      
+    return( 
     <main>
        <form onSubmit={handleSubmit} >
                 <h1>Detalle del Plan</h1><br /><br />
@@ -187,177 +167,167 @@ const IdDetailsTraining = () => {
                     {errors.description? <span>{errors.description}</span>: <span></span> }         
                 </div>
                 <br />   
-
-  const handleSubirVideo = () => {
-    setInputs({
-      ...inputs,
-      videos: [
-        ...inputs.videos,
-        { url: inputs.video, description: inputs.description, publico: true },
-      ],
-      video: "",
-      description: "",
-    });
-  };
-  return (
-    <div className={style.formContainer}>
-      <form onSubmit={handleSubmit} className={style.form}>
-        <h1>Detalle del Plan</h1>
-
-        <input
-          onChange={handleChange}
-          placeholder="Titulo de tu Entrenamiento..."
-          type="text"
-          name="title"
-          value={title}
-          className={style.input}
-        />
-        {errors.title ? <span>{errors.title}</span> : null}
-
-        <input
-          onChange={handleChange}
-          placeholder="Descripcion Publica de  entrenamiento..."
-          type="text"
-          name="publicDescription"
-          value={publicDescription}
-          className={style.input}
-        />
-        {errors.publicDescription ? (
-          <span>{errors.publicDescription}</span>
-        ) : (
-          <span></span>
-        )}
-
-        <input
-          onChange={handleChange}
-          placeholder="Descripcion Privada de entrenamiento..."
-          type="text"
-          name="description"
-          value={description}
-          className={style.input}
-        />
-        {errors.description ? <span>{errors.description}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="price"
-          value={price}
-          className={style.input}
-        />
-        {errors.price ? <span>{errors.price}</span> : <span></span>}
-
-        <select name="tags" onChange={handleChange} value={tags}>
-          <option value="">-</option>
-          <option value="Natacion">Natacion</option>
-          <option value="Futbol">Futbol</option>
-          <option value="Yoga">Yoga</option>
-          <option value="Meditacion">Meditacion</option>
-          <option value="Ejercicio fisico">Ejercicio fisico</option>
-          <option value="Ajedrez">Ajedrez</option>
-          <option value="Boxeo">Boxeo</option>
-          <option value="	Ciclismo de ruta"> Ciclismo de ruta</option>
-        </select>
-        {errors.tags ? <span>{errors.tags}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="description"
-          value={description}
-          className={style.input}
-        />
-        {errors.description ? <span>{errors.description}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="url"
-          value={url}
-          className={style.input}
-        />
-        {errors.url ? <span>{errors.url}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="description"
-          value={descriptionuno}
-          className={style.input}
-        />
-        {errors.descriptionuno ? (
-          <span>{errors.descriptionuno}</span>
-        ) : (
-          <span></span>
-        )}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="urluno"
-          value={urluno}
-          className={style.input}
-        />
-        {errors.urluno ? <span>{errors.urluno}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el precio..."
-          type="text"
-          name="userName"
-          value={userName}
-          className={style.input}
-        />
-        <button>Actualizar</button>
-      </form>
-
-      {/*       
-            <form  >
-            <h1>Detalle  del plan</h1><br /><br />
-                <h2 >Titulo </h2>
-           <h4 >  {title}</h4> <br />
-           
-           <h2 >pDescripcion Publica </h2>
-           <h4>{publicDescription}</h4> <br />
-           <h2 >Descripcion Privada </h2>
-           <h4>{privateDescription}</h4> <br />
-           <h2 >Precio </h2>
-           <h4>{price}</h4> <br />
-           <h2 >Etiquetas </h2>
-           <h4>{tags}</h4> <br />
-           
-           <h2 >Descripcion Video </h2>
-           <h4>{description}</h4> <br /> 
-           <h2 >Url de video </h2>
-           <h4>{url}</h4> <br />
-
-
-           <h2 >Descripcion Video </h2>
-           <h4>{descriptionuno}</h4> <br /> 
-           <h2 >Url de video </h2>
-           <h4>{urluno}</h4> <br />
-           <h2 >userName </h2>
-
-
-
+          </form>
           
-           <h4>{descriptiondos}</h4> <br /> 
-         
-           <h4>{urldos}</h4> <br />
-           <h4>{userName}</h4> <br />
+          <div className={style.formContainer}>
+            <form onSubmit={handleSubmit} className={style.form}>
+              <h1>Detalle del Plan</h1>
+
+              <input
+                onChange={handleChange}
+                placeholder="Titulo de tu Entrenamiento..."
+                type="text"
+                name="title"
+                value={title}
+                className={style.input}
+              />
+              {errors.title ? <span>{errors.title}</span> : null}
+
+              <input
+                onChange={handleChange}
+                placeholder="Descripcion Publica de  entrenamiento..."
+                type="text"
+                name="publicDescription"
+                value={publicDescription}
+                className={style.input}
+              />
+              {errors.publicDescription ? (
+                <span>{errors.publicDescription}</span>
+              ) : (
+                <span></span>
+              )}
+
+              <input
+                onChange={handleChange}
+                placeholder="Descripcion Privada de entrenamiento..."
+                type="text"
+                name="description"
+                value={description}
+                className={style.input}
+              />
+              {errors.description ? <span>{errors.description}</span> : <span></span>}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="price"
+                value={price}
+                className={style.input}
+              />
+              {errors.price ? <span>{errors.price}</span> : <span></span>}
+
+              <select name="tags" onChange={handleChange} value={tags}>
+                <option value="">-</option>
+                <option value="Natacion">Natacion</option>
+                <option value="Futbol">Futbol</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Meditacion">Meditacion</option>
+                <option value="Ejercicio fisico">Ejercicio fisico</option>
+                <option value="Ajedrez">Ajedrez</option>
+                <option value="Boxeo">Boxeo</option>
+                <option value="	Ciclismo de ruta"> Ciclismo de ruta</option>
+              </select>
+              {errors.tags ? <span>{errors.tags}</span> : <span></span>}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="description"
+                value={description}
+                className={style.input}
+              />
+              {errors.description ? <span>{errors.description}</span> : <span></span>}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="url"
+                value={url}
+                className={style.input}
+              />
+              {errors.url ? <span>{errors.url}</span> : <span></span>}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="description"
+                value={descriptionuno}
+                className={style.input}
+              />
+              {errors.descriptionuno ? (
+                <span>{errors.descriptionuno}</span>
+              ) : (
+                <span></span>
+              )}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="urluno"
+                value={urluno}
+                className={style.input}
+              />
+              {errors.urluno ? <span>{errors.urluno}</span> : <span></span>}
+
+              <input
+                onChange={handleChange}
+                placeholder="Ingrese el precio..."
+                type="text"
+                name="userName"
+                value={userName}
+                className={style.input}
+              />
+              <button>Actualizar</button>
+            </form>
+
+            {/*       
+                  <form  >
+                  <h1>Detalle  del plan</h1><br /><br />
+                      <h2 >Titulo </h2>
+                <h4 >  {title}</h4> <br />
+                
+                <h2 >pDescripcion Publica </h2>
+                <h4>{publicDescription}</h4> <br />
+                <h2 >Descripcion Privada </h2>
+                <h4>{privateDescription}</h4> <br />
+                <h2 >Precio </h2>
+                <h4>{price}</h4> <br />
+                <h2 >Etiquetas </h2>
+                <h4>{tags}</h4> <br />
+                
+                <h2 >Descripcion Video </h2>
+                <h4>{description}</h4> <br /> 
+                <h2 >Url de video </h2>
+                <h4>{url}</h4> <br />
+
+
+                <h2 >Descripcion Video </h2>
+                <h4>{descriptionuno}</h4> <br /> 
+                <h2 >Url de video </h2>
+                <h4>{urluno}</h4> <br />
+                <h2 >userName </h2>
+
+
 
                 
-                
-                               
-               <button>actualizar</button>
-                
-            </form> */}
-    </div>
+                <h4>{descriptiondos}</h4> <br /> 
+              
+                <h4>{urldos}</h4> <br />
+                <h4>{userName}</h4> <br />
+
+                      
+                      
+                                    
+                    <button>actualizar</button>
+                      
+                  </form> */}
+          </div>
+        </main>
   );
 };
 export default IdDetailsTraining;

@@ -10,11 +10,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 const UserProfile = () => {
   const { id } = useParams()
   console.log(id)
-  const usersId = useSelector((state) => state.userId.listId)
-  console.log("APAAAAA", usersId)
-    const dispatch = useDispatch();
-
-
   const usersId = useSelector((state) => state.userId.listId);
   console.log("APAAAAA", usersId);
   const dispatch = useDispatch();
@@ -113,7 +108,7 @@ const UserProfile = () => {
     setInputs({
       userName: "", // falta usuario
 
-    };
+    });
     const [inputs, setInputs] = useLocalStorage({
       userName: "",
 
