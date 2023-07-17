@@ -18,14 +18,14 @@ const Carrousel = ({ videos }) => {
   return (
     <div className={style.container}>
       <div className={style.containerVideo}>
-        <iframe
+        <ReactPlayer
           width="600"
           height="315"
-          src={videos[currentIndex].url}
+          url={videos[currentIndex].url}
           title="Video Player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        ></ReactPlayer>
       </div>
       <div className={style.containerButton}>
         <button onClick={prevVideo} className={style.button}>
