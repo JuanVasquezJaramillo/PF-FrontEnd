@@ -68,7 +68,7 @@ const TrainingNew = () => {
     }
   };
   const [inputs, setInputs] = useState({
-    idUser: "0cb0a18f-f626-4d4a-9820-cc6e6807971a",
+    idUser: "154dab00-b81d-4bdc-892a-ad7acda6929d",
     title: "",
     publicDescription: "",
     privateDescription: "",
