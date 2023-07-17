@@ -7,6 +7,7 @@ const Card = (props) => {
   const id = props.idPlan;
 
   return (
+<<<<<<< HEAD
     <div className={style.cardcontainer} >
 
       <Link  to={`/IdDetailsTraining/${id}`} className={style.link}>
@@ -16,6 +17,15 @@ const Card = (props) => {
 
       <Link to={`/alternativeDetail/${id}`} className={style.link}>
       <h2 className={style.userName}>{props.userName}</h2>
+=======
+    <div className={style.cardcontainer}>
+      <Link to={`/IdDetailsTraining/${id}`} className={style.link}>
+        <h1> {id}</h1>
+      </Link>
+
+      <Link to={`/alternativeDetail/${id}`} className={style.link}>
+        <h2 className={style.userName}>{props.userName}</h2>
+>>>>>>> 78eaf4b10d2b1692fafed01ff426f167e00140c6
         <h2 className={style.title}>{props.title}</h2>
         <h2 className={style.price}>${props.price}</h2>
         {/* <h2 className={style.publicDescription}>{props.publicDescription}</h2> */}
@@ -25,7 +35,7 @@ const Card = (props) => {
         url={props.primerVideoUrl}
         light
         width="100%"
-        height="20rem"
+        height="40vh"
         border-radius="20px"
       />
     </div>
