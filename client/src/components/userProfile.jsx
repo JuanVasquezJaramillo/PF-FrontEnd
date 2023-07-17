@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
 import style from "./UserProfile.module.css";
-import { Link, useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import { getUserId } from "../global/userSlice/getUsersId";
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const UserProfile = () => {
-  const { id } = useParams();
-  console.log(id);
+  const { id } = useParams()
+  console.log(id)
+  const usersId = useSelector((state) => state.userId.listId)
+  console.log("APAAAAA", usersId)
+    const dispatch = useDispatch();
+
 
   const usersId = useSelector((state) => state.userId.listId);
   console.log("APAAAAA", usersId);
@@ -39,6 +45,7 @@ const UserProfile = () => {
         setErrors({ ...errors, email: "Digite un correo" });
         return;
       }
+
       if (regexRating.test(inputs.email)) setErrors({ ...errors, email: "" });
       else setErrors({ ...errors, email: "Digite un correo valido" });
     }
@@ -105,6 +112,11 @@ const UserProfile = () => {
     console.log("inputs login", inputs);
     setInputs({
       userName: "", // falta usuario
+
+    };
+    const [inputs, setInputs] = useLocalStorage({
+      userName: "",
+
       firstName: "",
       lastName: "",
       email: "",
@@ -114,16 +126,68 @@ const UserProfile = () => {
       sex: "",
       typeUser: "",
     });
-    console.log(inputs);
-  };
 
-  const disable = () => {
-    let disabled = true;
-    for (let error in errors) {
-      if (errors[error] === "") disabled = false;
-      else {
-        disabled = true;
-        break;
+    const [errors, setErrors] = useState({
+      userName: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      Birthdate: "",
+      nationality: "",
+      sex: "",
+      typeUser: "",
+    });
+  
+    function inputsChange(event) {
+      setInputs({
+        ...inputs,
+        [event.target.name]: event.target.value,
+      });
+      validate(
+        {
+          ...inputs,
+          [event.target.name]: event.target.value,
+        },
+        event.target.name
+      );
+    }
+    const handleSubmit = (event) => {
+      event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
+      dispatch(postUsers(inputs));
+      console.log("inputs login", inputs);
+      setInputs({
+        userName: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        Birthdate: "",
+        nationality: "",
+        sex: "",
+        typeUser: "",
+      });
+      setErrors({
+        userName: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        Birthdate: "",
+        nationality: "",
+        sex: "",
+        typeUser: "",
+      });
+    };
+  
+    const disable = () => {
+      let disabled = true;
+      for (let error in errors) {
+        if (errors[error] === "") disabled = false;
+        else {
+          disabled = true;
+          break;
+        }
       }
     }
     return disabled;

@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { postPlan } from "../global/clasesSlice/postPlan.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getById } from "../global/clasesSlice/clasesSlice";
+import { getById } from '../global/clasesSlice/clasesSlice';
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import style from "../modules/idDetailsTraining.module.css";
+
 
 const IdDetailsTraining = () => {
   const { id } = useParams();
@@ -99,6 +101,26 @@ const IdDetailsTraining = () => {
     if (name === "tags") {
       if (inputs.tags !== "") setErrors({ ...errors, tags: "" });
       else setErrors({ ...errors, tags: "Campo requerido" });
+
+    } };
+    const [inputs,setInputs]=useLocalStorage(
+        {
+            idUser:"154dab00-b81d-4bdc-892a-ad7acda6929d",
+            title: "",
+            publicDescription: "",
+            privateDescription:"",
+            price: "",
+            tags:"",
+            video:"",
+            publico:"",
+            description:""
+        }
+    )
+ const handleSubmit=(event)=>{
+        event.preventDefault();
+        dispatch(postPlan(inputs))
+        console.log(inputs)
+
     }
   };
   const [inputs, setInputs] = useState({
@@ -119,19 +141,52 @@ const IdDetailsTraining = () => {
     console.log(inputs);
   };
 
-  const handleChange = (event) => {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    });
-    validate(
-      {
-        ...inputs,
-        [event.target.name]: event.target.value,
-      },
-      event.target.name
-    );
-  };
+
+    const handleChange=(event)=>{
+       
+        setInputs({
+            ...inputs,
+            [event.target.name]: event.target.value
+          })
+          validate({
+            ...inputs,
+            [event.target.name]: event.target.value
+          }, event.target.name)
+    }
+   
+    const handleSubirVideo=()=>{
+        setInputs(
+            {
+                ...inputs,                
+                videos:[...inputs.videos,{url:inputs.video,description:inputs.description, publico:true}],
+                video:"",
+                description:""
+            }
+             )    
+    }
+    return(
+      
+    <main>
+       <form onSubmit={handleSubmit} >
+                <h1>Detalle del Plan</h1><br /><br />
+                <div>
+                    
+                    <input onChange={handleChange} placeholder='Titulo de tu Entrenamiento...' type="text" name="title" value={title} />  <br />
+                    {errors.title? <span>{errors.title}</span>: null}
+                                     
+                </div>
+                <br />   
+                <div>
+                   
+                    <input onChange={handleChange} placeholder='Descripcion Publica de  entrenamiento...' type="text" name="publicDescription" value={publicDescription} />   <br />
+                   {errors.publicDescription? <span>{errors.publicDescription}</span>: <span></span> }         
+                </div>
+                <br />   
+                <div>
+                   <input onChange={handleChange} placeholder='Descripcion Privada de entrenamiento...' type="text" name="description" value={description} />  <br />
+                    {errors.description? <span>{errors.description}</span>: <span></span> }         
+                </div>
+                <br />   
 
   const handleSubirVideo = () => {
     setInputs({

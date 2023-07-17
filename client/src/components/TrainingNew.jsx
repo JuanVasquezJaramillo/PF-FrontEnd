@@ -80,6 +80,17 @@ const TrainingNew = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postPlan(inputs));
+    setInputs({
+    title: "",
+    publicDescription: "",
+    privateDescription: "",
+    price: "",
+    tags: "",
+    video: "",
+    publico: "",
+    description: "",
+    videos: [],
+  });
     console.log(inputs);
   };
 
