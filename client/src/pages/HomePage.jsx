@@ -56,7 +56,7 @@ export default function HomePage() {
     setDefaultOrder(`${event.target.value}`);
   };
   const clearFilters = () => {
-    window.location.reload();
+    dispatch(getAllClass());
     setCurrentPag(1);
     setDefaultOrder("porDefecto");
     setDefaultExercise("filterPorDefect");
