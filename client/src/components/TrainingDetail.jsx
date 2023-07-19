@@ -1,53 +1,43 @@
 import { useParams } from "react-router-dom";
-// import axios from 'axios';
+import axios from 'axios';
 import { useEffect } from "react";
 import { useState } from "react";
 import Carrousel from "./carrousel";
-import style from "../modules/trainingDetail.module.css";
+import style from "../modules/TrainingDetail.module.css";
 
 const TrainingDetail = () => {
-  // const {idTraining} = useParams();
-  const [training, setTraining] = useState({});
+  const {idPlan} = useParams();
+  console.log(idPlan)
+  const [plan, serPlan] = useState({})
   useEffect(() => {
-    // const URL_BASE='http://127.0.0.1:3000/training'
-    // axios(`${URL_BASE}/${idTraining}`)
-    // .then(response=>setTraining(response.data))}
-    setTraining({
-      titulo: "Entrenamiento Futbol",
-      trainer: "Juan Perez",
-      descPublica: "Aca te vamos a enseñar todo sobre futbol",
-      descPrivada:
-        "Gracias por comprar este entrenamiento, espero te guste las clases",
-      precio: "$123",
-      tipo: "Entrenamiento",
-      etiquetas: "futbol velocidad delantero",
-      videos: [
-        {
-          url: "https://www.youtube.com/embed/tg25chxV6jY",
-          desc: "En la primer clase veremos...",
-        },
-        {
-          url: "https://www.youtube-nocookie.com/embed/k4QMNkNV26A",
-          desc: "En la segunda clase veremos...",
-        },
-      ],
-    });
-  }, []);
-
+   const URL_BASE='http://127.0.0.1:5000/plan' 
+   axios(`${URL_BASE}/${idPlan}`)
+    .then(response=>serPlan(response.data))}
+   
+  , []);
+  const handleBorrar = async ()=>{
+    const URL_BASE='http://127.0.0.1:5000/plan'
+    axios.delete(`${URL_BASE}?idPlan=${idPlan}`)
+    .then(response=>serPlan(response.data))
+    .catch(error => {
+      console.error(error.message);
+   })
+ };
   return (
     <div className={style.container}>
-      <h1 className={style.titulo}>{training.titulo}</h1>
-      {training.videos ? <Carrousel videos={training.videos} /> : null}
+      {plan.title ? ( 
+        <div className={style.descripcionTraining}> 
 
-      {training.titulo ? (
-        <div className={style.descripcionTraining}>
+          {plan.videos ? <Carrousel videos={plan.videos} /> : null}
           <div className={style.datos}>
-            <p className={style.parrafos}>Entrenador: {training.trainer}</p>
-            <p className={style.parrafos}>{training.descPublica}</p>
-            <p className={style.parrafos}>{training.descPrivada}</p>
-            <p className={style.parrafos}>Precio: {training.precio}</p>
-            <p className={style.parrafos}>Tipo: {training.tipo}</p>
-            <p className={style.parrafos}>Etiquetas: {training.etiquetas}</p>
+            <button onClick={() => handleBorrar()} className={style.button}>
+              borrar plan
+            </button>
+            <p className={style.parrafos}>Entrenador: {plan.userName}</p>
+            <p className={style.parrafos}>{plan.publicDescription}</p>
+            <p className={style.parrafos}>{plan.privateDescription}</p>
+            <p className={style.parrafos}>Precio: {plan.price}</p>
+            <p className={style.parrafos}>Etiquetas: {plan.tags}</p>
           </div>
           <textarea
             name="comentario"

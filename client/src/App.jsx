@@ -27,7 +27,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="profile" element={<UserProfile />} />
           <Route path="/trainingnew" element={<TrainingNew />} />
-          <Route path="/training" element={<TrainingDetail />} />
+          <Route path="/training/:idPlan" element={<TrainingDetail />} />
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path='/paycheck' element={<Market/>}/>
           <Route path="/alternativeProfile" element={<ViewProfile/>}/>
