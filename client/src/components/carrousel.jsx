@@ -21,6 +21,24 @@ const Carrousel = ({ videos }) => {
 
   return (
     <div className={style.container}>
+      
+      <div className={style.videoList}>
+        <h5>Lista de clases:</h5>
+        <ul>
+        {videos.map((video, index) => (
+          <li
+            key={index}
+            onClick={() => selectVideo(index)}
+            className={`${style.videoListItem} ${
+              index === currentIndex ? style.activeVideo : ""
+            }`}
+          >
+            <p>{index + 1}. {video.description}</p>
+          </li>
+))}
+
+        </ul>
+      </div>
       <div className={style.containerVideo}>
         <ReactPlayer
           width="600"
@@ -30,7 +48,7 @@ const Carrousel = ({ videos }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></ReactPlayer>
-      </div>
+      </div> 
       <div className={style.containerButton}>
         <button onClick={prevVideo} className={style.button}>
           Video anterior
@@ -39,33 +57,7 @@ const Carrousel = ({ videos }) => {
           Próximo video
         </button>
       </div>
-      {/* <div className={style.videoList}>
-        <ul>
-          {videos.map((video, index) => (
-            <li
-              key={index}
-              onClick={() => selectVideo(index)}
-              className={`${style.videoListItem} ${
-                index === currentIndex ? style.activeVideo : ""
-              }`}
-            >
-              <div className={style.videoThumbnail}>
-  
-                <iframe 
-                width="250" 
-                height="105" 
-                src={video.url}
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen></iframe>
-            
-              </div>
-              <div className={style.videoTitle}>{video.title}</div>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+     
     </div>
   );
 };

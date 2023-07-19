@@ -33,7 +33,7 @@ const TrainingDetail = () => {
             <button onClick={() => handleBorrar()} className={style.button}>
               borrar plan
             </button>
-            <p className={style.parrafos}>Entrenador: {plan.idUser}</p>
+            <p className={style.parrafos}>Entrenador: {plan.userName}</p>
             <p className={style.parrafos}>{plan.publicDescription}</p>
             <p className={style.parrafos}>{plan.privateDescription}</p>
             <p className={style.parrafos}>Precio: {plan.price}</p>
