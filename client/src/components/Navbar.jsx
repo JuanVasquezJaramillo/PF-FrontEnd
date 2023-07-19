@@ -43,7 +43,7 @@ export default function Navbar() {
 
           <NavLink to="/profile">perfil</NavLink>
 
-            <NavLink to="/training">DetalleRutina</NavLink>
+            <NavLink to="/training/5">DetalleRutina</NavLink>
 
             <NavLink to="/profile">perfil</NavLink>
 
