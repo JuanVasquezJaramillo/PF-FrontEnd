@@ -18,7 +18,18 @@ export const clasesSlice = createSlice({
         },
         filterTypeExercise: (state, action) => {
             //state.list = state.list.filter((card) => card.tags.includes(action.payload))
-            state.list = state.list.filter((card) => card.tags.toLowerCase().includes(action.payload.toLowerCase()))
+            if (state.list.length !== 0) {
+                state.list = state.list.filter((card) => card.tags.toLowerCase().includes(action.payload.toLowerCase()))
+            } else {
+                state.list = state.listOriginal.filter((card) => card.tags.toLowerCase().includes(action.payload.toLowerCase()))
+            }
+        },
+        filterPrice: (state, action) => {
+            if (state.list.length !== 0) {
+                state.list = state.list.filter((card) => card.price >= action.payload.min && card.price <= action.payload.max);
+            } else {
+                state.list = state.listOriginal.filter((card) => card.price >= action.payload.min && card.price <= action.payload.max);
+            }
         },
         resetList: (state) => {
             state.list = state.listOriginal
@@ -80,5 +91,5 @@ export const getById = createAsyncThunk("clases/getById", async (param) => {
     return data;
 })
 
-export const {filterTypeExercise, orderByPrice} = clasesSlice.actions
+export const {filterTypeExercise, filterPrice, orderByPrice} = clasesSlice.actions
 export default clasesSlice.reducer;
