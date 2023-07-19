@@ -56,7 +56,7 @@ export default function HomePage() {
     setDefaultOrder(`${event.target.value}`);
   };
   const clearFilters = () => {
-    window.location.reload();
+    dispatch(getAllClass());
     setCurrentPag(1);
     setDefaultOrder("porDefecto");
     setDefaultExercise("filterPorDefect");
@@ -64,7 +64,9 @@ export default function HomePage() {
   return (
     <>
       <section className={estilo.hero}>
-        {displayName && <h1>Hello!! {displayName}</h1>}
+        {displayName && (
+          <h1 className={estilo.saludoHome}>Hello!! {displayName}</h1>
+        )}
         <div className={estilo.divHero}>
           <h2 className={estilo.tituloHero}>
             {" "}

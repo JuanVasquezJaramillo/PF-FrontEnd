@@ -17,7 +17,8 @@ export const clasesSlice = createSlice({
             })
         },
         filterTypeExercise: (state, action) => {
-            state.list = state.list.filter(card => card.tags === action.payload)
+            //state.list = state.list.filter((card) => card.tags.includes(action.payload))
+            state.list = state.list.filter((card) => card.tags.toLowerCase().includes(action.payload.toLowerCase()))
         },
         resetList: (state) => {
             state.list = state.listOriginal
