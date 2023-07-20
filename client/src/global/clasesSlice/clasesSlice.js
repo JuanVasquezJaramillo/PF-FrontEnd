@@ -6,6 +6,7 @@ export const clasesSlice = createSlice({
     initialState: {
         list: [],
         listOriginal: [],
+        listProducts: [],
         loading: false,
         error: null,
     },
@@ -34,46 +35,59 @@ export const clasesSlice = createSlice({
         },
         resetList: (state) => {
             state.list = state.listOriginal
+        },
+        addProduct: (state, action) => {
+            state.listProducts.push(action.payload)
+        },
+        deleteProducts: (state) => {
+            state.listProducts = []
+        },
+        deleteItem: (state, action) => {
+            //    state.listProducts = state.listProducts.filter((plan) => plan.idPlan !== action.payload)
+            const index = state.listProducts.findIndex((plan) => plan.idPlan === action.payload);
+            if (index !== -1) {
+                state.listProducts.splice(index, 1);
+            }
         }
-    },
+},
     extraReducers: (builder) => {
         builder.addCase(getAllClass.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
-        .addCase(getAllClass.fulfilled, (state, action) => {
-            state.list = action.payload;
-            state.listOriginal = action.payload;
-            state.loading = false;
-        })
-        .addCase(getAllClass.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message;
-        })
+            .addCase(getAllClass.fulfilled, (state, action) => {
+                state.list = action.payload;
+                state.listOriginal = action.payload;
+                state.loading = false;
+            })
+            .addCase(getAllClass.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
         builder.addCase(getByNameTag.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
-        .addCase(getByNameTag.fulfilled, (state, action) => {
-            state.list = action.payload;
-            state.loading = false;
-        })
-        .addCase(getByNameTag.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message
-        })
+            .addCase(getByNameTag.fulfilled, (state, action) => {
+                state.list = action.payload;
+                state.loading = false;
+            })
+            .addCase(getByNameTag.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message
+            })
         builder.addCase(getById.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
-        .addCase(getById.fulfilled, (state, action) => {
-            state.list = action.payload;
-            state.loading = false;
-        })
-        .addCase(getById.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message
-        })
+            .addCase(getById.fulfilled, (state, action) => {
+                state.list = action.payload;
+                state.loading = false;
+            })
+            .addCase(getById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message
+            })
     }
 })
 
@@ -88,9 +102,9 @@ export const getByNameTag = createAsyncThunk("clases/getByNameTag", async (param
 })
 
 export const getById = createAsyncThunk("clases/getById", async (param) => {
-    const {data} = await axios(`/plan/${param}`)
+    const { data } = await axios(`/plan/${param}`)
     return data;
 })
 
-export const {filterTypeExercise, filterPrice, orderByPrice, resetList} = clasesSlice.actions
+export const { filterTypeExercise, filterPrice, orderByPrice, resetList, addProduct, deleteProducts, deleteItem } = clasesSlice.actions
 export default clasesSlice.reducer;
