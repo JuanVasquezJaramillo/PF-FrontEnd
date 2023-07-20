@@ -11,21 +11,9 @@ const UserProfile = () => {
   
   const { id } = useParams()
   console.log(id)
-<<<<<<< HEAD
-  const usersId = useSelector((state) => state.userId.listId)
-  console.log("APAAAAA", usersId)
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(getUserId(id))
-    }, [dispatch, id])
-
-  
-=======
   const usersId = useSelector((state) => state.userId.listId);
   console.log("APAAAAA", usersId);
   const dispatch = useDispatch();
->>>>>>> 612c699a36719afc02c92767f0d7a4eb93867665
 
     const validate = (inputs, name) => {
       if (name === "userName") {
@@ -71,56 +59,34 @@ const UserProfile = () => {
         if (inputs.typeUser !== "") setErrors({ ...errors, typeUser: "" });
         else setErrors({ ...errors, typeUser: "campo requerido" });
       }
-<<<<<<< HEAD
-    };
-=======
 
       if (regexRating.test(inputs.email)) setErrors({ ...errors, email: "" });
       else setErrors({ ...errors, email: "Digite un correo valido" });
     }
-    if (name === "password") {
-      if (inputs.password !== "") setErrors({ ...errors, password: "" });
-      else setErrors({ ...errors, password: "Campo requerido" });
-    }
-    if (name === "Birthdate") {
-      if (inputs.Birthdate !== "") setErrors({ ...errors, Birthdate: "" });
-      else setErrors({ ...errors, Birthdate: "campo requedido" });
-    }
-    if (name === "nationality") {
-      if (inputs.nationality !== "") setErrors({ ...errors, nationality: "" });
-      else setErrors({ ...errors, nationality: "campo requerido" });
-    }
-    if (name === "sex") {
-      if (inputs.sex !== "") setErrors({ ...errors, sex: "" });
-      else setErrors({ ...errors, sex: "campo requerido" });
-    }
-    if (name === "typeUser") {
-      if (inputs.typeUser !== "") setErrors({ ...errors, typeUser: "" });
-      else setErrors({ ...errors, typeUser: "campo requerido" });
-    }
+  
   };
-  const [inputs, setInputs] = useState({
-    userName: "", // falta usuario
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    Birthdate: "",
-    nationality: "",
-    sex: "",
-    typeUser: "",
-  });
-  const [errors, setErrors] = useState({
-    userName: "Campo Requerido", // falta usuario
-    firstName: "Campo Requerido",
-    lastName: "Campo Requerido",
-    email: "Campo Requerido",
-    password: "Campo Requerido",
-    Birthdate: "Campo Requerido",
-    nationality: "Campo Requerido",
-    sex: "Campo Requerido",
-    typeUser: "Campo Requerido",
-  });
+  // const [inputs, setInputs] = useState({
+  //   userName: "", 
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  //   Birthdate: "",
+  //   nationality: "",
+  //   sex: "",
+  //   typeUser: "",
+  // });
+  // const [errors, setErrors] = useState({
+  //   userName: "", // falta usuario
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  //   Birthdate: "",
+  //   nationality: "",
+  //   sex: "",
+  //   typeUser: "",
+  // });
 
   function inputsChange(event) {
     setInputs({
@@ -143,7 +109,6 @@ const UserProfile = () => {
       userName: "", // falta usuario
 
     });
->>>>>>> 612c699a36719afc02c92767f0d7a4eb93867665
     const [inputs, setInputs] = useLocalStorage({
       userName: "",
       firstName: "",
@@ -155,17 +120,17 @@ const UserProfile = () => {
       sex: "",
       typeUser: "",
     });
-    const [errors, setErrors] = useState({
-      userName: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      Birthdate: "",
-      nationality: "",
-      sex: "",
-      typeUser: "",
-    });
+    // const [errors, setErrors] = useState({
+    //   userName: "",
+    //   firstName: "",
+    //   lastName: "",
+    //   email: "",
+    //   password: "",
+    //   Birthdate: "",
+    //   nationality: "",
+    //   sex: "",
+    //   typeUser: "",
+    // });
   
     function inputsChange(event) {
       setInputs({
