@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 export const clasesSlice = createSlice({
     name: "clases",
     initialState: {
@@ -91,5 +92,5 @@ export const getById = createAsyncThunk("clases/getById", async (param) => {
     return data;
 })
 
-export const {filterTypeExercise, filterPrice, orderByPrice} = clasesSlice.actions
+export const {filterTypeExercise, filterPrice, orderByPrice, resetList} = clasesSlice.actions
 export default clasesSlice.reducer;
