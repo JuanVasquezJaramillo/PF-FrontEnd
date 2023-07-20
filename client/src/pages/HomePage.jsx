@@ -2,6 +2,7 @@ import {
   getAllClass,
   filterTypeExercise,
   orderByPrice,
+  filterPrice,
 } from "../global/clasesSlice/clasesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -11,6 +12,7 @@ import estilo from "../modules/homePage.module.css";
 import Paginado from "./paginado/paginado";
 import { useAuth } from "../context/authContext";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { resetList } from '../global/clasesSlice/clasesSlice';
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
@@ -20,8 +22,9 @@ export default function HomePage() {
 
   const clases = useSelector((state) => state.clases.list);
   const dispatch = useDispatch();
-  const [defaultExercise, setDefaultExercise] = useState("filterPorDefect");
-  const [defaultOrder, setDefaultOrder] = useState("porDefecto");
+  const [defaultExercise, setDefaultExercise] = useState("");
+  const [defaultOrder, setDefaultOrder] = useState("");
+  const [defaultPrice, setDefaultPrice] = useState({ min: "", max: "" });
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
@@ -29,7 +32,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllClass());
-  }, []);
+  });
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
@@ -49,6 +52,19 @@ export default function HomePage() {
     setDefaultExercise(`${event.target.value}`);
   };
 
+  const handleFilterPrice = (event) => {
+    event.preventDefault();
+    setDefaultPrice({
+      ...defaultPrice,
+      [event.target.name]: event.target.value
+    });
+    if (defaultPrice.min !== "" && defaultPrice.max !== "") {
+      dispatch(filterPrice({ min: defaultPrice.min, max: defaultPrice.max }));
+      setCurrentPag(1);
+      setDefaultPrice({ min: "", max: ""})
+    }
+  }
+
   const handleOrderPrice = (event) => {
     event.preventDefault();
     dispatch(orderByPrice(event.target.value));
@@ -56,15 +72,17 @@ export default function HomePage() {
     setDefaultOrder(`${event.target.value}`);
   };
   const clearFilters = () => {
-    window.location.reload();
+    dispatch(resetList());
     setCurrentPag(1);
-    setDefaultOrder("porDefecto");
-    setDefaultExercise("filterPorDefect");
+    setDefaultOrder("");
+    setDefaultExercise("");
   };
   return (
     <>
       <section className={estilo.hero}>
-        {displayName && <h1>Hello!! {displayName}</h1>}
+        {displayName && (
+          <h1 className={estilo.saludoHome}>Hello!! {displayName}</h1>
+        )}
         <div className={estilo.divHero}>
           <h2 className={estilo.tituloHero}>
             {" "}
@@ -92,6 +110,7 @@ export default function HomePage() {
         <div className={estilo.contenedor}>
           <select
             className={estilo.select}
+            value={defaultOrder}
             onChange={(event) => handleOrderPrice(event)}
           >
             <option value="porDefecto">Ordenar por precio</option>
@@ -100,6 +119,7 @@ export default function HomePage() {
           </select>
           <select
             className={estilo.select}
+            value={defaultExercise}
             onChange={(event) => handleFilterExercises(event)}
           >
             <option value="filterPorDefect">Seleccionar filtro</option>
@@ -116,6 +136,10 @@ export default function HomePage() {
             <option value="Boxeo">Boxeo</option>
             <option value="	Ciclismo de ruta"> Ciclismo de ruta</option>
           </select>
+          <label>
+            <input autoComplete="true" type="number" name="min" onChange={handleFilterPrice} />
+            <input autoComplete="true" type="number" name="max" onChange={handleFilterPrice} />
+          </label>
         </div>
 
         <div className={estilo.contenedor}>
