@@ -1,7 +1,6 @@
 import { auth } from "../firebase/firebase.config";
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useEffect, useState } from "react";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged} from "firebase/auth";
-import { redirect } from "react-router-dom";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const authContext = createContext()
@@ -18,7 +17,7 @@ export const useAuth = () => {
 // eslint-disable-next-line react/prop-types
 export function AuthProvider ({children}){
 
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState('');
 
     useEffect(()=>{
         const subscribed = onAuthStateChanged(auth, (currentUser) => {
@@ -33,27 +32,40 @@ export function AuthProvider ({children}){
     },[])
 
     const register = async (email,password) => {
-        const response = await createUserWithEmailAndPassword(auth, email, password)
-            .then(() => redirect('/'))
-            .catch((error) => console.log(error));
-        console.log(response);
+        try {
+            const response = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const login = async (email, password) => {
-        const response = await signInWithEmailAndPassword(auth, email, password)
-            .then(() => redirect('/'))
-            .catch((error) => console.log(error));
-        console.log(response);
+        try {
+            const response = await signInWithEmailAndPassword(auth, email, password)
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     const loginWithGoogle = async () => {
-    const responseGoogle = new GoogleAuthProvider();
-        return await signInWithPopup(auth, responseGoogle)
+        try {
+            const responseGoogle = new GoogleAuthProvider();
+            await signInWithPopup(auth, responseGoogle) 
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const logout = async () => {
-        const response = await signOut(auth);
-        console.log(response);
+        try {
+            const response = await signOut(auth);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return <authContext.Provider
