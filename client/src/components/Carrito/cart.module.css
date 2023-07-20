@@ -1,0 +1,214 @@
+/* Header */
+header {
+	display: flex;
+	justify-content: space-between;
+	padding: 30px 0 40px 0;
+}
+
+.containerIcon {
+	position: relative;
+	cursor: pointer;
+}
+
+.countProducts {
+	position: absolute;
+	top: 55%;
+	right: 0;
+
+	background-color: #8a2d2d;
+	color: #fff;
+	width: 25px;
+	height: 25px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+}
+
+#contadorProductos {
+	font-size: 12px;
+}
+
+.containerCartProducts {
+	position: absolute;
+	top: 50px;
+	right: 0;
+
+	background-color: #fff;
+	width: 400px;
+	z-index: 1;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+.cartProduct {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px;
+
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.infoCartProduct {
+	display: flex;
+	justify-content: space-between;
+	flex: 0.8;
+}
+
+.tituloProductoCarrito {
+	font-size: 20px;
+}
+
+.precioProductoCarrito {
+	font-weight: 700;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.cantidadProductoCarrito {
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.iconClose {
+	background-image: url(../../assets/icons8-x-25.png);
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
+
+.cartTotal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	gap: 20px;
+}
+
+.cartTotal h3 {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.totalPagar {
+	font-size: 20px;
+	font-weight: 900;
+}
+
+.hiddenCart {
+	display: none;
+}
+
+/* Main */
+.container-items {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.item {
+	border-radius: 10px;
+}
+
+.item:hover {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.item img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 10px 10px 0 0;
+	transition: all 0.5s;
+}
+
+.item figure {
+	overflow: hidden;
+}
+
+.item:hover img {
+	transform: scale(1.2);
+}
+
+.infoProduct {
+	padding: 15px 30px;
+	line-height: 2;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.price {
+	font-size: 18px;
+	font-weight: 900;
+}
+
+.infoProduct button {
+	border: none;
+	background: none;
+	background-color: #000;
+	color: #fff;
+	padding: 15px 10px;
+	cursor: pointer;
+}
+
+.cartEmpty {
+	padding: 20px;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.btnClearAll {
+	border: none;
+	background-color: #000;
+	color: #fff;
+	padding: 15px 0;
+	display: block;
+	width: 100%;
+	margin-top: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-family: inherit;
+	cursor: pointer;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+.btnClearAll:hover{
+  background-color: #333;
+  transform: scale(1.03);
+  border-radius: 0;
+}
+
+.btn{
+	background-image: url(../../assets/icons8-bolsa-de-compras-40.png);
+	width: 40px;
+	height: 40px;
+}
+
+/* Globales */
+
+.contenedorPadre{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.iconCart {
+	width: 40px;
+	height: 40px;
+	stroke: #000;
+}
+
+.iconCart:hover {
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+}
