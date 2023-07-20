@@ -22,7 +22,7 @@ const TrainingNew = () => {
   };
 
   const [errors, setErrors] = useState({
-    title: "titulo requerido",
+    title: "Titulo requerido",
     publicDescription: "Descripcion publica requerida",
     privateDescription: "Descripcion privada requerida",
     price: "Precio requerido",
@@ -66,14 +66,13 @@ const TrainingNew = () => {
     }
   };
   const [inputs, setInputs] = useState({
-    idUser: "0cb0a18f-f626-4d4a-9820-cc6e6807971a",
+    idUser: "4e9371de-2186-49d5-8fe1-f2ffca375890",
     title: "",
     publicDescription: "",
     privateDescription: "",
     price: "",
-    tags: "",
+    tags: "-",
     video: "",
-    publico: "",
     description: "",
     videos: [],
   });
@@ -81,14 +80,14 @@ const TrainingNew = () => {
     event.preventDefault();
     dispatch(postPlan(inputs));
     setInputs({
+    ...inputs,
     title: "",
     publicDescription: "",
     privateDescription: "",
     price: "",
-    tags: "",
+    tags: "-",
     video: "",
-    publico: "",
-    description: "",
+    descriptionVideo: "",
     videos: [],
   });
     console.log(inputs);
@@ -113,10 +112,10 @@ const TrainingNew = () => {
       ...inputs,
       videos: [
         ...inputs.videos,
-        { url: inputs.video, description: inputs.description, publico: true },
+        { url: inputs.video, descriptionVideo: inputs.descriptionVideo, publico: true },
       ],
       video: "",
-      description: "",
+      descriptionVideo: "",
     });
   };
   return (
@@ -126,6 +125,7 @@ const TrainingNew = () => {
         <h1 className={style.title}>Crear Nuevo Plan</h1>
         <input
           onChange={handleChange}
+          value={inputs.title}
           placeholder="Titulo de tu Entrenamiento..."
           type="text"
           name="title"
@@ -134,6 +134,7 @@ const TrainingNew = () => {
         {errors.title ? <span>{errors.title}</span> : null}
         <input
           onChange={handleChange}
+          value={inputs.publicDescription}
           placeholder="Descripcion Publica de  entrenamiento..."
           type="text"
           name="publicDescription"
@@ -146,6 +147,7 @@ const TrainingNew = () => {
         )}
         <input
           onChange={handleChange}
+          value={inputs.privateDescription}
           placeholder="Descripcion Privada de entrenamiento..."
           type="text"
           name="privateDescription"
@@ -158,14 +160,15 @@ const TrainingNew = () => {
         )}
         <input
           onChange={handleChange}
+          value={inputs.precio}
           placeholder="Ingrese el precio..."
           type="text"
           name="price"
           className={style.input}
         />{" "}
         {errors.price ? <span>{errors.price}</span> : <span></span>}
-        <select name="tags" onChange={handleChange}>
-          <option value="">-</option>
+        <select name="tags" onChange={handleChange}>  value={inputs.tags}
+          <option value="-">-</option>
           <option value="Natacion">Natacion</option>
           <option value="Futbol">Futbol</option>
           <option value="Yoga">Yoga</option>
@@ -178,6 +181,7 @@ const TrainingNew = () => {
         {errors.tags ? <span>{errors.tags}</span> : <span></span>}
         <input
           onChange={handleChange}
+          value={inputs.video}
           type="text"
           placeholder="Ingrese la url del video..."
           name="video"
@@ -185,9 +189,10 @@ const TrainingNew = () => {
         />
         <input
           onChange={handleChange}
+          value={inputs.descriptionVideo}
           type="text"
           placeholder="Descripcion del video"
-          name="description"
+          name="descriptionVideo"
           className={style.input}
         />
         <button type="button" onClick={() => handleSubirVideo()}>
@@ -201,7 +206,8 @@ const TrainingNew = () => {
             <h2 className={style.title}>Videos subidos</h2>
             {inputs.videos.map((video, index) => (
               <h2 key={index}>
-                • {video.url} {video.description}
+                <h3>-{video.descriptionVideo}</h3>
+                   <h6>{video.url}</h6>
               </h2>
             ))}
           </div>

@@ -16,7 +16,9 @@ const Carrousel = ({ videos }) => {
   };
 
   const selectVideo = (index) => {
-    setCurrentIndex(index);
+    
+    setCurrentIndex(index)
+
   };
 
   return (
@@ -40,14 +42,14 @@ const Carrousel = ({ videos }) => {
         </ul>
       </div>
       <div className={style.containerVideo}>
-        <ReactPlayer
+        <iframe
           width="600"
           height="315"
           url={videos[currentIndex].url}
           title="Video Player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></ReactPlayer>
+        ></iframe>
       </div> 
       <div className={style.containerButton}>
         <button onClick={prevVideo} className={style.button}>

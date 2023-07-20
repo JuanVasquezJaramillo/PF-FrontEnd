@@ -108,11 +108,10 @@ const IdDetailsTraining = () => {
         event.preventDefault();
         dispatch(postPlan(inputs))
         console.log(inputs)
-
     }
 
   const [inputs, setInputs] = useState({
-    idUser: "154dab00-b81d-4bdc-892a-ad7acda6929d",
+    idUser: "4e9371de-2186-49d5-8fe1-f2ffca375890",
     title: "",
     publicDescription: "",
     privateDescription: "",
