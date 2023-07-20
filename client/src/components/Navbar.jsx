@@ -5,7 +5,7 @@ import { useAuth } from "../context/authContext";
 import { signOut } from "firebase/auth";
 import SearchBar from "./SearchBar/SearchBar";
 import style from "../modules/navbar.module.css";
-
+import Cart from "./Carrito/Cart";
 export default function Navbar() {
   const auth = useAuth();
   const dispatch = useDispatch();
@@ -63,7 +63,8 @@ export default function Navbar() {
             <NavLink to="/nosotros">Nosotros</NavLink>
             <NavLink to="/alternativeProfile">altPerfil</NavLink>
             {/*Solo es una vista.*/}
-            <NavLink to="/paycheck">Pagos</NavLink>
+            {/* <NavLink to="/paycheck">Pagos</NavLink> */}
+            <Cart/>
           </div>
         </>
       )}

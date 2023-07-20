@@ -32,7 +32,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllClass());
-  });
+  }, []);
 
   //LÓGICA PAGINADO
   const [currentPag, setCurrentPag] = useState(1);
@@ -137,8 +137,8 @@ export default function HomePage() {
             <option value="	Ciclismo de ruta"> Ciclismo de ruta</option>
           </select>
           <label>
-            <input autoComplete="true" type="number" name="min" onChange={handleFilterPrice} />
-            <input autoComplete="true" type="number" name="max" onChange={handleFilterPrice} />
+            <input placeholder="min" autoComplete="true" type="number" name="min" onChange={handleFilterPrice} />
+            <input placeholder="max" autoComplete="true" type="number" name="max" onChange={handleFilterPrice} />
           </label>
         </div>
 

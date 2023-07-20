@@ -14,6 +14,7 @@ import { AuthProvider } from "./context/authContext";
 import axios from "axios";
 import Detail from "./components/alternativeDetail";
 import IdDetailsTraining from "./components/IdDetailsTraining";
+import Cart from "./components/Carrito/Cart";
 axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
           <Route path='/paycheck' element={<Market/>}/>
           <Route path="/alternativeProfile" element={<ViewProfile/>}/>
           <Route path="/alternativeDetail/:id" element={<Detail/>}/>
-          <Route  path="/IdDetailsTraining/:id" element={<IdDetailsTraining/>}/>
+          <Route path="/IdDetailsTraining/:id" element={<IdDetailsTraining/>}/>  
         </Routes>
       </AuthProvider>
     </>
