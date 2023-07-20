@@ -23,7 +23,7 @@ export function getUserId(idPlan) {
     return async function () {  
         try {
         const response = (await axios.get(`http://localhost:5000/plan/${idPlan}`));
-        console.log("KADOS",response)
+        
         dispatch(setUserId(response));
             
         } catch (error) {

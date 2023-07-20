@@ -8,115 +8,66 @@ import { getUserId } from "../global/userSlice/getUsersId";
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const UserProfile = () => {
+  
   const { id } = useParams()
   console.log(id)
   const usersId = useSelector((state) => state.userId.listId)
   console.log("APAAAAA", usersId)
     const dispatch = useDispatch();
 
+    useEffect(() => {
+      dispatch(getUserId(id))
+    }, [dispatch, id])
 
-  const usersId = useSelector((state) => state.userId.listId);
-  console.log("APAAAAA", usersId);
-  const dispatch = useDispatch();
+  
 
-  useEffect(() => {
-    dispatch(getUserId(id));
-  }, [dispatch, id]);
-
-  const validate = (inputs, name) => {
-    if (name === "userName") {
-      if (inputs.userName !== "") setErrors({ ...errors, userName: "" });
-      else setErrors({ ...errors, userName: "campo requerido" });
-    }
-    if (name === "firstName") {
-      if (inputs.firstName !== "") setErrors({ ...errors, firstName: "" });
-      else setErrors({ ...errors, firstName: "campo requerido" });
-    }
-    if (name === "lastName") {
-      if (inputs.lastName !== "") setErrors({ ...errors, lastName: "" });
-      else setErrors({ ...errors, lastName: "campo requerido" });
-    }
-
-    if (name === "email") {
-      const regexRating =
-        /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
-      if (inputs.email !== "") setErrors({ ...errors, email: "" });
-      else {
-        setErrors({ ...errors, email: "Digite un correo" });
-        return;
+    const validate = (inputs, name) => {
+      if (name === "userName") {
+        if (inputs.userName !== "") setErrors({ ...errors, userName: "" });
+        else setErrors({ ...errors, userName: "campo requerido" });
       }
-
-      if (regexRating.test(inputs.email)) setErrors({ ...errors, email: "" });
-      else setErrors({ ...errors, email: "Digite un correo valido" });
-    }
-    if (name === "password") {
-      if (inputs.password !== "") setErrors({ ...errors, password: "" });
-      else setErrors({ ...errors, password: "Campo requerido" });
-    }
-    if (name === "Birthdate") {
-      if (inputs.Birthdate !== "") setErrors({ ...errors, Birthdate: "" });
-      else setErrors({ ...errors, Birthdate: "campo requedido" });
-    }
-    if (name === "nationality") {
-      if (inputs.nationality !== "") setErrors({ ...errors, nationality: "" });
-      else setErrors({ ...errors, nationality: "campo requerido" });
-    }
-    if (name === "sex") {
-      if (inputs.sex !== "") setErrors({ ...errors, sex: "" });
-      else setErrors({ ...errors, sex: "campo requerido" });
-    }
-    if (name === "typeUser") {
-      if (inputs.typeUser !== "") setErrors({ ...errors, typeUser: "" });
-      else setErrors({ ...errors, typeUser: "campo requerido" });
-    }
-  };
-  const [inputs, setInputs] = useState({
-    userName: "", // falta usuario
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    Birthdate: "",
-    nationality: "",
-    sex: "",
-    typeUser: "",
-  });
-  const [errors, setErrors] = useState({
-    userName: "Campo Requerido", // falta usuario
-    firstName: "Campo Requerido",
-    lastName: "Campo Requerido",
-    email: "Campo Requerido",
-    password: "Campo Requerido",
-    Birthdate: "Campo Requerido",
-    nationality: "Campo Requerido",
-    sex: "Campo Requerido",
-    typeUser: "Campo Requerido",
-  });
-
-  function inputsChange(event) {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    });
-    validate(
-      {
-        ...inputs,
-        [event.target.name]: event.target.value,
-      },
-      event.target.name
-    );
-  }
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    dispatch(postUsers(inputs));
-    console.log("inputs login", inputs);
-    setInputs({
-      userName: "", // falta usuario
-
+      if (name === "firstName") {
+        if (inputs.firstName !== "") setErrors({ ...errors, firstName: "" });
+        else setErrors({ ...errors, firstName: "campo requerido" });
+      }
+      if (name === "lastName") {
+        if (inputs.lastName !== "") setErrors({ ...errors, lastName: "" });
+        else setErrors({ ...errors, lastName: "campo requerido" });
+      }
+  
+      if (name === "email") {
+        const regexRating =  /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
+        if (inputs.email !== "") setErrors({ ...errors, email: "" });
+        else {
+          setErrors({ ...errors, email: "Digite un correo" });
+          return;
+        }
+        if (regexRating.test(inputs.email)) setErrors({ ...errors, email: "" });
+        else setErrors({ ...errors, email: "Digite un correo valido" });
+      }
+      if (name === "password") {
+        if (inputs.password !== "") setErrors({ ...errors, password: "" });
+        else setErrors({ ...errors, password: "Campo requerido" });
+      }
+      if (name === "Birthdate") {
+        if (inputs.Birthdate !== "") setErrors({ ...errors, Birthdate: "" });
+        else setErrors({ ...errors, Birthdate: "campo requedido" });
+      }
+      if (name === "nationality") {
+        if (inputs.nationality !== "") setErrors({ ...errors, nationality: "" });
+        else setErrors({ ...errors, nationality: "campo requerido" });
+      }
+      if (name === "sex") {
+        if (inputs.sex !== "") setErrors({ ...errors, sex: "" });
+        else setErrors({ ...errors, sex: "campo requerido" });
+      }
+      if (name === "typeUser") {
+        if (inputs.typeUser !== "") setErrors({ ...errors, typeUser: "" });
+        else setErrors({ ...errors, typeUser: "campo requerido" });
+      }
     };
     const [inputs, setInputs] = useLocalStorage({
       userName: "",
-
       firstName: "",
       lastName: "",
       email: "",
@@ -126,7 +77,6 @@ const UserProfile = () => {
       sex: "",
       typeUser: "",
     });
-
     const [errors, setErrors] = useState({
       userName: "",
       firstName: "",
@@ -189,9 +139,9 @@ const UserProfile = () => {
           break;
         }
       }
-    }
-    return disabled;
-  };
+      return disabled;
+    };
+  
 
   return (
     <div className={style.container}>
