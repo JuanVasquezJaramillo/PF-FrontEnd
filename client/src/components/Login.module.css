@@ -1,41 +1,15 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   background: url(https://images.pexels.com/photos/6593721/pexels-photo-6593721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+<<<<<<< HEAD
   padding-bottom: 10px;
   width: 100%;
   height: calc(100vh - 75.5px);
+=======
+>>>>>>> 0889e766481ba562c4603c39afc21424a8ed00c1
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.h1 {
-  font-size: 30px;
-  color: #023047;
-}
-
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #8ecae669;
-  width: 50%;
-  padding: 20px;
-  border-radius: 20px;
-  margin-top: 10px;
-}
-
-.input {
-  width: 20rem;
-  height: 3rem;
+h1 {
   text-align: center;
-}
-
-.button {
-  width: 10rem;
-  height: 2rem;
-  cursor: pointer;
 }

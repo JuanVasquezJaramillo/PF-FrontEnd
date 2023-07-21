@@ -3,6 +3,18 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postUsers } from "../global/userSlice/postUsers";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import UploadImages from "./uploadImages";
+import {
+  FormControl,
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  Box,
+  InputLabel,
+  Grid,
+} from "@mui/material";
+
 export default function Login() {
   const dispatch = useDispatch();
 
@@ -64,6 +76,7 @@ export default function Login() {
     nationality: "",
     sex: "",
     typeUser: "",
+    profileImage: null,
   });
 
   const [errors, setErrors] = useState({
@@ -105,8 +118,16 @@ export default function Login() {
       nationality: "",
       sex: "",
       typeUser: "",
+      profileImage: null,
     });
     console.log(inputs);
+  };
+
+  const handleImageChange = (file) => {
+    setInputs({
+      ...inputs,
+      profileImage: file,
+    });
   };
 
   const disable = () => {
@@ -123,104 +144,173 @@ export default function Login() {
 
   return (
     <div className={style.container}>
-      <form className={style.form} onSubmit={handleSubmit}>
-        <h1 className={style.h1}>Register Users</h1>
-        <>
-          <input
-            className={style.input}
-            autoFocus
-            autoComplete="true"
-            type="text"
-            name="userName"
-            value={inputs.userName}
-            onChange={inputsChange}
-            placeholder="userName"
-          />
-          <span className={style.span}> {errors.userName}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="text"
-            name="firstName"
-            value={inputs.firstName}
-            onChange={inputsChange}
-            placeholder="First name"
-          />
-          <span className={style.span}>{errors.firstName}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="text"
-            name="lastName"
-            value={inputs.lastName}
-            onChange={inputsChange}
-            placeholder="Last name"
-          />
-          <span className={style.span}>{errors.lastName}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="email"
-            name="email"
-            value={inputs.email}
-            onChange={inputsChange}
-            placeholder="example@example.com"
-          />
-          <span className={style.span}>{errors.email}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="password"
-            name="password"
-            value={inputs.password}
-            onChange={inputsChange}
-            placeholder="********"
-          />
-          <span className={style.span}>{errors.password}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="date"
-            name="Birthdate"
-            value={inputs.Birthdate}
-            onChange={inputsChange}
-          />
-          <span className={style.span}>{errors.Birthdate}</span> <br />
-          <input
-            className={style.input}
-            autoComplete="true"
-            type="text"
-            name="nationality"
-            value={inputs.nationality}
-            onChange={inputsChange}
-            placeholder="Ej: Argentina"
-          />
-          <span className={style.span}>{errors.nationality}</span> <br />
-          <select className={style.select} name="sex" value={inputs.sex} onChange={inputsChange}>
-            <option value="">Select Sex</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="unknown">unknown</option>
-          </select>
-          <br />
-          <span className={style.span}>{errors.lastName}</span> <br />
-          <select
-            className={style.select}
-            name="typeUser"
-            value={inputs.typeUser}
-            onChange={inputsChange}
-          >
-            <option value="">Select type User</option>
-            <option value="Client">Client</option>
-            <option value="Trainer">Trainer</option>
-          </select>
-          <span className={style.span}>{errors.typeUser}</span> <br /> <br />
-        </>
-
-        <button disabled={disable()} className={style.button}>
-          Registrar
-        </button>
-      </form>{" "}
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+        minHeight="calc(100vh - 81.5px)"
+      >
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={8} md={6} lg={4}>
+            <form onSubmit={handleSubmit}>
+              <Box
+                p={4}
+                border="1px solid #ccc"
+                borderRadius={8}
+                boxShadow={2}
+                bgcolor="#8ecae671"
+              >
+                <h1 className={style.h1}>Register Users</h1>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Box mb={2}>
+                    <TextField
+                      autoFocus
+                      autoComplete="true"
+                      type="text"
+                      name="userName"
+                      value={inputs.userName}
+                      onChange={inputsChange}
+                      label="User Name"
+                      variant="filled"
+                      error={!!errors.userName}
+                      helperText={errors.userName}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="First Name"
+                      name="firstName"
+                      value={inputs.firstName}
+                      onChange={inputsChange}
+                      type="text"
+                      error={!!errors.firstName}
+                      helperText={errors.firstName}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="Last Name"
+                      name="lastName"
+                      value={inputs.lastName}
+                      onChange={inputsChange}
+                      type="text"
+                      error={!!errors.lastName}
+                      helperText={errors.lastName}
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="Email"
+                      type="email"
+                      name="email"
+                      value={inputs.email}
+                      onChange={inputsChange}
+                      error={!!errors.email}
+                      helperText={errors.email}
+                      fullWidth
+                      sx={{ fontSize: 50 }}
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="Password"
+                      type="password"
+                      name="password"
+                      value={inputs.password}
+                      onChange={inputsChange}
+                      error={!!errors.password}
+                      helperText={errors.password}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="Brithdate"
+                      type="date"
+                      name="Birthdate"
+                      value={inputs.Birthdate}
+                      onChange={inputsChange}
+                      error={!!errors.Birthdate}
+                      helperText={errors.Birthdate}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="Nationality"
+                      type="text"
+                      name="nationality"
+                      value={inputs.nationality}
+                      onChange={inputsChange}
+                      error={!!errors.nationality}
+                      helperText={errors.nationality}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box mb={2}>
+                    <FormControl variant="filled" error={!!errors.sex}>
+                      <InputLabel>Select Sex</InputLabel>
+                      <Select
+                        label="Sex"
+                        name="sex"
+                        value={inputs.sex}
+                        onChange={inputsChange}
+                      >
+                        <MenuItem value="">Select Sex</MenuItem>
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
+                        <MenuItem value="unknown">unknown</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <Box mb={2}>
+                    <FormControl variant="filled" error={!!errors.typeUser}>
+                      <InputLabel>Select Type User</InputLabel>
+                      <Select
+                        label="Type User"
+                        name="typeUser"
+                        value={inputs.typeUser}
+                        onChange={inputsChange}
+                      >
+                        <MenuItem value="">Select type User</MenuItem>
+                        <MenuItem value="Client">Client</MenuItem>
+                        <MenuItem value="Trainer">Trainer</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <UploadImages onChange={handleImageChange} />
+                </Box>
+                <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
+                  <Button
+                    fullWidth
+                    disabled={disable()}
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                  >
+                    Registrar
+                  </Button>
+                </Box>
+              </Box>
+            </form>{" "}
+          </Grid>
+        </Grid>
+      </Box>
     </div>
   );
 }
