@@ -35,9 +35,14 @@ function App() {
         <Route path="/trainingnew" element={auth.user? <TrainingNew /> : <LoginPage />} />
         <Route path="/training/:idPlan" element={auth.user? <TrainingDetail /> : <LoginPage />} />
         <Route path='/paycheck' element={auth.user? <Market/> : <LoginPage />}/>
-        <Route path="/alternativeProfile" element={auth.user? <ViewProfile/> : <LoginPage />}/>
+
+        {/* <Route path="/alternativeProfile" element={auth.user? <ViewProfile/> : <LoginPage />}/> */}
+        <Route path="/alternativeProfile/:idUser" element={auth.user? <ViewProfile/> : <ViewProfile />}/>
+
+
         <Route path="/alternativeDetail/:id" element={auth.user? <Detail/> : <LoginPage />}/>
         <Route path="/IdDetailsTraining/:id" element={auth.useAuth ? <IdDetailsTraining/> : <LoginPage />}/>
+        
       </Routes>
     </>
   );

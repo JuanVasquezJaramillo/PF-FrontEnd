@@ -12,12 +12,8 @@ import estilo from "../modules/homePage.module.css";
 import Paginado from "./paginado/paginado";
 import { useAuth } from "../context/authContext";
 import SearchBar from "../components/SearchBar/SearchBar";
-<<<<<<< HEAD
 // import { resetlist } from "../global/clasesSlice/clasesSlice"
 // import { resetList } from "../global/clasesSlice/clasesSlice"
-=======
-import { resetList } from '../global/clasesSlice/clasesSlice'; 
->>>>>>> 28e765601a6fa1418906de212d68b7b9f80a064e
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
