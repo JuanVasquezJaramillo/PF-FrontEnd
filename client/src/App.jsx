@@ -8,12 +8,12 @@ import UserProfile from "./components/userProfile";
 import TrainingDetail from "./components/TrainingDetail";
 import TrainingNew from "./components/TrainingNew";
 import AboutUs from "./pages/AboutUs";
-import Market from "./pages/Pasarela/market";
+import Pay from "./pages/Pasarela/payPage";
 import ViewProfile from "./components/vistaPerfil/viewProfile";
 import axios from "axios";
 import Detail from "./components/alternativeDetail";
 import IdDetailsTraining from "./components/IdDetailsTraining";
-import { useAuth } from "./context/authContext";
+import { useAuth } from "./context/AuthContext";
 axios.defaults.baseURL = "http://localhost:5000"
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         <Route path="/profile" element={auth.user? <UserProfile /> : <LoginPage />} />
         <Route path="/trainingnew" element={auth.user? <TrainingNew /> : <LoginPage />} />
         <Route path="/training/:idPlan" element={auth.user? <TrainingDetail /> : <LoginPage />} />
-        <Route path='/paycheck' element={auth.user? <Market/> : <LoginPage />}/>
+        <Route path='/paycheck' element={auth.user? <Pay/> : <LoginPage />}/>
         <Route path="/alternativeProfile" element={auth.user? <ViewProfile/> : <LoginPage />}/>
         <Route path="/alternativeDetail/:id" element={auth.user? <Detail/> : <LoginPage />}/>
         <Route path="/IdDetailsTraining/:id" element={auth.useAuth ? <IdDetailsTraining/> : <LoginPage />}/>
