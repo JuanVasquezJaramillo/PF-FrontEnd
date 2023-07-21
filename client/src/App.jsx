@@ -14,26 +14,32 @@ import { AuthProvider } from "./context/authContext";
 import axios from "axios";
 import Detail from "./components/alternativeDetail";
 import IdDetailsTraining from "./components/IdDetailsTraining";
-axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = "http://localhost:5000";
+import { CloudinaryContext } from "cloudinary-react";
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="/trainingnew" element={<TrainingNew />} />
-          <Route path="/training" element={<TrainingDetail />} />
-          <Route path="/nosotros" element={<AboutUs />} />
-          <Route path='/paycheck' element={<Market/>}/>
-          <Route path="/alternativeProfile" element={<ViewProfile/>}/>
-          <Route path="/alternativeDetail/:id" element={<Detail/>}/>
-          <Route  path="/IdDetailsTraining/:id" element={<IdDetailsTraining/>}/>
-        </Routes>
+        <CloudinaryContext cloudName="dou3yyisb">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/trainingnew" element={<TrainingNew />} />
+            <Route path="/training" element={<TrainingDetail />} />
+            <Route path="/nosotros" element={<AboutUs />} />
+            <Route path="/paycheck" element={<Market />} />
+            <Route path="/alternativeProfile" element={<ViewProfile />} />
+            <Route path="/alternativeDetail/:id" element={<Detail />} />
+            <Route
+              path="/IdDetailsTraining/:id"
+              element={<IdDetailsTraining />}
+            />
+          </Routes>
+        </CloudinaryContext>
       </AuthProvider>
     </>
   );
