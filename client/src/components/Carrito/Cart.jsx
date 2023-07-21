@@ -3,6 +3,8 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { deleteProducts, deleteItem } from "../../global/clasesSlice/clasesSlice";
 import estilo from "./cart.module.css"
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 const Cart = () => {
 	const dispatch = useDispatch()
 	const [active, setActive] = useState(false);
@@ -78,6 +80,13 @@ const Cart = () => {
 								<button className={estilo.btnClearAll} onClick={clearCart}>
 									Vaciar Carrito
 								</button>
+								
+								<Link to={`/paycheck`}>
+									<button className={estilo.btnClearAll}>
+										Pasar a pagar
+									</button>
+								</Link>
+
 							</>
 						) : (
 							<p className={estilo.cartEmpty}>El carrito está vacío</p>
