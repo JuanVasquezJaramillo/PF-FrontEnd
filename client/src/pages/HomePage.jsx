@@ -31,6 +31,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllClass());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //LÓGICA PAGINADO
