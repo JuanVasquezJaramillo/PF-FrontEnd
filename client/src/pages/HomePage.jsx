@@ -17,7 +17,6 @@ import { resetList } from '../global/clasesSlice/clasesSlice';
 
 export default function HomePage() {
   const auth = useAuth();
-
   const { displayName } = auth.user;
 
   const clases = useSelector((state) => state.clases.list);
