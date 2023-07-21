@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { signOut } from "firebase/auth";
-import SearchBar from "./SearchBar/SearchBar";
+// import SearchBar from "./SearchBar/SearchBar";
 import style from "../modules/navbar.module.css";
+import { useState } from "react";
+
 import {
   AppBar,
   Toolbar,
@@ -16,6 +16,8 @@ import {
   Avatar,
   Box,
 } from "@mui/material";
+
+import Cart from "./Carrito/Cart";
 
 const navbarStyles = {
   backgroundColor: "#333",
@@ -48,17 +50,8 @@ const logoutButtonStyles = {
 };
 export default function Navbar() {
   const auth = useAuth();
-  const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
-
-  const userAcces = useSelector((state) => state.user.access);
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setName(event.target.value);
-  };
 
   // funcion para cerrar session
   const handleSignout = () => {
@@ -82,7 +75,7 @@ export default function Navbar() {
             </NavLink>
           </Typography>
           <Box sx={{ display: "flex", gap: "10px" }}>
-            {userAcces ? (
+            {auth.user ? (
               <>
                 <div style={linksContainerStyles}>
                   {/* Rutas de usuario logeado */}
@@ -93,9 +86,9 @@ export default function Navbar() {
                     NuevaRutina
                   </Button>
 
-                  <Button component={NavLink} to="/training" color="inherit">
+                  {/* <Button component={NavLink} to="/training" color="inherit">
                     DetalleRutina
-                  </Button>
+                  </Button> */}
 
                   <Button component={NavLink} to="/profile" color="inherit">
                     perfil
@@ -112,10 +105,7 @@ export default function Navbar() {
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}
                   >
-                    {/*Solo es una vista.*/}
-                    <Button component={NavLink} to="/paycheck" color="inherit">
-                      Pagos
-                    </Button>
+                    <Cart />
                     <Avatar
                       alt="User Avatar"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
@@ -170,13 +160,13 @@ export default function Navbar() {
                   <Button component={NavLink} to="/nosotros" color="inherit">
                     Nosotros
                   </Button>
-                  <Button
+                  {/* <Button
                     component={NavLink}
                     to="/alternativeProfile"
                     color="inherit"
                   >
                     altPerfil
-                  </Button>
+                  </Button> */}
                 </div>
               </>
             )}

@@ -14,3 +14,50 @@
 .button:hover {
   cursor: pointer;
 }
+.container {
+  display: flex;
+}
+
+.containerVideo {
+  /* Estilos para el contenedor del reproductor principal */
+  flex: 1;
+}
+
+
+.videoList {
+  background-color: white;
+  padding: 10px;
+  flex: 0.3;
+  margin-right: 10px;
+}
+
+.videoList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.videoList li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+}
+
+.videoList li:hover {
+  font-weight: bold;
+}
+
+.videoList li.activeVideo {
+  font-weight: bold;
+}
+
+.videoThumbnail {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.videoTitle {
+  font-weight: bold;
+}

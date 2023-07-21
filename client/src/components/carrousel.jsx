@@ -15,8 +15,30 @@ const Carrousel = ({ videos }) => {
     );
   };
 
+  const selectVideo = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <div className={style.container}>
+      
+      <div className={style.videoList}>
+        <h5>Lista de clases:</h5>
+        <ul>
+        {videos.map((video, index) => (
+          <li
+            key={index}
+            onClick={() => selectVideo(index)}
+            className={`${style.videoListItem} ${
+              index === currentIndex ? style.activeVideo : ""
+            }`}
+          >
+            <p>{index + 1}. {video.description}</p>
+          </li>
+))}
+
+        </ul>
+      </div>
       <div className={style.containerVideo}>
         <ReactPlayer
           width="600"
@@ -26,7 +48,7 @@ const Carrousel = ({ videos }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></ReactPlayer>
-      </div>
+      </div> 
       <div className={style.containerButton}>
         <button onClick={prevVideo} className={style.button}>
           Video anterior
@@ -35,6 +57,7 @@ const Carrousel = ({ videos }) => {
           Próximo video
         </button>
       </div>
+     
     </div>
   );
 };

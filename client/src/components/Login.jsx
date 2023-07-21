@@ -34,8 +34,8 @@ export default function Login() {
 
     if (name === "email") {
       const regexEmail =
-        /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/;
-
+      /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
+      
       if (inputs.email !== "") setErrors({ ...errors, email: "" });
       else {
         setErrors({ ...errors, email: "Digite un correo" });
@@ -65,6 +65,7 @@ export default function Login() {
       else setErrors({ ...errors, typeUser: "campo requerido" });
     }
   };
+
   const [inputs, setInputs] = useLocalStorage("inputs", {
     userName: "", // falta usuario
     firstName: "",
@@ -77,6 +78,7 @@ export default function Login() {
     typeUser: "",
     profileImage: null,
   });
+
   const [errors, setErrors] = useState({
     userName: "", // falta usuario
     firstName: "",

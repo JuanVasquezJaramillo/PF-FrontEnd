@@ -1,9 +1,4 @@
 .formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 75.5px);
-  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0.651)),
     url(https://images.pexels.com/photos/8173435/pexels-photo-8173435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-repeat: no-repeat;
@@ -11,30 +6,9 @@
   background-position: center;
 }
 
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #8ecae671;
-  border-radius: 20px;
-  padding: 20px;
-  color: white;
-  box-shadow: 2px 2px 5px black;
-  transition: 2s;
-  margin-left: 10px;
-}
-
 .title {
   font-size: 30px;
   color: #dda77b;
   text-shadow: 2px 2px 2px black;
-  text-align: center;
-}
-
-.input {
-  margin: 10px;
-  width: 20rem;
-  height: 3rem;
   text-align: center;
 }

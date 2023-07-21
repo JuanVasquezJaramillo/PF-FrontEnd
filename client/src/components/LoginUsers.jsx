@@ -1,16 +1,11 @@
-import { useDispatch } from "react-redux";
 import { useAuth } from "../context/authContext";
-import { signin } from "../global/userSlice";
 import style from "../modules/loginUsers.module.css";
 import { useState } from "react";
 import { TextField, Button, Grid } from "@mui/material";
 
 const LoginUsers = () => {
+  
   const auth = useAuth();
-  const { displayName } = auth.user;
-  console.log(displayName);
-
-  const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -30,14 +25,13 @@ const LoginUsers = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     auth.login(inputs.email, inputs.password);
-    dispatch(signin());
   };
 
   const handleGoogle = (e) => {
     e.preventDefault();
     auth.loginWithGoogle();
-    dispatch(signin());
   };
+
   return (
     <div className={style.container}>
       <Grid container justifyContent="center">
