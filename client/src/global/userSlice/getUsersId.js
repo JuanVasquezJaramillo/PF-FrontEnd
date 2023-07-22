@@ -19,11 +19,11 @@ export default userIdSlice.reducer;
 
 
 
-export function getUserId( idUsers) {
+export function getUserId( idUser) {
   // console.log( idUser)
     return async function (dispatch) {  
         try {
-        const response = (await axios.get(`http://localhost:5000/user/${idUsers}`)).data;
+        const response = (await axios.get(`http://localhost:5000/user/${idUser}`)).data;
         
            dispatch(setUserId(response));
             

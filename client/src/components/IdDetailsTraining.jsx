@@ -7,47 +7,35 @@ import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import style from "../modules/idDetailsTraining.module.css";
 import { deletePlan } from "../global/clasesSlice/DeletePlan.js";
 
+
+
 const IdDetailsTraining = () => {
-  
   const { id } = useParams();
-  
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getById(id));
   }, [dispatch, id])
-  
   const detailsPlan = useSelector((state) => state.clases.list)
-
-
-//  const descriptionPrueba = detailsPlan[1]
-const title = detailsPlan[0]?.title;
-
-// datos del primer array
-  
-  
-  const publicDescription = detailsPlan[0]?.publicDescription;
-  const privateDescription = detailsPlan[0]?.privateDescription;
-  const price = detailsPlan[0]?.price;
-  const tags = detailsPlan[0]?.tags;
-// datos del segundo array 
-
-
-
+  console.log("MATEO", detailsPlan)
+  // datos del segundo array 
   const description    = detailsPlan[1]?.[0]?.description;
-  
-  
   const idVideo    = detailsPlan[1]?.[0]?.idVideo    ;
   const publico    = detailsPlan[1]?.[0]?.publico;
   const url    = detailsPlan[1]?.[0]?.url;
-
-
   const descriptionuno   =detailsPlan[1]?.[1]?.description;  
   const urluno    = detailsPlan[1]?.[1]?.url;
   const descriptiondos   =detailsPlan[1]?.[2]?.descriptiondos;  
   const urldos   = detailsPlan[1]?.[2]?.urldos;
+//  const descriptionPrueba = detailsPlan[1]
 
-  
-  
+const title = detailsPlan[0]?.title;
+// datos del primer array
+  const publicDescription = detailsPlan[0]?.publicDescription;
+  const privateDescription = detailsPlan[0]?.privateDescription;
+  const price = detailsPlan[0]?.price;
+  const tags = detailsPlan[0]?.tags;
+
 // datos del tercer array   
           
  const idUser    = detailsPlan[2]?.idUser; 
@@ -55,25 +43,18 @@ const userName  = detailsPlan[2]?.userName;
 
 const [inputs,setInputs]=useState(
   {
-      title:"",
-      publicDescription: "",
-      privateDescription:"",
-      price: "",
-      tags:"",
-      video:"",
-      publico:"",
-      description:""
+      title:title,
+      publicDescription: publicDescription,
+      privateDescription:privateDescription,
+      price: price,
+      tags:tags,
+      description:description,
+      url:url,
+      descriptionuno:descriptionuno,
+      urluno: urluno
   }
 )
-
-
-// probar con funcion asyncrona
-// const numbers = descriptionPrueba
-// const listItems = numbers.map((number) =>
-//   <li key={number.idVideo}>{number.url}</li>
-// );
-
-
+console.log("PROBANDO ESTADOS",title)
 
   
   const disable = () => {
@@ -174,7 +155,7 @@ const handleSubmit=(event)=>{
           placeholder="Titulo de tu Entrenamiento..."
           type="text"
           name="title"
-            value={title}
+            value={inputs.title}
           className={style.input}
           />
 
@@ -185,7 +166,7 @@ const handleSubmit=(event)=>{
           placeholder="Descripcion Publica de  entrenamiento..."
           type="text"
           name="publicDescription"
-          value={publicDescription}
+          value={inputs.publicDescription}
           className={style.input}
         />
         {errors.publicDescription ? (
@@ -198,8 +179,8 @@ const handleSubmit=(event)=>{
           onChange={handleChange}
           placeholder="Descripcion Privada de entrenamiento..."
           type="text"
-          name="description"
-          value={privateDescription}
+          name="privateDescription"
+          value={inputs.privateDescription}
           className={style.input}
         />
         {errors.privateDescription ? <span>{errors.privateDescription}</span> : <span></span>}
@@ -209,12 +190,12 @@ const handleSubmit=(event)=>{
           placeholder="Ingrese el precio..."
           type="text"
           name="price"
-          value={price}
+          value={inputs.price}
           className={style.input}
         />
         {errors.price ? <span>{errors.price}</span> : <span></span>}
 
-        <select name="tags" onChange={handleChange} value={tags}>
+        <select name="tags" onChange={handleChange} value={inputs.tags}>
           <option value="">-</option>
           <option value="Natacion">Natacion</option>
           <option value="Futbol">Futbol</option>
@@ -232,7 +213,7 @@ const handleSubmit=(event)=>{
           placeholder="Ingrese la descripcion Video uno.."
           type="text"
           name="description"
-          value={description} 
+          value={inputs.description} 
           className={style.input}
           
         />
@@ -243,7 +224,7 @@ const handleSubmit=(event)=>{
           placeholder="Ingrese el la url para modificar..."
           type="text"
           name="url"
-          value={url}
+          value={inputs.url}
           className={style.input}
         />
         {errors.url ? <span>{errors.url}</span> : <span></span>}
@@ -252,8 +233,8 @@ const handleSubmit=(event)=>{
           onChange={handleChange}
           placeholder="Ingrese descripcion video 2..."
           type="text"
-          name="description"
-          value={descriptionuno}
+          name="descriptionuno"
+          value={inputs.descriptionuno}
           className={style.input}
         />
         {errors.descriptionuno ? (
@@ -267,7 +248,7 @@ const handleSubmit=(event)=>{
           placeholder="Ingrese el la url..."
           type="text"
           name="urluno"
-          value={urluno}
+          value={inputs.urluno}
           className={style.input}
         />
         {errors.urluno ? <span>{errors.urluno}</span> : <span></span>}

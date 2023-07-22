@@ -10,17 +10,16 @@ import { useParams } from 'react-router-dom'
 
 const UserProfile = () => {
     const userId = useSelector((state) => state.userId.listId);
-console.log("IDUSERSSSSSSSSSSSSSSSS",userId)
+
 
     const dispatch = useDispatch();
-const idUser = useParams()
+const {idUser} = useParams()
 
-const idUsers = "cc211d5f-dbcd-47e9-8260-3d9f2c82206d"
 
 
 useEffect(() => {
-  dispatch(getUserId(idUsers));
-}, [dispatch, idUsers])
+  dispatch(getUserId(idUser));
+}, [dispatch, idUser])
 
   
 

@@ -66,31 +66,12 @@ export default function Navbar() {
   };
 
   return (
-<<<<<<< HEAD
-    <nav className={style.navBar}>
-      <NavLink to="/">
-        <h1 className={style.marca}>OnlyTrainers</h1>
-      </NavLink>
-      {auth.user ? (
-        <>
-          <div>
-            {/* Rutas de usuario logeado */}
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/trainingnew">NuevaRutina</NavLink>
-            {/* <NavLink to="/training">DetalleRutina</NavLink> */}
-            <NavLink to="/training/5">DetalleRutina</NavLink>
-            <NavLink to="/profile">perfil</NavLink>
-            
-            <NavLink to="/" onClick={() => handleSignout()}>
-              Logout
-=======
     <div>
       <AppBar position="static" style={navbarStyles} sx={{ flexGrow: 1 }}>
         <Toolbar>
           <Typography variant="h6" style={brandLinkStyles} sx={{ flexGrow: 1 }}>
             <NavLink to="/">
               <h1 className={style.marca}>OnlyTrainers</h1>
->>>>>>> 0889e766481ba562c4603c39afc21424a8ed00c1
             </NavLink>
           </Typography>
           <Box sx={{ display: "flex", gap: "10px" }}>
@@ -113,13 +94,9 @@ export default function Navbar() {
                     perfil
                   </Button>
 
-                  <Button component={NavLink} to="/training" color="inherit">
-                    DetalleRutina
-                  </Button>
+                 
 
-                  <Button component={NavLink} to="/profile" color="inherit">
-                    perfil{" "}
-                  </Button>
+                  
                   <IconButton
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}

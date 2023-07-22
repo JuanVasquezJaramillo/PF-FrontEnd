@@ -1,11 +1,5 @@
 .container {
   background: url(https://images.pexels.com/photos/6593721/pexels-photo-6593721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-<<<<<<< HEAD
-  padding-bottom: 10px;
-  width: 100%;
-  height: calc(100vh - 75.5px);
-=======
->>>>>>> 0889e766481ba562c4603c39afc21424a8ed00c1
   background-repeat: no-repeat;
   background-size: cover;
 }
