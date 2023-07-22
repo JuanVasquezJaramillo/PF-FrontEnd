@@ -18,7 +18,6 @@ import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function HomePage() {
   const auth = useAuth();
-
   const { displayName } = auth.user;
 
   const clases = useSelector((state) => state.clases.list);
@@ -33,6 +32,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllClass());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //LÓGICA PAGINADO
