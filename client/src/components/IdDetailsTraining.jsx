@@ -68,8 +68,6 @@ console.log("PROBANDO ESTADOS",title)
       }
       return disabled
     }
-  
-    
     const [errors,setErrors]=useState(
       { 
           title: "",
