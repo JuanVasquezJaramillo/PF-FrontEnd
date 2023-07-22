@@ -24,10 +24,12 @@
   transition: 1s;
   width: 100%;
   color: #000;
+  text-align: center;
 }
 
 .userName:hover {
   color: #ffb703;
+  
 }
 
 .title {
@@ -45,3 +47,9 @@
   font-size: small;
   color: #000;
 }
+.id
+{
+  text-align: center;
+  text-decoration: none;
+}
+

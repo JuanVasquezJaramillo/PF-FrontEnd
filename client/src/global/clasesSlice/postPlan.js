@@ -6,7 +6,7 @@ export function postPlan(info) {
             alert("La informacion se guardo de forma exitosa")
         } catch (error) {
            
-            alert(error.response.data.error)
+            alert(error)
         }
     }
 }
