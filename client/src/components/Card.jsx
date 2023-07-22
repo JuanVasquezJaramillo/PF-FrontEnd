@@ -20,7 +20,7 @@ const Card = (props) => {
       
       
       {/* probando merge */}
-      <Link to={`/training/${id}`} className={style.link}>
+      <Link to={`/alternativeDetail/${id}`} className={style.link}>
         
         <h2 className={style.title}>{props.title}</h2>
         <h2 className={style.price}>${props.price}</h2>
