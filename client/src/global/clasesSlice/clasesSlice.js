@@ -56,8 +56,13 @@ export const clasesSlice = createSlice({
             state.error = null;
         })
             .addCase(getAllClass.fulfilled, (state, action) => {
-                state.list = action.payload;
-                state.listOriginal = action.payload;
+                if (Array.isArray(action.payload)) {
+                    state.list = action.payload;
+                    state.listOriginal = action.payload;
+                } else {
+                    state.list = [];
+                    state.listOriginal = [];
+                }
                 state.loading = false;
             })
             .addCase(getAllClass.rejected, (state, action) => {

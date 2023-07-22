@@ -149,7 +149,7 @@ const handleSubmit=(event)=>{
         <h1>Detalle del Plan</h1>
 
         <input
-           onChange={...handleChange}
+           onChange={handleChange}
           placeholder="Titulo de tu Entrenamiento..."
           type="text"
           name="title"
