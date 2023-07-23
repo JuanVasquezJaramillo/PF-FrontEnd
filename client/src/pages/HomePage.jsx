@@ -21,7 +21,7 @@ export default function HomePage() {
   const auth = useAuth();
   const { displayName } = auth.user;
 
-  const { list: clases } = useSelector(state => state.clases);
+  const clases = useSelector(state => state.clases.list);
   const dispatch = useDispatch();
   const [defaultExercise, setDefaultExercise] = useState("");
   const [defaultOrder, setDefaultOrder] = useState("");
@@ -29,7 +29,7 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
-  // console.log("Homepage", clases);
+  console.log("Homepage", clases);
 
   useEffect(() => {
     dispatch(getAllClass());

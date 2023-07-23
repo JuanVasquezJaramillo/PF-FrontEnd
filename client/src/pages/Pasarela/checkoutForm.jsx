@@ -96,7 +96,7 @@ const CheckoutForm = ({ productos }) => {
 
     useEffect(() => {
         // Calcula el total cuando cambia el array de productos
-        const newTotal = productos.reduce((acc, product) => acc + product[0].price, 0);
+        const newTotal = productos.reduce((acc, product) => acc + product.price, 0);
         setTotal(newTotal);
     }, [productos]);
 

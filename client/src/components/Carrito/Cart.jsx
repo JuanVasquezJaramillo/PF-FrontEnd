@@ -9,16 +9,14 @@ const Cart = () => {
 	const dispatch = useDispatch()
 	const [active, setActive] = useState(false);
 	let palanes = useSelector((state) => state.clases.listProducts)
-	const [planes, setPlanes] = useState(palanes);
 	const [total, setTotal] = useState(0);
 	const [countProducts, setCountProducts] = useState(0);
 
 	console.log("HOLA, SOY EL CART", palanes)
-	console.log("HOLA, SOY EL CART2 ", planes)
 
 	useEffect(() => {
 		// Calcula el total cuando cambia el array de productos
-		const newTotal = palanes.reduce((acc, product) => acc + product[0].price, 0);
+		const newTotal = palanes.reduce((acc, product) => acc + product.price, 0);
 		setTotal(newTotal);
 		setCountProducts(palanes.length);
 	}, [palanes]);
@@ -60,10 +58,10 @@ const Cart = () => {
 													{product.quantity}
 												</span>
 												<p className={estilo.tituloProductoCarrito}>
-													{product[0].title}
+													{product.title}
 												</p>
 												<span className={estilo.precioProductoCarrito}>
-													${product[0].price}
+													${product.price}
 												</span>
 											</div>
 											<svg className={estilo.iconClose} onClick={() => deleteProductCart(product)}>
