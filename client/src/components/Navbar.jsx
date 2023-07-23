@@ -101,15 +101,14 @@ export default function Navbar() {
                   <Button component={NavLink} to="/profile" color="inherit">
                     perfil{" "}
                   </Button>
+                  <Cart />
                   <IconButton
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}
                   >
-                    <Cart />
                     <Avatar
                       alt="User Avatar"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
-                      sx={{ marginLeft: "5rem" }}
                     />
                   </IconButton>
                 </div>
