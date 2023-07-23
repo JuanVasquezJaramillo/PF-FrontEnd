@@ -101,7 +101,6 @@ export default function Navbar() {
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}
                   >
-                    <Cart />
                     <Avatar
                       alt="User Avatar"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
@@ -109,6 +108,7 @@ export default function Navbar() {
                     />
                   </IconButton>
                 </div>
+                    <Cart />
                 {/*Menu desplegable */}
                 <Menu
                   anchorEl={anchorEl}
