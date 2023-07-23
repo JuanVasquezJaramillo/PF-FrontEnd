@@ -148,21 +148,11 @@ export default function Navbar() {
                     Home
                   </Button>
                   <Button component={NavLink} to="/login" color="inherit">
-                    Sign in
-                  </Button>
-                  <Button component={NavLink} to="/register" color="inherit">
-                    Sign up
+                    Login
                   </Button>
                   <Button component={NavLink} to="/nosotros" color="inherit">
                     Nosotros
                   </Button>
-                  {/* <Button
-                    component={NavLink}
-                    to="/alternativeProfile"
-                    color="inherit"
-                  >
-                    altPerfil
-                  </Button> */}
                 </div>
               </>
             )}
