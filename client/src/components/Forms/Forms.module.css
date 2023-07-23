@@ -1,0 +1,65 @@
+.container {
+    background: linear-gradient(rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0.651)),
+        url(https://images.pexels.com/photos/7592765/pexels-photo-7592765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 75.5px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #8ecae671;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.input {
+    margin: 2rem;
+    width: 40rem;
+    height: 3.9rem;
+    border-radius: 5px;
+    color: aqua;
+    border: 1px solid aqua;
+    text-align: center;
+    font-size: large;
+}
+
+.button {
+    width: 30rem;
+    height: 3rem;
+    border-radius: 5px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: green;
+}
+
+.Link {
+    width: 30rem;
+    height: 3rem;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.Link:hover {
+background-color: green;
+}
+
+.titleForm {
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 700;
+}
