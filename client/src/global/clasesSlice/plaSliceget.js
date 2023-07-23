@@ -5,7 +5,7 @@ export function getPlan() {
       const response = await axios.get("http://localhost:5000/plans/");
       alert("la informacion se guardo de forma exitosa");
     } catch (error) {
-      alert(error.response.data.error);
+      alert(error);
     }
   };
 }

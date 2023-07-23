@@ -37,9 +37,9 @@ function App() {
           <Route path="/trainingnew" element={auth.user? <TrainingNew /> : <LoginPage />} />
           <Route path="/training/:idPlan" element={auth.user? <TrainingDetail /> : <LoginPage />} />
           <Route path='/paycheck' element={auth.user? <Pay/> : <LoginPage />}/>
-          <Route path="/alternativeProfile" element={auth.user? <ViewProfile/> : <LoginPage />}/>
+          <Route path="/alternativeProfile/:idUser" element={auth.user? <ViewProfile/> : <alternativeProfile />}/>
           <Route path="/alternativeDetail/:id" element={auth.user? <Detail/> : <LoginPage />}/>
-          <Route path="/IdDetailsTraining/:id" element={auth.useAuth ? <IdDetailsTraining/> : <LoginPage />}/>
+          <Route path="/IdDetailsTraining/:id" element={auth.useAuth ? <IdDetailsTraining/> : <IdDetailsTraining />}/>
 
         </Routes>
       </CloudinaryContext>

@@ -1,49 +1,53 @@
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 import { useEffect } from "react";
 import { useState } from "react";
 import Carrousel from "./carrousel";
-import style from "../modules/TrainingDetail.module.css";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../global/clasesSlice/clasesSlice";
+import style from "../modules/trainingDetail.module.css";
 
 const TrainingDetail = () => {
-  const dispatch = useDispatch();
-  const {idPlan} = useParams();
-  console.log(idPlan)
-  const [plan, serPlan] = useState({})
+  // const {idTraining} = useParams();
+  const [training, setTraining] = useState({});
   useEffect(() => {
-   const URL_BASE='http://127.0.0.1:5000/plan' 
-   axios(`${URL_BASE}/${idPlan}`)
-    .then(response=>serPlan(response.data))}
-    
-    , []);
-  const handleBorrar = async ()=>{
-    const URL_BASE='http://127.0.0.1:5000/plan'
-    axios.delete(`${URL_BASE}?idPlan=${idPlan}`)
-    .then(response=>serPlan(response.data))
-    .catch(error => {
-      console.error(error.message);
-   })
- };
- const handleAdd = (plan) => {
-  dispatch(addProduct(plan))
- }
+    // const URL_BASE='http://127.0.0.1:3000/training'
+    // axios(`${URL_BASE}/${idTraining}`)
+    // .then(response=>setTraining(response.data))}
+    setTraining({
+      titulo: "Entrenamiento Futbol",
+      trainer: "Juan Perez",
+      descPublica: "Aca te vamos a enseñar todo sobre futbol",
+      descPrivada:
+        "Gracias por comprar este entrenamiento, espero te guste las clases",
+      precio: "$123",
+      tipo: "Entrenamiento",
+      etiquetas: "futbol velocidad delantero",
+      videos: [
+        {
+          url: "https://www.youtube.com/embed/tg25chxV6jY",
+          desc: "En la primer clase veremos...",
+        },
+        {
+          url: "https://www.youtube-nocookie.com/embed/k4QMNkNV26A",
+          desc: "En la segunda clase veremos...",
+        },
+      ],
+    });
+  }, []);
+
   return (
     <div className={style.container}>
-      {plan[0]?.title ? ( 
-        <div className={style.descripcionTraining}> 
+      <h1 className={style.titulo}>{training.titulo}</h1>
+      {training.videos ? <Carrousel videos={training.videos} /> : null}
 
-          {plan[1] ? <Carrousel videos={plan[1]} /> : null}
+      {training.titulo ? (
+        <div className={style.descripcionTraining}>
           <div className={style.datos}>
-            <button onClick={() => handleBorrar()} className={style.button}>
-              borrar plan
-            </button>
-            <p className={style.parrafos}>Entrenador: {plan[0].userName}</p>
-            <p className={style.parrafos}>{plan[0].publicDescription}</p>
-            <p className={style.parrafos}>{plan[0].privateDescription}</p>
-            <p className={style.parrafos}>Precio: {plan[0].price}</p>
-            <p className={style.parrafos}>Etiquetas: {plan[0].tags}</p>
+            <p className={style.parrafos}>Entrenador: {training.trainer}</p>
+            <p className={style.parrafos}>{training.descPublica}</p>
+            <p className={style.parrafos}>{training.descPrivada}</p>
+            <p className={style.parrafos}>Precio: {training.precio}</p>
+            <p className={style.parrafos}>Tipo: {training.tipo}</p>
+            <p className={style.parrafos}>Etiquetas: {training.etiquetas}</p>
           </div>
           <textarea
             name="comentario"
@@ -52,9 +56,6 @@ const TrainingDetail = () => {
             rows="10"
             placeholder="Escribe un comentario a tu instructor"
           ></textarea>
-
-          <button onClick={() => handleAdd(plan)}>Añadir a carrito de compras</button>
-        
         </div>
       ) : (
         <h2>Cargando...</h2>

@@ -19,16 +19,17 @@ export default userIdSlice.reducer;
 
 
 
-export function getUserId(idPlan) {
-    return async function () {  
+export function getUserId( idUser) {
+  // console.log( idUser)
+    return async function (dispatch) {  
         try {
-        const response = (await axios.get(`http://localhost:5000/plan/${idPlan}`));
-        console.log("KADOS",response)
-        dispatch(setUserId(response));
+        const response = (await axios.get(`http://localhost:5000/user/${idUser}`)).data;
+        
+           dispatch(setUserId(response));
             
         } catch (error) {
            
-            alert(error.response.data.error)
+            alert(error)
         }
     }
 }
