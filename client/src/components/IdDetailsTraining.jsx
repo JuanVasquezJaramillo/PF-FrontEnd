@@ -17,29 +17,33 @@ const IdDetailsTraining = () => {
     dispatch(getById(id));
   }, [dispatch, id])
   const detailsPlan = useSelector((state) => state.clases.list)
-  console.log("MATEO", detailsPlan)
-  // datos del segundo array 
-  const description    = detailsPlan[1]?.[0]?.description;
-  const idVideo    = detailsPlan[1]?.[0]?.idVideo    ;
-  const publico    = detailsPlan[1]?.[0]?.publico;
-  const url    = detailsPlan[1]?.[0]?.url;
-  const descriptionuno   =detailsPlan[1]?.[1]?.description;  
-  const urluno    = detailsPlan[1]?.[1]?.url;
-  const descriptiondos   =detailsPlan[1]?.[2]?.descriptiondos;  
-  const urldos   = detailsPlan[1]?.[2]?.urldos;
-//  const descriptionPrueba = detailsPlan[1]
 
-const title = detailsPlan[0]?.title;
+  console.log("1111111111111111111111111111", detailsPlan)
+
 // datos del primer array
+const title = detailsPlan[0]?.title;
   const publicDescription = detailsPlan[0]?.publicDescription;
   const privateDescription = detailsPlan[0]?.privateDescription;
   const price = detailsPlan[0]?.price;
   const tags = detailsPlan[0]?.tags;
+ // datos del segundo array 
+
+ var prueba = detailsPlan[1]
+
+
+
+
+ const description    = detailsPlan[1]?.[0]?.description;
+ const url    = detailsPlan[1]?.[0]?.url;
+ const descriptionuno   =detailsPlan[1]?.[1]?.description;  
+ const urluno    = detailsPlan[1]?.[1]?.url;
 
 // datos del tercer array   
           
  const idUser    = detailsPlan[2]?.idUser; 
 const userName  = detailsPlan[2]?.userName; 
+
+
 
 const [inputs,setInputs]=useState(
   {
@@ -54,9 +58,6 @@ const [inputs,setInputs]=useState(
       urluno: urluno
   }
 )
-console.log("PROBANDO ESTADOS",title)
-
-  
   const disable = () => {
       let disabled = true;
       for (let error in errors) {
@@ -136,20 +137,17 @@ const handleSubmit=(event)=>{
           [event.target.name]: event.target.value
         }, event.target.name)
   }
-
-
-
-
-
-
-
+  
+  
   return (
+    
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit} className={style.form}>
+      
+      <form key={id.video} onSubmit={handleSubmit} className={style.form}>
         <h1>Detalle del Plan</h1>
 
         <input
-           onChange={handleChange}
+           onChange={...handleChange}
           placeholder="Titulo de tu Entrenamiento..."
           type="text"
           name="title"
@@ -206,7 +204,7 @@ const handleSubmit=(event)=>{
         </select>
         {errors.tags ? <span>{errors.tags}</span> : <span></span>}
 
-        <input
+        {/* <input
           onChange={handleChange}
           placeholder="Ingrese la descripcion Video uno.."
           type="text"
@@ -225,9 +223,9 @@ const handleSubmit=(event)=>{
           value={inputs.url}
           className={style.input}
         />
-        {errors.url ? <span>{errors.url}</span> : <span></span>}
+        {errors.url ? <span>{errors.url}</span> : <span></span>} */}
 
-        <input
+        {/* <input
           onChange={handleChange}
           placeholder="Ingrese descripcion video 2..."
           type="text"
@@ -249,7 +247,7 @@ const handleSubmit=(event)=>{
           value={inputs.urluno}
           className={style.input}
         />
-        {errors.urluno ? <span>{errors.urluno}</span> : <span></span>}
+        {errors.urluno ? <span>{errors.urluno}</span> : <span></span>} */}
 
         <input
           onChange={handleChange}
@@ -259,14 +257,78 @@ const handleSubmit=(event)=>{
           value={userName}
           className={style.input}
         />
+
+
+{/* { 
+   setTimeout(() => {
+          prueba.map(video => <>
+          {console.log("55555555555555555555",prueba)}
+          <input
+          onChange={handleChange}
+          placeholder="Ingrese la descripcion Video uno.."
+          type="text"
+          name="description"
+          value={video.description} 
+          className={style.input}
+          />
+          <input
+          onChange={handleChange}
+          placeholder="Ingrese el la url para modificar.."
+          type="text"
+          name="url"
+          value={video.url}
+          className={style.input}
+        />
+
+          </>)
+     
+  }, 2000)
+
+     */}
+
+
+
+ {/* { 
+ setTimeout(() => {
+          prueba.map(video => <>
+          <input
+          onChange={handleChange}
+          placeholder="Ingrese la descripcion Video uno.."
+          type="text"
+          name="description"
+          value={video.description} 
+          className={style.input}
+          />
+          <input
+          onChange={handleChange}
+          placeholder="Ingrese el la url para modificar..."
+          type="text"
+          name="url"
+          value={video.url}
+          className={style.input}
+        />
+
+          </>)
+          }, 2000)
+     
+} */}
+
+
+
+
        
         <button>Actualizar</button> <button  >Eliminar</button>
       </form>
-
+   
      
     </div>
+
+    
   );
+
+  
 };
+
 export default IdDetailsTraining;
 
 
