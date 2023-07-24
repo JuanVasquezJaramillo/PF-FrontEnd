@@ -16,9 +16,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../context/authContext";
 
-
 export default function Register() {
-
   // const dispatch = useDispatch();
 
   const auth = useAuth();
@@ -32,6 +30,24 @@ export default function Register() {
       if (inputs.lastName !== "") setErrors({ ...errors, lastName: "" });
       else setErrors({ ...errors, lastName: "campo requerido" });
     }
+
+    if (name === "email") {
+      const regexEmail =
+        /^(([^<>()[].,;:\s@”]+(.[^<>()[].,;:\s@”]+)*)|(”.+”))@(([^<>()[].,;:\s@”]+.)+[^<>()[].,;:\s@”]{2,})$/;
+
+      if (inputs.email !== "") setErrors({ ...errors, email: "" });
+      else {
+        setErrors({ ...errors, email: "Digite un correo" });
+        return;
+      }
+      if (regexEmail.test(inputs.email)) setErrors({ ...errors, email: "" });
+      else setErrors({ ...errors, email: "Digite un correo valido" });
+    }
+    if (name === "password") {
+      if (inputs.password !== "") setErrors({ ...errors, password: "" });
+      else setErrors({ ...errors, password: "Campo requerido" });
+    }
+
     if (name === "Birthdate") {
       if (inputs.Birthdate !== "") setErrors({ ...errors, Birthdate: "" });
       else setErrors({ ...errors, Birthdate: "campo requedido" });
@@ -214,9 +230,8 @@ export default function Register() {
                   </Box>
                   <Box mb={2}>
                     <FormControl variant="filled" error={!!errors.typeUser}>
-                      <InputLabel >Tipo Usuario</InputLabel>
+                      <InputLabel>Tipo Usuario</InputLabel>
                       <Select
-                        label="Type User"
                         name="typeUser"
                         value={inputs.typeUser}
                         onChange={inputsChange}
@@ -231,7 +246,7 @@ export default function Register() {
                 </Box>
                 <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
                   <Button
-                    type='submit'
+                    type="submit"
                     fullWidth
                     disabled={disable()}
                     variant="contained"
