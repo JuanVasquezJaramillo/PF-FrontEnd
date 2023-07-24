@@ -5,7 +5,6 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Navbar from "./components/Navbar";
 import UserProfile from "./components/userProfile";
-import TrainingDetail from "./components/TrainingDetail";
 import TrainingNew from "./components/TrainingNew";
 import AboutUs from "./pages/AboutUs";
 import Pay from "./pages/Pasarela/payPage";
@@ -40,10 +39,6 @@ function App() {
           <Route
             path="/trainingnew"
             element={auth.user ? <TrainingNew /> : <LoginPage />}
-          />
-          <Route
-            path="/training/:idPlan"
-            element={auth.user ? <TrainingDetail /> : <LoginPage />}
           />
           <Route
             path="/paycheck"
