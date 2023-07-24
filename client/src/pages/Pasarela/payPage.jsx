@@ -9,8 +9,8 @@ const Pay = () => {
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column"  }}>
             {productos.map((index) => (
             <div>
-                <h1>{index[0].title}
-                <p>${index[0].price}</p>
+                <h1>{index.title}
+                <p>${index.price}</p>
                 </h1>
             </div>
             ))}
