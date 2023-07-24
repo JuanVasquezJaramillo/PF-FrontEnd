@@ -15,7 +15,7 @@ const Cart = () => {
 
 	useEffect(() => {
 		// Calcula el total cuando cambia el array de productos
-		const newTotal = palanes.reduce((acc, product) => acc + product[0].price, 0);
+		const newTotal = palanes.reduce((acc, product) => acc + product.price, 0);
 		setTotal(newTotal);
 		setCountProducts(palanes.length);
 	}, [palanes]);
@@ -57,10 +57,10 @@ const Cart = () => {
 													{product.quantity}
 												</span>
 												<p className={estilo.tituloProductoCarrito}>
-													{product[0].title}
+													{product.title}
 												</p>
 												<span className={estilo.precioProductoCarrito}>
-													${product[0].price}
+													${product.price}
 												</span>
 											</div>
 											<svg className={estilo.iconClose} onClick={() => deleteProductCart(product)}>
