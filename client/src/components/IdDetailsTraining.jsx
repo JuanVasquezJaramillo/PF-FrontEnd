@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { postPlan } from "../global/clasesSlice/postPlan.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getById } from '../global/clasesSlice/clasesSlice';
+import { getById, resetClase, updatePlan} from '../global/clasesSlice/clasesSlice';
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import style from "../modules/idDetailsTraining.module.css";
 import { deletePlan } from "../global/clasesSlice/DeletePlan.js";
+
 
 
 
@@ -13,51 +14,39 @@ const IdDetailsTraining = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const detailsPlan = useSelector((state) => state.clases.clase)
+console.log("prueba1", detailsPlan)
+ 
   useEffect(() => {
     dispatch(getById(id));
+    // return () => {
+    //   dispatch(resetClase())
+    // }
   }, [dispatch, id])
-  const detailsPlan = useSelector((state) => state.clases.list)
-
-  console.log("1111111111111111111111111111", detailsPlan)
-
-// datos del primer array
-const title = detailsPlan[0]?.title;
-  const publicDescription = detailsPlan[0]?.publicDescription;
-  const privateDescription = detailsPlan[0]?.privateDescription;
-  const price = detailsPlan[0]?.price;
-  const tags = detailsPlan[0]?.tags;
- // datos del segundo array 
-
- var prueba = detailsPlan[1]
 
 
-
-
- const description    = detailsPlan[1]?.[0]?.description;
- const url    = detailsPlan[1]?.[0]?.url;
- const descriptionuno   =detailsPlan[1]?.[1]?.description;  
- const urluno    = detailsPlan[1]?.[1]?.url;
-
-// datos del tercer array   
-          
- const idUser    = detailsPlan[2]?.idUser; 
-const userName  = detailsPlan[2]?.userName; 
-
+  const handleUpdate=(event)=>{
+    event.preventDefault();
+    dispatch(updatePlan(inputs)); 
+    dispatch(getById(id));
+    console.log("pronandooooo", detailsPlan)
+  }
 
 
 const [inputs,setInputs]=useState(
   {
-      title:title,
-      publicDescription: publicDescription,
-      privateDescription:privateDescription,
-      price: price,
-      tags:tags,
-      description:description,
-      url:url,
-      descriptionuno:descriptionuno,
-      urluno: urluno
+    idPlan: id,
+      title:detailsPlan.title,
+      publicDescription: detailsPlan.publicDescription,
+      privateDescription:detailsPlan.privateDescription,
+      price: detailsPlan.price,
+      tags:detailsPlan.tags,
+      userName: detailsPlan.userName,
+      videos: detailsPlan.videos
   }
 )
+console.log("VIDEOS",inputs.videos)
+console.log("id", id)
   const disable = () => {
       let disabled = true;
       for (let error in errors) {
@@ -120,11 +109,13 @@ const validate = (inputs, name) => {
   } };
 
 
+
 const handleSubmit=(event)=>{
       event.preventDefault();
-      dispatch(deletePlan(id));
-    
+      dispatch(deletePlan(id)); 
  }
+
+
 
   const handleChange=(event)=>{
      
@@ -137,7 +128,8 @@ const handleSubmit=(event)=>{
           [event.target.name]: event.target.value
         }, event.target.name)
   }
-  
+ 
+ 
   
   return (
     
@@ -204,120 +196,22 @@ const handleSubmit=(event)=>{
         </select>
         {errors.tags ? <span>{errors.tags}</span> : <span></span>}
 
-        {/* <input
-          onChange={handleChange}
-          placeholder="Ingrese la descripcion Video uno.."
-          type="text"
-          name="description"
-          value={inputs.description} 
-          className={style.input}
-          
-        />
-        {errors.description ? <span>{errors.description}</span> : <span></span>}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el la url para modificar..."
-          type="text"
-          name="url"
-          value={inputs.url}
-          className={style.input}
-        />
-        {errors.url ? <span>{errors.url}</span> : <span></span>} */}
-
-        {/* <input
-          onChange={handleChange}
-          placeholder="Ingrese descripcion video 2..."
-          type="text"
-          name="descriptionuno"
-          value={inputs.descriptionuno}
-          className={style.input}
-        />
-        {errors.descriptionuno ? (
-          <span>{errors.descriptionuno}</span>
-        ) : (
-          <span></span>
-        )}
-
-        <input
-          onChange={handleChange}
-          placeholder="Ingrese el la url..."
-          type="text"
-          name="urluno"
-          value={inputs.urluno}
-          className={style.input}
-        />
-        {errors.urluno ? <span>{errors.urluno}</span> : <span></span>} */}
-
         <input
           onChange={handleChange}
           placeholder="Usuario..."
           type="text"
           name="userName"
-          value={userName}
+          value={inputs.userName}
           className={style.input}
         />
 
 
-{/* { 
-   setTimeout(() => {
-          prueba.map(video => <>
-          {console.log("55555555555555555555",prueba)}
-          <input
-          onChange={handleChange}
-          placeholder="Ingrese la descripcion Video uno.."
-          type="text"
-          name="description"
-          value={video.description} 
-          className={style.input}
-          />
-          <input
-          onChange={handleChange}
-          placeholder="Ingrese el la url para modificar.."
-          type="text"
-          name="url"
-          value={video.url}
-          className={style.input}
-        />
-
-          </>)
-     
-  }, 2000)
-
-     */}
-
-
-
- {/* { 
- setTimeout(() => {
-          prueba.map(video => <>
-          <input
-          onChange={handleChange}
-          placeholder="Ingrese la descripcion Video uno.."
-          type="text"
-          name="description"
-          value={video.description} 
-          className={style.input}
-          />
-          <input
-          onChange={handleChange}
-          placeholder="Ingrese el la url para modificar..."
-          type="text"
-          name="url"
-          value={video.url}
-          className={style.input}
-        />
-
-          </>)
-          }, 2000)
-     
-} */}
 
 
 
 
        
-        <button>Actualizar</button> <button  >Eliminar</button>
+        <button type="button" onClick={handleUpdate}>Actualizar</button> <button type="submit" >Eliminar</button>
       </form>
    
      
