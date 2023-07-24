@@ -287,8 +287,9 @@ const TrainingNew = () => {
                 <div>
                   <h2 className={style.title}>Videos subidos</h2>
                   {inputs.videos.map((video, index) => (
-                    <h4 key={index}>
-                      • {video.url} {video.description}
+                    <h4 key={index} className={style.videoList}>
+                      {index + 1} {video.url} <br />
+                      <span>//Descripción</span> <br /> {video.description}
                     </h4>
                   ))}
                 </div>

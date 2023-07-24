@@ -19,10 +19,21 @@
 .form {
   background-color: #8ecae671;
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  width: fit-content;
+  padding: 5px;
+  box-shadow: 2px 2px 5px black;
+  max-height: 600px;
+  overflow-y: auto;
   margin-top: 20rem;
+  margin-left: 2rem;
+  width: fit-content;
+}
+
+span {
+  color: #dda77b;
+  text-shadow: 2px 2px 2px black;
+}
+
+.videoList {
+  text-align: center;
+  margin: 2rem;
 }
