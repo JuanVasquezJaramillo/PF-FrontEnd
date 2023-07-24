@@ -7,25 +7,19 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 76px);
 }
 
 .form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #8ecae671;
-  width: 50vw;
-  height: 80vh;
   border-radius: 20px;
-  font-size: 15px;
-  padding-bottom: 20px;
 }
 
-.input {
-  text-align: center;
-  margin: 5px;
-  width: 30rem;
-  height: 4rem;
+.button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

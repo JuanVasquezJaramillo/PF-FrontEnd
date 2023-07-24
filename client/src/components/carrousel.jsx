@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import style from "../modules/carrousel.module.css";
+import {
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  ButtonGroup,
+  Grid,
+} from "@mui/material";
 
 const Carrousel = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,46 +29,86 @@ const Carrousel = ({ videos }) => {
   };
 
   return (
-    <div className={style.container}>
-      
-      <div className={style.videoList}>
-        <h5>Lista de clases:</h5>
-        <ul>
-        {videos.map((video, index) => (
-          <li
-            key={index}
-            onClick={() => selectVideo(index)}
-            className={`${style.videoListItem} ${
-              index === currentIndex ? style.activeVideo : ""
-            }`}
+    <Grid
+      container
+      className={style.container}
+      justify="center"
+      alignItems="center"
+    >
+      <div>
+        <div className={style.containerVideo}>
+          <ReactPlayer
+            width="50vw"
+            height="55vh"
+            url={videos[currentIndex].url}
+            title="Video Player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></ReactPlayer>
+        </div>
+        <div className={style.containerButton}>
+          <Button
+            onClick={prevVideo}
+            className={style.button}
+            variant="contained"
+            color="primary"
           >
-            <p>{index + 1}. {video.description}</p>
-          </li>
-))}
-
-        </ul>
+            Video anterior
+          </Button>
+          <Button
+            onClick={nextVideo}
+            className={style.button}
+            variant="contained"
+            color="primary"
+          >
+            Próximo video
+          </Button>
+        </div>
       </div>
-      <div className={style.containerVideo}>
-        <ReactPlayer
-          width="600"
-          height="315"
-          url={videos[currentIndex].url}
-          title="Video Player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></ReactPlayer>
-      </div> 
-      <div className={style.containerButton}>
-        <button onClick={prevVideo} className={style.button}>
-          Video anterior
-        </button>
-        <button onClick={nextVideo} className={style.button}>
-          Próximo video
-        </button>
+      {/* Lista de miniaturas de video */}
+      <div className={style.videoList}>
+        <Typography variant="h6" gutterBottom textAlign="center" mt="20px">
+          Lista de clases:
+        </Typography>
+        <List component="ul">
+          {videos.map((video, index) => (
+            <ListItem
+              key={index}
+              onClick={() => selectVideo(index)}
+              button
+              className={`${style.videoListItem} ${
+                index === currentIndex ? style.activeVideo : ""
+              }`}
+            >
+              <ListItemText primary={`- Clase número: ${index + 1}`} />
+            </ListItem>
+          ))}
+        </List>
       </div>
-     
-    </div>
+    </Grid>
   );
 };
 
 export default Carrousel;
+
+{
+  /* <Grid className={`${style.videoList}`}>
+        <Typography variant="h6" gutterBottom textAlign="center" mt="20px">
+          Lista de clases:
+        </Typography>
+        <List component="ul">
+          {videos.map((video, index) => (
+            <ListItem
+              key={index}
+              onClick={() => selectVideo(index)}
+              button
+              className={`${style.videoListItem} ${
+                index === currentIndex ? style.activeVideo : ""
+              }`}
+            >
+              <ListItemText primary={`- Clase número: ${index + 1}`} />
+            </ListItem>
+          ))}
+        </List>
+      </Grid> */
+}
