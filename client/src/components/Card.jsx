@@ -33,12 +33,14 @@ const CustomCard = (props) => {
           </Link>
         </Typography>
         {/* probando merge */}
-        <Link to={`/training/${id}`} className={style.link}>
+        <Link to={`/alternativeProfile/${idUser}`}   >
+        <Typography variant="h6" className={style.userName}>
+          {props.userName}
+        </Typography>
+        </Link>
+        <Link to={`/alternativeDetail/${id}`} className={style.link}>
           <Typography variant="body2" color="text.secondary">
             {/* Usamos Typography para mostrar los detalles */}
-            <Typography variant="h6" className={style.userName}>
-              {props.userName}
-            </Typography>
             <Typography variant="h6" className={style.title}>
               {props.title}
             </Typography>
