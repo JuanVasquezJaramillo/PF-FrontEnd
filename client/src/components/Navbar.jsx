@@ -94,14 +94,11 @@ export default function Navbar() {
                     perfil
                   </Button>
 
-                  <Button component={NavLink} to="/training" color="inherit">
-                    DetalleRutina
-                  </Button>
-
                   <Button component={NavLink} to="/profile" color="inherit">
                     perfil{" "}
                   </Button>
                   <Cart />
+
                   <IconButton
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}

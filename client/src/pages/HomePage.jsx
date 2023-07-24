@@ -12,15 +12,16 @@ import estilo from "../modules/homePage.module.css";
 import Paginado from "./paginado/paginado";
 import { useAuth } from "../context/authContext";
 import SearchBar from "../components/SearchBar/SearchBar";
-import { resetList } from '../global/clasesSlice/clasesSlice'; 
+import Swal from "sweetalert2";
+import { resetList } from "../global/clasesSlice/clasesSlice"
+// import { resetList } from "../global/clasesSlice/clasesSlice"
 // import clases from '../jsonClases.js'
 
 export default function HomePage() {
   const auth = useAuth();
-
   const { displayName } = auth.user;
 
-  const clases = useSelector((state) => state.clases.list);
+  const { list: clases } = useSelector(state => state.clases);
   const dispatch = useDispatch();
   const [defaultExercise, setDefaultExercise] = useState("");
   const [defaultOrder, setDefaultOrder] = useState("");
@@ -28,10 +29,11 @@ export default function HomePage() {
   //const filter = useSelector((state) => state.clasesF.clasesF); //Filtrados
   //const filter = useSelector((state) => state.order.precios ) //Ordenamiento
 
-  console.log("Homepage", clases);
+  // console.log("Homepage", clases);
 
   useEffect(() => {
     dispatch(getAllClass());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //LÓGICA PAGINADO
@@ -58,10 +60,22 @@ export default function HomePage() {
       ...defaultPrice,
       [event.target.name]: event.target.value
     });
-    if (defaultPrice.min !== "" && defaultPrice.max !== "") {
-      dispatch(filterPrice({ min: defaultPrice.min, max: defaultPrice.max }));
+    
+  }
+
+  const submitFilterPrice = (event) => {
+    event.preventDefault();
+    if (+defaultPrice.min < +defaultPrice.max) {
+      dispatch(filterPrice({ min: +defaultPrice.min, max: +defaultPrice.max }));
       setCurrentPag(1);
-      setDefaultPrice({ min: "", max: ""})
+      setDefaultPrice({ min: 0, max: 0})
+    } else {
+      Swal.fire({
+      title: "Filter by price",
+      text: "Precio min debe ser menor a precio max",
+      icon: "info",
+      timer: 3000
+    })
     }
   }
 
@@ -139,6 +153,7 @@ export default function HomePage() {
           <label>
             <input placeholder="min" autoComplete="true" type="number" name="min" onChange={handleFilterPrice} />
             <input placeholder="max" autoComplete="true" type="number" name="max" onChange={handleFilterPrice} />
+            <button onClick={submitFilterPrice} disabled={defaultPrice.min !== "" && defaultPrice.max !== "" ? false : true}>Filter</button>
           </label>
         </div>
 

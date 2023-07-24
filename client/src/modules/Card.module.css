@@ -9,6 +9,7 @@
   box-shadow: 2px 2px 5px black;
   transition: 1s;
   overflow: hidden;
+  width: 50%;
 }
 
 .cardcontainer:hover {
@@ -17,6 +18,7 @@
 
 .link {
   text-decoration: none;
+  text-align: center;
 }
 
 .userName {
@@ -24,6 +26,7 @@
   transition: 1s;
   width: 100%;
   color: #000;
+  text-align: center;
 }
 
 .userName:hover {

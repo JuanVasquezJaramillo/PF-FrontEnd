@@ -50,8 +50,8 @@ function App() {
             element={auth.user ? <Pay /> : <LoginPage />}
           />
           <Route
-            path="/alternativeProfile"
-            element={auth.user ? <ViewProfile /> : <LoginPage />}
+            path="/alternativeProfile/:idUser"
+            element={auth.user ? <ViewProfile /> : <alternativeProfile />}
           />
           <Route
             path="/alternativeDetail/:id"
@@ -59,7 +59,9 @@ function App() {
           />
           <Route
             path="/IdDetailsTraining/:id"
-            element={auth.useAuth ? <IdDetailsTraining /> : <LoginPage />}
+            element={
+              auth.useAuth ? <IdDetailsTraining /> : <IdDetailsTraining />
+            }
           />
         </Routes>
       </CloudinaryContext>

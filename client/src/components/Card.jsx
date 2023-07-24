@@ -2,35 +2,52 @@ import React from "react";
 import ReactPlayer from "react-player/youtube";
 import style from "../modules/Card.module.css";
 import { Link } from "react-router-dom";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  CardMedia,
+} from "@mui/material";
 
 const CustomCard = (props) => {
+  const idUser = props.idUser;
+
   const id = props.idPlan;
   const cardStyle = {
-    maxWidth: 345,
+    width: "30rem",
     margin: "20px auto",
+    boxShadow: "2px 4px 8px black",
+    borderRadius: "20px",
   };
 
   return (
     <Card style={cardStyle}>
-      <div>
-        <ReactPlayer url={props.primerVideoUrl} width="100%" height="15rem" />
-      </div>
+      <CardMedia>
+        <ReactPlayer url={props.primerVideoUrl} width="100%" />
+      </CardMedia>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <Link to={`/IdDetailsTraining/${id}`} className={style.link}>
-            <h2> {id}</h2>
+            <Typography variant="h6">{id}</Typography>
           </Link>
         </Typography>
         {/* probando merge */}
         <Link to={`/training/${id}`} className={style.link}>
           <Typography variant="body2" color="text.secondary">
-            <h2 className={style.userName}>{props.userName}</h2>
-            <h2 className={style.title}>{props.title}</h2>
-            <h2 className={style.price}>${props.price}</h2>
-            <h2 className={style.publicDescription}>
+            {/* Usamos Typography para mostrar los detalles */}
+            <Typography variant="h6" className={style.userName}>
+              {props.userName}
+            </Typography>
+            <Typography variant="h6" className={style.title}>
+              {props.title}
+            </Typography>
+            <Typography variant="h6" className={style.price}>
+              ${props.price}
+            </Typography>
+            <Typography variant="h6" className={style.publicDescription}>
               {props.publicDescription}
-            </h2>
+            </Typography>
           </Typography>
         </Link>
       </CardContent>

@@ -3,50 +3,33 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
-}
-
-.button {
-  font-size: 15px;
-  width: 10rem;
-  font-weight: 700;
+  margin-top: 5px;
+  margin-left: 20rem;
 }
 
 .button:hover {
   cursor: pointer;
 }
-.container {
-  display: flex;
-}
 
 .containerVideo {
-  /* Estilos para el contenedor del reproductor principal */
   flex: 1;
+  margin-right: 20px;
+  margin-left: 20rem;
 }
 
-
 .videoList {
-  background-color: white;
-  padding: 10px;
-  flex: 0.3;
-  margin-right: 10px;
+  background-color: #023047b9;
+  border-radius: 20px;
+  min-width: 200px;
+  color: #dda77b;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .videoList ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-}
-
-.videoList li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-  color: black;
-}
-
-.videoList li:hover {
-  font-weight: bold;
 }
 
 .videoList li.activeVideo {

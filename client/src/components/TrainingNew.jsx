@@ -273,11 +273,14 @@ const TrainingNew = () => {
                     type="submit"
                     variant="contained"
                     color="primary"
-                  />
+                    onClick={() => handleSubirVideo()}
+                  >
+                    Subir entrenamiento
+                  </Button>
                 </Box>
               </Box>
             </form>
-            {/* <div className={style.form}>
+            <div className={style.form}>
               {inputs.videos.length !== 0 ? (
                 <div>
                   <h2 className={style.title}>Videos subidos</h2>
@@ -288,7 +291,7 @@ const TrainingNew = () => {
                   ))}
                 </div>
               ) : null}
-            </div> */}
+            </div>
           </Grid>
         </Grid>
       </Box>
