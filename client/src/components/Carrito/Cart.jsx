@@ -13,9 +13,6 @@ const Cart = () => {
 	const [total, setTotal] = useState(0);
 	const [countProducts, setCountProducts] = useState(0);
 
-	console.log("HOLA, SOY EL CART", palanes)
-	console.log("HOLA, SOY EL CART2 ", planes)
-
 	useEffect(() => {
 		// Calcula el total cuando cambia el array de productos
 		const newTotal = palanes.reduce((acc, product) => acc + product[0].price, 0);
