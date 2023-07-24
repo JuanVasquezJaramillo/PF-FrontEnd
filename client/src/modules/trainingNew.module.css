@@ -4,6 +4,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -11,4 +14,15 @@
   color: #dda77b;
   text-shadow: 2px 2px 2px black;
   text-align: center;
+}
+
+.form {
+  background-color: #8ecae671;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: fit-content;
+  margin-top: 20rem;
 }

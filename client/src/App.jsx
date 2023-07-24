@@ -27,10 +27,10 @@ function App() {
         <Navbar />
         <Routes>
           {/* rutas publicas */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/nosotros" element={<AboutUs />} />
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/login" element={!auth.user?<LoginPage/>:<RegisterPage/>}/>
+          {/* <Route path="/register" element={<RegisterPage />} /> */}
+          <Route path="/nosotros" element={<AboutUs />}/>
 
           {/* rutas privadas */}
           <Route

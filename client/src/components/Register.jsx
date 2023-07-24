@@ -1,8 +1,8 @@
 import style from "./Login.module.css";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { postUsers } from "../global/userSlice/postUsers";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+// import { useDispatch } from "react-redux";
+// import { postUsers } from "../global/userSlice/postUsers";
+// import { useLocalStorage } from "../hooks/useLocalStorage";
 import UploadImages from "./uploadImages";
 import {
   FormControl,
@@ -14,15 +14,14 @@ import {
   InputLabel,
   Grid,
 } from "@mui/material";
+import { useAuth } from "../context/authContext";
 
 export default function Register() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  const auth = useAuth();
 
   const validate = (inputs, name) => {
-    if (name === "userName") {
-      if (inputs.userName !== "") setErrors({ ...errors, userName: "" });
-      else setErrors({ ...errors, userName: "campo requerido" });
-    }
     if (name === "firstName") {
       if (inputs.firstName !== "") setErrors({ ...errors, firstName: "" });
       else setErrors({ ...errors, firstName: "campo requerido" });
@@ -48,6 +47,7 @@ export default function Register() {
       if (inputs.password !== "") setErrors({ ...errors, password: "" });
       else setErrors({ ...errors, password: "Campo requerido" });
     }
+
     if (name === "Birthdate") {
       if (inputs.Birthdate !== "") setErrors({ ...errors, Birthdate: "" });
       else setErrors({ ...errors, Birthdate: "campo requedido" });
@@ -66,12 +66,10 @@ export default function Register() {
     }
   };
 
-  const [inputs, setInputs] = useLocalStorage("inputs", {
-    userName: "", // falta usuario
+  const [inputs, setInputs] = useState({
+    id: auth.user.uid,
     firstName: "",
     lastName: "",
-    email: "",
-    password: "",
     Birthdate: "",
     nationality: "",
     sex: "",
@@ -80,11 +78,8 @@ export default function Register() {
   });
 
   const [errors, setErrors] = useState({
-    userName: "", // falta usuario
     firstName: "",
     lastName: "",
-    email: "",
-    password: "",
     Birthdate: "",
     nationality: "",
     sex: "",
@@ -104,23 +99,22 @@ export default function Register() {
       event.target.name
     );
   }
+
   const handleSubmit = (event) => {
     event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    dispatch(postUsers(inputs));
+    // dispatch(postUsers(inputs));
+
     console.log("inputs login", inputs);
     setInputs({
-      userName: "", // falta usuario
+      uid: auth.user.uid,
       firstName: "",
       lastName: "",
-      email: "",
-      password: "",
       Birthdate: "",
       nationality: "",
       sex: "",
       typeUser: "",
       profileImage: null,
     });
-    console.log(inputs);
   };
 
   const handleImageChange = (file) => {
@@ -161,28 +155,13 @@ export default function Register() {
                 boxShadow={2}
                 bgcolor="#8ecae671"
               >
-                <h1 className={style.h1}>Register Users</h1>
+                <h1 className={style.h1}>Completa tus datos.</h1>
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <Box mb={2}>
                     <TextField
-                      autoFocus
-                      autoComplete="true"
-                      type="text"
-                      name="userName"
-                      value={inputs.userName}
-                      onChange={inputsChange}
-                      label="User Name"
-                      variant="filled"
-                      error={!!errors.userName}
-                      helperText={errors.userName}
-                      fullWidth
-                    />
-                  </Box>
-                  <Box mb={2}>
-                    <TextField
                       autoComplete="true"
                       variant="filled"
-                      label="First Name"
+                      label="Nombre"
                       name="firstName"
                       value={inputs.firstName}
                       onChange={inputsChange}
@@ -196,7 +175,7 @@ export default function Register() {
                     <TextField
                       autoComplete="true"
                       variant="filled"
-                      label="Last Name"
+                      label="Apellido"
                       name="lastName"
                       value={inputs.lastName}
                       onChange={inputsChange}
@@ -209,36 +188,7 @@ export default function Register() {
                     <TextField
                       autoComplete="true"
                       variant="filled"
-                      label="Email"
-                      type="email"
-                      name="email"
-                      value={inputs.email}
-                      onChange={inputsChange}
-                      error={!!errors.email}
-                      helperText={errors.email}
-                      fullWidth
-                      sx={{ fontSize: 50 }}
-                    />
-                  </Box>
-                  <Box mb={2}>
-                    <TextField
-                      autoComplete="true"
-                      variant="filled"
-                      label="Password"
-                      type="password"
-                      name="password"
-                      value={inputs.password}
-                      onChange={inputsChange}
-                      error={!!errors.password}
-                      helperText={errors.password}
-                      fullWidth
-                    />
-                  </Box>
-                  <Box mb={2}>
-                    <TextField
-                      autoComplete="true"
-                      variant="filled"
-                      label="Brithdate"
+                      label="Fecha de nacimiento"
                       type="date"
                       name="Birthdate"
                       value={inputs.Birthdate}
@@ -252,7 +202,7 @@ export default function Register() {
                     <TextField
                       autoComplete="true"
                       variant="filled"
-                      label="Nationality"
+                      label="Nacionalidad"
                       type="text"
                       name="nationality"
                       value={inputs.nationality}
@@ -264,14 +214,14 @@ export default function Register() {
                   </Box>
                   <Box mb={2}>
                     <FormControl variant="filled" error={!!errors.sex}>
-                      <InputLabel>Select Sex</InputLabel>
+                      <InputLabel>Sexo</InputLabel>
                       <Select
                         label="Sex"
                         name="sex"
                         value={inputs.sex}
                         onChange={inputsChange}
                       >
-                        <MenuItem value="">Select Sex</MenuItem>
+                        <MenuItem value="">Sexo</MenuItem>
                         <MenuItem value="Male">Male</MenuItem>
                         <MenuItem value="Female">Female</MenuItem>
                         <MenuItem value="unknown">unknown</MenuItem>
@@ -279,12 +229,8 @@ export default function Register() {
                     </FormControl>
                   </Box>
                   <Box mb={2}>
-                    <FormControl
-                      variant="filled"
-                      error={!!errors.typeUser}
-                      fullWidth
-                    >
-                      <InputLabel>Select Type User</InputLabel>
+                    <FormControl variant="filled" error={!!errors.typeUser}>
+                      <InputLabel>Tipo Usuario</InputLabel>
                       <Select
                         name="typeUser"
                         value={inputs.typeUser}
@@ -300,13 +246,14 @@ export default function Register() {
                 </Box>
                 <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
                   <Button
+                    type="submit"
                     fullWidth
                     disabled={disable()}
                     variant="contained"
                     color="primary"
                     size="large"
                   >
-                    Registrar
+                    Guardar Datos
                   </Button>
                 </Box>
               </Box>

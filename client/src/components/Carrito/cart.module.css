@@ -59,12 +59,14 @@ header {
 
 .tituloProductoCarrito {
 	font-size: 20px;
+	color: #333;
 }
 
 .precioProductoCarrito {
 	font-weight: 700;
 	font-size: 20px;
 	margin-left: 10px;
+	color: #000;
 }
 
 .cantidadProductoCarrito {
@@ -158,6 +160,7 @@ header {
 .cartEmpty {
 	padding: 20px;
 	text-align: center;
+	color: #000;
 }
 
 .hidden {

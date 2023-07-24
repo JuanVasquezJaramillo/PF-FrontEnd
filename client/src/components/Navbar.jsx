@@ -90,15 +90,6 @@ export default function Navbar() {
                     DetalleRutina
                   </Button> */}
 
-                  <Button component={NavLink} to="/profile" color="inherit">
-                    perfil
-                  </Button>
-
-                  <Button component={NavLink} to="/profile" color="inherit">
-                    perfil{" "}
-                  </Button>
-                  <Cart />
-
                   <IconButton
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}
@@ -109,6 +100,7 @@ export default function Navbar() {
                     />
                   </IconButton>
                 </div>
+                <Cart />
                 {/*Menu desplegable */}
                 <Menu
                   anchorEl={anchorEl}
@@ -148,21 +140,11 @@ export default function Navbar() {
                     Home
                   </Button>
                   <Button component={NavLink} to="/login" color="inherit">
-                    Sign in
-                  </Button>
-                  <Button component={NavLink} to="/register" color="inherit">
-                    Sign up
+                    Login
                   </Button>
                   <Button component={NavLink} to="/nosotros" color="inherit">
                     Nosotros
                   </Button>
-                  {/* <Button
-                    component={NavLink}
-                    to="/alternativeProfile"
-                    color="inherit"
-                  >
-                    altPerfil
-                  </Button> */}
                 </div>
               </>
             )}
