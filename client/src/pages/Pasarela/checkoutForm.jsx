@@ -7,6 +7,7 @@ import { useAuth } from "../../context/authContext"; //Para que se agregue el no
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from "sweetalert2";
+import { deleteProducts } from "../../global/clasesSlice/clasesSlice";
 
 
 const CheckoutForm = ({ productos }) => {
@@ -112,6 +113,7 @@ const CheckoutForm = ({ productos }) => {
 
             dispatch(aprobarPago()); //Setea la aprobación en true
             console.log("APROBADO PASANDO A: ", pago);
+            dispatch(deleteProducts())
         } else {
             Swal.fire({
                 title: 'Error',
