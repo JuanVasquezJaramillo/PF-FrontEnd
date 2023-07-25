@@ -4,20 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getById } from '../global/clasesSlice/clasesSlice';
 import { addProduct } from "../global/clasesSlice/clasesSlice";
 import Carrousel from './carrousel';
+import { Proteccion } from './Proteccion';
 
 import style from "../modules/trainingDetail.module.css";
 import { Box } from '@mui/material';
 
 const Detail = () => {
-
+    Proteccion()
     const { id } = useParams();
 
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.clases.list)
-<<<<<<< HEAD
-console.log("111111111111111", detail)
-=======
->>>>>>> 038ab874a45435b55bde19f05a7947343f4bcc1b
+   
     useEffect(() => {
         dispatch(getById(id));
     }, [dispatch, id])

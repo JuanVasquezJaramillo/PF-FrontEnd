@@ -6,6 +6,7 @@ import { getById } from "../global/clasesSlice/clasesSlice";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import style from "../modules/idDetailsTraining.module.css";
 import { deletePlan } from "../global/clasesSlice/DeletePlan.js";
+import { Proteccion } from "./Proteccion.js";
 import {
   Typography,
   TextField,
@@ -19,6 +20,7 @@ import {
 
 
 const IdDetailsTraining = () => {
+  Proteccion()
   const { id } = useParams();
   const dispatch = useDispatch();
 

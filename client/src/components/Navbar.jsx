@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 
 import Cart from "./Carrito/Cart";
+import { useSelector } from "react-redux";
 
 const navbarStyles = {
   backgroundColor: "#333",
@@ -48,7 +49,10 @@ const logoutButtonStyles = {
   marginLeft: "1rem",
   cursor: "pointer",
 };
+
 export default function Navbar() {
+const user = useSelector(state=> state.user.user)
+
   const auth = useAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -75,7 +79,7 @@ export default function Navbar() {
             </NavLink>
           </Typography>
           <Box sx={{ display: "flex", gap: "10px" }}>
-            {auth.user ? (
+            {auth.user || (user && user.idUser)? (
               <>
                 <div style={linksContainerStyles}>
                   {/* Rutas de usuario logeado */}
