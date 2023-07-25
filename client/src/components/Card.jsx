@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 const CustomCard = (props) => {
+
   const idUser = props.idUser;
 
   const id = props.idPlan;

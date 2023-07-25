@@ -14,7 +14,7 @@ const Detail = () => {
 
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.clases.list)
-
+console.log("111111111111111", detail)
     useEffect(() => {
         dispatch(getById(id));
     }, [dispatch, id])
