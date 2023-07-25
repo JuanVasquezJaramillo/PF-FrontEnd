@@ -12,7 +12,7 @@ import ViewProfile from "./components/vistaPerfil/viewProfile";
 import axios from "axios";
 import Detail from "./components/alternativeDetail";
 import IdDetailsTraining from "./components/IdDetailsTraining";
-
+import Footer from "./components/footer";
 axios.defaults.baseURL = "http://localhost:5000";
 import { CloudinaryContext } from "cloudinary-react";
 import { useAuth } from "./context/authContext";
@@ -30,10 +30,12 @@ function App() {
         <Navbar />
         <Routes>
           {/* rutas publicas */}
+
           <Route path="/" element={<HomePage />}/>
           <Route path="/login" element={!auth.user  ?<LoginPage/>:<RegisterPage/>}/>
+
           {/* <Route path="/register" element={<RegisterPage />} /> */}
-          <Route path="/nosotros" element={<AboutUs />}/>
+          <Route path="/nosotros" element={<AboutUs />} />
 
           {/* rutas privadas */}
           <Route
@@ -62,6 +64,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </CloudinaryContext>
     </>
   );

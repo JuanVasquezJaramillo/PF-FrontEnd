@@ -15,6 +15,7 @@ import {
   MenuItem,
   Avatar,
   Box,
+  Grid,
 } from "@mui/material";
 
 import Cart from "./Carrito/Cart";
@@ -23,16 +24,12 @@ import { useSelector } from "react-redux";
 const navbarStyles = {
   backgroundColor: "#333",
   color: "#fff",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: "1rem",
 };
 
 const brandLinkStyles = {
-  flexGrow: 1,
   fontWeight: "bold",
   color: "#fff",
+  marginLeft: "5rem",
   textDecoration: "none",
   "&:hover": {
     textDecoration: "none",
@@ -46,7 +43,7 @@ const linksContainerStyles = {
 
 const logoutButtonStyles = {
   color: "#fff",
-  marginLeft: "1rem",
+  marginRight: "3rem",
   cursor: "pointer",
 };
 
@@ -71,8 +68,9 @@ const user = useSelector(state=> state.user.user)
 
   return (
     <div>
-      <AppBar position="static" style={navbarStyles} sx={{ flexGrow: 1 }}>
+      <AppBar position="static" style={navbarStyles}>
         <Toolbar>
+
           <Typography variant="h6" style={brandLinkStyles} sx={{ flexGrow: 1 }}>
             <NavLink to="/">
               <h1 className={style.marca}>OnlyTrainers</h1>
@@ -90,20 +88,21 @@ const user = useSelector(state=> state.user.user)
                     NuevaRutina
                   </Button>
 
-                  {/* <Button component={NavLink} to="/training" color="inherit">
+
+                {/* <Button component={NavLink} to="/training" color="inherit">
                     DetalleRutina
                   </Button> */}
 
-                  <IconButton
-                    onClick={handleMenuClick}
-                    style={logoutButtonStyles}
-                  >
-                    <Avatar
-                      alt="User Avatar"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
-                    />
-                  </IconButton>
-                </div>
+                <IconButton
+                  onClick={handleMenuClick}
+                  style={logoutButtonStyles}
+                >
+                  <Avatar
+                    alt="User Avatar"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
+                  />
+                </IconButton>
+
                 <Cart />
                 {/*Menu desplegable */}
                 <Menu
@@ -135,7 +134,7 @@ const user = useSelector(state=> state.user.user)
                   </MenuItem>
                   <MenuItem onClick={() => handleSignout()}>Logout</MenuItem>
                 </Menu>
-              </>
+              </div>
             ) : (
               <>
                 <div style={linksContainerStyles}>

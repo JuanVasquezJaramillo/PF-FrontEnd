@@ -1,0 +1,25 @@
+.footerContainer {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marca {
+  font-size: 35px;
+  font-weight: 800;
+  font-style: italic;
+  color: #8ecae6;
+  font-family: "Dancing Script", cursive;
+  text-shadow: 2px 2px 2px black;
+  width: fit-content;
+  margin-left: 2rem;
+}
+
+.icons {
+  margin-inline: 20px;
+}
+
+.icon {
+  margin-inline: 5px;
+}
