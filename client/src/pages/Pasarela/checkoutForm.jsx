@@ -1,8 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"; //CONFIG STRIPE
-import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
+//import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { postCheckoutId } from "../../global/pagosSlice/pagosSlice";
+import { postCheckoutId, postCompraUser } from "../../global/pagosSlice/pagosSlice";
 import { useAuth } from "../../context/authContext"; //Para que se agregue el nombre del comprador
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
@@ -76,18 +76,47 @@ const CheckoutForm = ({ productos }) => {
                     console.log(error.text);
                 });
             //fin
+            
+            //FUNCION 
+            const stringToUuid = (str) => {
+                str = str.replace('-', '');
+                return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
+                  return str[p % str.length];
+                });
+              }
+              
+              var input  = auth.user.uid;
+              var output = stringToUuid(input);
+              console.log("OUTPUUUUUT",output);
+
+            //FIN FUNCION  
+
+            // dispatch(postCompraUser(
+            //     {
+            //         idUser: auth.user.uid,
+            //         idPlan: productos[0].idPlan
+            //     }
+            // ))
+            dispatch(postCompraUser(
+                {
+                    idUser: "51025abd-d144-4cf1-b7a0-2835e5130b8c",
+                    idPlan: productos[0].idPlan,
+                    amount: mont
+                }
+            ))
+
         } else {
             Swal.fire({
                 title: 'Error',
                 text: "Ups! algo salió mal",
                 icon: "error"
             })
-            emailjs.sendForm('service_6sqygb3', 'template_56xanjh', {to_name: displayName?displayName:"", user_email: auth?.user.email ? auth?.user.email : "", message: "Algo salió mal con tu compra :c"}, '1PabAE487WZsuh6hh')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+            emailjs.sendForm('service_6sqygb3', 'template_56xanjh', { to_name: displayName ? displayName : "", user_email: auth?.user.email ? auth?.user.email : "", message: "Algo salió mal con tu compra :c" }, '1PabAE487WZsuh6hh')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
         }
 
 
