@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Market from "./market";
+import estilo from "./payPage.module.css"
 
 const Pay = () => {
     
@@ -8,9 +9,8 @@ const Pay = () => {
     return (
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column"  }}>
             {productos.map((index) => (
-            <div>
-                <h1>{index.title}
-                <p>${index.price}</p>
+            <div className={estilo.contenedor}>
+                <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>{`${index.title} $${index.price}`}
                 </h1>
             </div>
             ))}
