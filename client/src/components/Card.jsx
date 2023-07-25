@@ -2,40 +2,59 @@ import React from "react";
 import ReactPlayer from "react-player/youtube";
 import style from "../modules/Card.module.css";
 import { Link } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  CardMedia,
+} from "@mui/material";
 
-const Card = (props) => {
-  const idUser = props.idUser
-  
+const CustomCard = (props) => {
+  const idUser = props.idUser;
+
   const id = props.idPlan;
+  const cardStyle = {
+    width: "30rem",
+    margin: "20px auto",
+    boxShadow: "2px 4px 8px black",
+    borderRadius: "20px",
+  };
 
   return (
-    <div className={style.cardcontainer}>
-      <Link to={`/IdDetailsTraining/${id}`} className={style.link}>
-        <h1> {id}</h1>
-      </Link>
-      
-      <Link to={`/alternativeProfile/${idUser}`} className={style.link}>
-      <h2 className={style.userName}>{props.userName}</h2>
-      </Link>
-      
-      
-      {/* probando merge */}
-      <Link to={`/alternativeDetail/${id}`} className={style.link}>
-        
-        <h2 className={style.title}>{props.title}</h2>
-        <h2 className={style.price}>${props.price}</h2>
-        {/* <h2 className={style.publicDescription}>{props.publicDescription}</h2> */}
-      </Link>
-
-      <ReactPlayer
-        url={props.primerVideoUrl}
-        light
-        width="100%"
-        height="40vh"
-        border-radius="20px"
-      />
-    </div>
+    <Card style={cardStyle}>
+      <CardMedia>
+        <ReactPlayer url={props.primerVideoUrl} width="100%" />
+      </CardMedia>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          <Link to={`/IdDetailsTraining/${id}`} className={style.link}>
+            <Typography variant="h6">{id}</Typography>
+          </Link>
+        </Typography>
+        {/* probando merge */}
+        <Link to={`/alternativeProfile/${idUser}`}   >
+        <Typography variant="h6" className={style.userName}>
+          {props.userName}
+        </Typography>
+        </Link>
+        <Link to={`/alternativeDetail/${id}`} className={style.link}>
+          <Typography variant="body2" color="text.secondary">
+            {/* Usamos Typography para mostrar los detalles */}
+            <Typography variant="h6" className={style.title}>
+              {props.title}
+            </Typography>
+            <Typography variant="h6" className={style.price}>
+              ${props.price}
+            </Typography>
+            <Typography variant="h6" className={style.publicDescription}>
+              {props.publicDescription}
+            </Typography>
+          </Typography>
+        </Link>
+      </CardContent>
+    </Card>
   );
 };
- 
-export default Card;
+
+export default CustomCard;

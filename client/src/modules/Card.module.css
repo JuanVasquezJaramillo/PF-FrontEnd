@@ -9,6 +9,7 @@
   box-shadow: 2px 2px 5px black;
   transition: 1s;
   overflow: hidden;
+  width: 50%;
 }
 
 .cardcontainer:hover {
@@ -17,6 +18,7 @@
 
 .link {
   text-decoration: none;
+  text-align: center;
 }
 
 .userName {
@@ -29,7 +31,6 @@
 
 .userName:hover {
   color: #ffb703;
-  
 }
 
 .title {
@@ -47,9 +48,7 @@
   font-size: small;
   color: #000;
 }
-.id
-{
-  text-align: center;
-  text-decoration: none;
-}
 
+h2 {
+  text-align: center;
+}

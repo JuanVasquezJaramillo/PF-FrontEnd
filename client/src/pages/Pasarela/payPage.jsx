@@ -11,7 +11,6 @@ const Pay = () => {
             {productos.map((index) => (
             <div className={estilo.contenedor}>
                 <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>{`${index.title} $${index.price}`}
-                </h1>
             </div>
             ))}
                 <Market productos = {productos} ></Market>

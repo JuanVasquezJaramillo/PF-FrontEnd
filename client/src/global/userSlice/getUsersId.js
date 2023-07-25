@@ -23,7 +23,7 @@ export function getUserId( idUser) {
   // console.log( idUser)
     return async function (dispatch) {  
         try {
-        const response = (await axios.get(`http://localhost:5000/user/${idUser}`)).data;
+        const response = (await axios.get(`/user/${idUser}`)).data;
         
            dispatch(setUserId(response));
             

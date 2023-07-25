@@ -90,13 +90,6 @@ export default function Navbar() {
                     DetalleRutina
                   </Button> */}
 
-                  <Button component={NavLink} to="/profile" color="inherit">
-                    perfil
-                  </Button>
-
-                 
-
-                  
                   <IconButton
                     onClick={handleMenuClick}
                     style={logoutButtonStyles}
@@ -104,11 +97,11 @@ export default function Navbar() {
                     <Avatar
                       alt="User Avatar"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRBttWEpmEtrGbF96zdqAHT-csm7TPgKkIcQ&usqp=CAU"
-                      sx={{ marginLeft: "5rem" }}
                     />
                   </IconButton>
                 </div>
-                    <Cart />
+
+                <Cart />
                 {/*Menu desplegable */}
                 <Menu
                   anchorEl={anchorEl}

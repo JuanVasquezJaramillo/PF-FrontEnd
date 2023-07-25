@@ -76,7 +76,7 @@ const TrainingNew = () => {
     }
   };
   const [inputs, setInputs] = useState({
-    idUser: "49ca9088-953d-4be5-b36e-902b4630438a",
+    idUser: "0cb0a18f-f626-4d4a-9820-cc6e6807971a",
     title: "",
     publicDescription: "",
     privateDescription: "",
@@ -141,7 +141,7 @@ const TrainingNew = () => {
       >
         <Grid container justifyContent="center">
           <Grid item xs={12} sm={8} md={6} lg={4}>
-            <form onSubmit={handleSubmit} className={style.form}>
+            <form onSubmit={handleSubmit}>
               <Box
                 p={4}
                 border="1px solid #ccc"
@@ -273,22 +273,28 @@ const TrainingNew = () => {
                     type="submit"
                     variant="contained"
                     color="primary"
-                  />
+                    onClick={() => handleSubirVideo()}
+                  >
+                    Subir entrenamiento
+                  </Button>
                 </Box>
               </Box>
             </form>
-            {/* <div className={style.form}>
+          </Grid>
+          <Grid item xs={12} sm={8} md={6} lg={4}>
+            <div className={style.form}>
               {inputs.videos.length !== 0 ? (
                 <div>
                   <h2 className={style.title}>Videos subidos</h2>
                   {inputs.videos.map((video, index) => (
-                    <h2 key={index}>
-                      • {video.url} {video.description}
-                    </h2>
+                    <h4 key={index} className={style.videoList}>
+                      {index + 1} {video.url} <br />
+                      <span>//Descripción</span> <br /> {video.description}
+                    </h4>
                   ))}
                 </div>
               ) : null}
-            </div> */}
+            </div>
           </Grid>
         </Grid>
       </Box>
