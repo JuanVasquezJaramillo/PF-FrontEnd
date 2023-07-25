@@ -20,7 +20,7 @@ import {
 import Cart from "./Carrito/Cart";
 
 const navbarStyles = {
-  backgroundColor: "#333",
+  backgroundColor: "#fff",
   color: "#fff",
   display: "flex",
   justifyContent: "space-between",
