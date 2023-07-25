@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import style from "../modules/carrousel.module.css";
 import {
@@ -10,9 +10,21 @@ import {
   ButtonGroup,
   Grid,
 } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from 'react-router-dom';
+import { addProduct, getById } from "../global/clasesSlice/clasesSlice";
+
+
 
 const Carrousel = ({ videos }) => {
+  
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const pago = useSelector(state => state.pagos.aprobado);
+  const detail = useSelector((state) => state.clases.list)
 
   const nextVideo = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % videos.length);
@@ -27,6 +39,15 @@ const Carrousel = ({ videos }) => {
   const selectVideo = (index) => {
     setCurrentIndex(index);
   };
+  
+  
+  const handleAdd = (plan) => {
+    dispatch(addProduct(plan))
+  }
+
+  useEffect(() => {
+    dispatch(getById(id));
+  }, [dispatch, id])
 
   return (
     <Grid
@@ -55,14 +76,25 @@ const Carrousel = ({ videos }) => {
           >
             Video anterior
           </Button>
-          <Button
-            onClick={nextVideo}
-            className={style.button}
-            variant="contained"
-            color="primary"
-          >
-            Próximo video
-          </Button>
+          {pago ?
+            <Button
+              onClick={nextVideo}
+              className={style.button}
+              variant="contained"
+              color="primary"
+            >
+              Próximo video
+            </Button>
+            :
+            <Button
+              onClick={() => handleAdd(detail)}
+              className={style.button}
+              variant="contained"
+              color="primary"
+            >
+              Añadir plan a carrito
+            </Button>
+          }
         </div>
       </div>
       {/* Lista de miniaturas de video */}
@@ -76,9 +108,8 @@ const Carrousel = ({ videos }) => {
               key={index}
               onClick={() => selectVideo(index)}
               button
-              className={`${style.videoListItem} ${
-                index === currentIndex ? style.activeVideo : ""
-              }`}
+              className={`${style.videoListItem} ${index === currentIndex ? style.activeVideo : ""
+                }`}
             >
               <ListItemText primary={`- Clase número: ${index + 1}`} />
             </ListItem>
