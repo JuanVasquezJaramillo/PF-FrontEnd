@@ -14,7 +14,6 @@ const Detail = () => {
 
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.clases.list)
-
     useEffect(() => {
         dispatch(getById(id));
     }, [dispatch, id])
