@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"; //CONFIG STRIPE
-//import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
+import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postCheckoutId } from "../../global/pagosSlice/pagosSlice";
