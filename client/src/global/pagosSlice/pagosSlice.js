@@ -21,6 +21,18 @@ const pagosSlice = createSlice({
             state.loading = false;
             state.error = state.error.message;
         })
+        builder.addCase(postCompraUser.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(postCompraUser.fulfilled, (state, action) => {
+            state.pagos = action.payload;
+            state.loading = false;
+        })
+        builder.addCase(postCompraUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = state.error.message;
+        })
     }
 })
 
@@ -41,7 +53,37 @@ export const postCheckoutId = createAsyncThunk("pagos/postCheckoutId", async (pa
             text: error.response.data.message,
             icon: 'error',
             confirmButtonText: 'entendido'
-          })
+        })
     }
+})
 
+export const postCompraUser = createAsyncThunk("pagos/postCompraUser", async (payload) => {
+    console.log("DESDE COMPRA USER", payload);
+    try {
+        const { data } = await axios.post("/bought", payload)
+        return data;
+    } catch (error) {
+        console.log("Desde postCompraUser", error);
+        Swal.fire({
+            title: 'ERROR AL REGISTRAR COMPRA!',
+            text: error.response.data.message,
+            icon: 'error',
+            confirmButtonText: 'entendido'
+        })
+    }
+})
+
+export const getComprasUser = createAsyncThunk("pagos/getCompraUser", async (payload) => {
+    try {
+        const { data } = await axios(`/checkout?idUser=${payload}`)
+        return data;
+    } catch (error) {
+        console.log("Desde getCompraUser", error);
+        Swal.fire({
+            title: 'No se encontraron compras para este usuario',
+            text: "Este usuario no registra compras",
+            icon: "info",
+            confirmButtonText: 'entendido'
+        })
+    }
 })
