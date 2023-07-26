@@ -14,7 +14,7 @@ const Detail = () => {
     const { id } = useParams();
 
     const dispatch = useDispatch();
-    const detail = useSelector((state) => state.clases.list)
+    const detail = useSelector((state) => state.clases.clase)
    
     useEffect(() => {
         dispatch(getById(id));
