@@ -2,9 +2,17 @@ import PropTypes from 'prop-types';
 import style from '../Forms.module.css'
 import { TextField, Button, Grid, Link } from "@mui/material";
 import { useAuth } from '../../../context/authContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {login} from "/src/global/userSlice/login"
+import {useDispatch, useSelector} from "react-redux"
+import {useNavigate} from "react-router-dom"
 
 export default function LoginForm({setRegister}){
+const navigate = useNavigate()
+    const dispatch = useDispatch()
+  
+    const user = useSelector(state=> state.user.user)
+
 
     const auth = useAuth();
 
@@ -18,20 +26,34 @@ export default function LoginForm({setRegister}){
     };
 
     const handleChangeForm = (e) =>{
+       
         e.preventDefault();
         return setRegister('register')
     }
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        auth.login(inputs.email, inputs.password);
+       dispatch(login(inputs))
+        
+       
+       
     };
 
     const handleGoogle = async (e) => {
         e.preventDefault();
         await auth.loginWithGoogle();
     };
+ 
+    // useEffect(()=>{
+    //     if ( user.email){
+    //         navigate("/")
+    //     }
+    // },[user])
 
+    if ( user && user.email !==""){
+        console.log("EMAILLLL", user.email)
+        navigate("/")
+    }
     return (
         <>
             <Grid container justifyContent="center">

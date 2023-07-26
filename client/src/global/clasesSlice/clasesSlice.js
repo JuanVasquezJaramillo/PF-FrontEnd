@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const clasesSlice = createSlice({
     name: "clases",
     initialState: {
+        clase:{},
         list: [],
         listOriginal: [],
         listProducts: [],
@@ -48,6 +49,10 @@ export const clasesSlice = createSlice({
             if (index !== -1) {
                 state.listProducts.splice(index, 1);
             }
+        },
+        resetClase: (state ) => {
+            //    state.listProducts = state.listProducts.filter((plan) => plan.idPlan !== action.payload)
+            state.clase = {}
         }
 },
     extraReducers: (builder) => {
@@ -86,13 +91,27 @@ export const clasesSlice = createSlice({
             state.error = null;
         })
             .addCase(getById.fulfilled, (state, action) => {
-                state.list = action.payload;
+                state.clase = action.payload;
                 state.loading = false;
             })
             .addCase(getById.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message
             })
+
+
+            builder.addCase(updatePlan.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+                .addCase(updatePlan.fulfilled, (state, action) => {
+                    
+                    state.loading = false;
+                })
+                .addCase(updatePlan.rejected, (state, action) => {
+                    state.loading = false;
+                    state.error = action.error.message
+                })
     }
 })
 
@@ -111,5 +130,13 @@ export const getById = createAsyncThunk("clases/getById", async (param) => {
     return data;
 })
 
-export const { filterTypeExercise, filterPrice, orderByPrice, resetList, addProduct, deleteProducts, deleteItem } = clasesSlice.actions
+
+export const updatePlan = createAsyncThunk("clases/updatePlan", async (inputs) => {
+    console.log("555555555", inputs)
+    const { data } = await axios.put("/plan/", inputs)
+    
+    return data;
+})
+
+export const { filterTypeExercise, filterPrice, orderByPrice, resetList, addProduct, deleteProducts, deleteItem, resetClase } = clasesSlice.actions
 export default clasesSlice.reducer;

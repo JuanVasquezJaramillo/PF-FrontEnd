@@ -5,6 +5,7 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import style from "../modules/trainingNew.module.css";
 import ReactPlayer from "react-player/youtube";
+import { Proteccion } from "./Proteccion";
 import {
   TextField,
   Button,
@@ -17,6 +18,8 @@ import {
 } from "@mui/material";
 
 const TrainingNew = () => {
+  Proteccion()
+  const user = useSelector(state=> state.user.user)
   const dispatch = useDispatch();
 
   const disable = () => {
@@ -76,7 +79,7 @@ const TrainingNew = () => {
     }
   };
   const [inputs, setInputs] = useState({
-    idUser: "0cb0a18f-f626-4d4a-9820-cc6e6807971a",
+    idUser: user.idUser,
     title: "",
     publicDescription: "",
     privateDescription: "",
@@ -87,6 +90,7 @@ const TrainingNew = () => {
     description: "",
     videos: [],
   });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(postPlan(inputs));

@@ -6,6 +6,7 @@ import { getById } from "../global/clasesSlice/clasesSlice";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import style from "../modules/idDetailsTraining.module.css";
 import { deletePlan } from "../global/clasesSlice/DeletePlan.js";
+import { Proteccion } from "./Proteccion.js";
 import {
   Typography,
   TextField,
@@ -17,15 +18,21 @@ import {
   Box,
 } from "@mui/material";
 
+
 const IdDetailsTraining = () => {
+  Proteccion()
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const detailsPlan = useSelector((state) => state.clases.clase)
+console.log("prueba1", detailsPlan)
+ 
   useEffect(() => {
     dispatch(getById(id));
   }, [dispatch, id]);
-  const detailsPlan = useSelector((state) => state.clases.list);
-  console.log("MATEO", detailsPlan);
+
+
+
   // datos del segundo array
   const description = detailsPlan[1]?.[0]?.description;
   const idVideo = detailsPlan[1]?.[0]?.idVideo;
@@ -137,6 +144,7 @@ const IdDetailsTraining = () => {
   };
 
   return (
+    
     <div className={style.formContainer}>
       <form onSubmit={handleSubmit} className={style.form}>
         <Typography variant="h4">Detalle del Plan</Typography>
@@ -283,6 +291,11 @@ const IdDetailsTraining = () => {
         </div>
       </form>
     </div>
+
+    
   );
+
+  
 };
+
 export default IdDetailsTraining;
