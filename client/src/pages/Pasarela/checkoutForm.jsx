@@ -15,6 +15,7 @@ const CheckoutForm = ({ productos }) => {
     const auth = useAuth(); //borrar 
     const { displayName } = auth.user; //borrar
     const pago = useSelector(state => state.pagos.aprobado)
+    const user = useSelector(state => state.user.user.idUser)
     console.log("APROBADO?", pago);
     console.log("CANASTA", productos);
     //--mail--
@@ -33,15 +34,15 @@ const CheckoutForm = ({ productos }) => {
 
 
     //---------MÉTODO QUE TRANSFORMA STRING A FORMATO uuID------------
-    const stringToUuid = (str) => {
-        str = str.replace('-', '');
-        return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function (c, p) {
-            return str[p % str.length];
-        });
-    }
-    var input = auth.user.uid;
-    var output = stringToUuid(input);
-    console.log("OUTPUUUUUT", output);
+    // const stringToUuid = (str) => {
+    //     str = str.replace('-', '');
+    //     return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function (c, p) {
+    //         return str[p % str.length];
+    //     });
+    // }
+    // var input = auth.user.uid;
+    // var output = stringToUuid(input);
+    // console.log("OUTPUUUUUT", output);
     //------------------FIN------------------
 
 
@@ -116,7 +117,7 @@ const CheckoutForm = ({ productos }) => {
             
                 productos.forEach(producto => {
                 dispatch(postCompraUser({
-                  idUser: "2e8704c6-747f-4244-a30e-53f687b7cc92",
+                  idUser: user,
                   idPlan: producto.idPlan,
                   amount: mont
                 }));

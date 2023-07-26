@@ -27,9 +27,11 @@ const Carrousel = ({ videos }) => {
   const pago = useSelector(state => state.pagos.aprobado);
   const detail = useSelector((state) => state.clases.clase)
   const compras = useSelector(state => state.pagos.pagos);
+  const user = useSelector((state) => state.user.user.idUser);
   const hola = compras.boughts?.filter(obj => obj.PlanIdPlan == id)
 
   console.log("PRUEBA222222", compras);
+  console.log("PRUEBA222222", user);
   //console.log("PRUEBA3333", compras.boughts?.[0].PlanIdPlan);
   //console.log("PRUEBA3333", compras.boughts.filter(obj => obj.PlanIdPlan == id));
   //console.log("PRUEBA3333", hola[0].PlanIdPlan);
@@ -55,7 +57,7 @@ const Carrousel = ({ videos }) => {
 
   useEffect(() => {
     dispatch(getById(id));
-    dispatch(getComprasUser("2e8704c6-747f-4244-a30e-53f687b7cc92"))
+    dispatch(getComprasUser(user))
   }, [])
 
   return (
