@@ -2,6 +2,7 @@ import style from "./Login.module.css";
 import { useState } from "react";
  import { useDispatch } from "react-redux";
  import { postUsers } from "../global/userSlice/postUsers";
+ import { useNavigate } from "react-router-dom";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import UploadImages from "./uploadImages";
 import {
@@ -17,10 +18,12 @@ import {
 import { useAuth } from "../context/authContext";
 
 export default function Register() {
+ const navigate = useNavigate()
    const dispatch = useDispatch();
 
   const auth = useAuth();
-  console.log("DATOSSSSSSS", auth)
+  console.log("PROBANDO PASWORD",auth)
+  
 
   const validate = (inputs, name) => {
     if (name === "firstName") {
@@ -107,10 +110,9 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    console.log("LISTONES",inputs)
-     dispatch(postUsers(inputs));
-    console.log("inputs login", inputs);
     
+     dispatch(postUsers(inputs));
+    navigate("/")
     // setInputs({
      
     //   firstName: "",

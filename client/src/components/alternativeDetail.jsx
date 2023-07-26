@@ -15,11 +15,7 @@ const Detail = () => {
 
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.clases.list)
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> 7bb65ef2cdab20e8952a3aa47b2b6a56aab8067f
     useEffect(() => {
         dispatch(getById(id));
     }, [])

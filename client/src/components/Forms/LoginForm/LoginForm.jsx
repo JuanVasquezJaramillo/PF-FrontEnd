@@ -34,6 +34,7 @@ const navigate = useNavigate()
     const handleLogin = async (e) => {
         e.preventDefault();
        dispatch(login(inputs))
+       
         
        
        
@@ -44,14 +45,9 @@ const navigate = useNavigate()
         await auth.loginWithGoogle();
     };
  
-    // useEffect(()=>{
-    //     if ( user.email){
-    //         navigate("/")
-    //     }
-    // },[user])
 
     if ( user && user.email !==""){
-        console.log("EMAILLLL", user.email)
+        
         navigate("/")
     }
     return (

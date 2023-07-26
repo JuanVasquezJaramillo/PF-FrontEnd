@@ -8,7 +8,7 @@ import { useState } from 'react';
 export default function RegisterForm({setRegister}){
 
     const auth = useAuth();
-    console.log(auth)
+    console.log("pruebas register",auth)
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
