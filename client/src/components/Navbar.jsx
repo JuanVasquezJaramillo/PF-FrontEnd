@@ -4,6 +4,7 @@ import { useAuth } from "../context/authContext";
 // import SearchBar from "./SearchBar/SearchBar";
 import style from "../modules/navbar.module.css";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import {
   AppBar,
@@ -18,7 +19,6 @@ import {
 } from "@mui/material";
 
 import Cart from "./Carrito/Cart";
-import { useSelector } from "react-redux";
 
 const navbarStyles = {
   backgroundColor: "#333",
@@ -50,9 +50,8 @@ const logoutButtonStyles = {
   cursor: "pointer",
 };
 export default function Navbar() {
-const user = useSelector(state=> state.user.user)
-
   const auth = useAuth();
+  const user = useSelector((state) => state.user.user);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -72,6 +71,7 @@ const user = useSelector(state=> state.user.user)
     <div>
       <AppBar position="static" style={navbarStyles} sx={{ flexGrow: 1 }}>
         <Toolbar>
+<<<<<<< HEAD
           <Typography variant="h6" style={brandLinkStyles} sx={{ flexGrow: 1 }}>
             <NavLink to="/">
               <h1 className={style.marca}>OnlyTrainers</h1>
@@ -90,6 +90,33 @@ const user = useSelector(state=> state.user.user)
                   </Button>
 
                   {/* <Button component={NavLink} to="/training" color="inherit">
+=======
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Typography variant="h1" style={brandLinkStyles}>
+              <NavLink to="/">
+                <h1 className={style.marca}>OnlyTrainers</h1>
+              </NavLink>
+            </Typography>
+
+            {auth.user || (user && user.idUser) ? (
+              <div style={linksContainerStyles}>
+                {/* Rutas de usuario logeado */}
+                <Button component={NavLink} to="/" color="inherit">
+                  Home
+                </Button>
+                <Button component={NavLink} to="/trainingnew" color="inherit">
+                  NuevaRutina
+                </Button>
+
+                {/* <Button component={NavLink} to="/training" color="inherit">
+>>>>>>> 3ff4513213a262b0462d675d984237b7b5a67a3a
                     DetalleRutina
                   </Button> */}
 

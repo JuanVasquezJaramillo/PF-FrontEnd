@@ -14,8 +14,13 @@ const Detail = () => {
     const { id } = useParams();
 
     const dispatch = useDispatch();
+<<<<<<< HEAD
     const detail = useSelector((state) => state.clases.list)
 
+=======
+    const detail = useSelector((state) => state.clases.clase)
+   
+>>>>>>> 3ff4513213a262b0462d675d984237b7b5a67a3a
     useEffect(() => {
         dispatch(getById(id));
     }, [])

@@ -25,7 +25,7 @@ const Carrousel = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const pago = useSelector(state => state.pagos.aprobado);
-  const detail = useSelector((state) => state.clases.list)
+  const detail = useSelector((state) => state.clases.clase)
   const compras = useSelector(state => state.pagos.pagos);
   const hola = compras.boughts?.filter(obj => obj.PlanIdPlan == id)
 
@@ -55,7 +55,7 @@ const Carrousel = ({ videos }) => {
 
   useEffect(() => {
     dispatch(getById(id));
-    dispatch(getComprasUser("51025abd-d144-4cf1-b7a0-2835e5130b8c"))
+    dispatch(getComprasUser("2e8704c6-747f-4244-a30e-53f687b7cc92"))
   }, [])
 
   return (
