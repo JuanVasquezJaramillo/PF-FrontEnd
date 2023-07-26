@@ -1,5 +1,4 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"; //CONFIG STRIPE
-//import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { aprobarPago, postCheckoutId, postCompraUser } from "../../global/pagosSlice/pagosSlice";
@@ -8,7 +7,7 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from "sweetalert2";
 import { deleteProducts } from "../../global/clasesSlice/clasesSlice";
-
+import estilo from './prueba.module.css'
 
 const CheckoutForm = ({ productos }) => {
 
@@ -31,21 +30,6 @@ const CheckoutForm = ({ productos }) => {
     //FIN
     const [total, setTotal] = useState(0)
     const dispatch = useDispatch();
-
-
-    //---------MÉTODO QUE TRANSFORMA STRING A FORMATO uuID------------
-    // const stringToUuid = (str) => {
-    //     str = str.replace('-', '');
-    //     return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function (c, p) {
-    //         return str[p % str.length];
-    //     });
-    // }
-    // var input = auth.user.uid;
-    // var output = stringToUuid(input);
-    // console.log("OUTPUUUUUT", output);
-    //------------------FIN------------------
-
-
 
     //-----------------------Método handle--------------------------
 
@@ -94,34 +78,13 @@ const CheckoutForm = ({ productos }) => {
                 });
             //----------fin-----------
 
-            // dispatch(postCompraUser(
-            //     {
-            //         idUser: auth.user.uid,
-            //         idPlan: productos[0].idPlan
-            //     }
-            // ))
-            //94 a 99 fue una prueba
-
-            //----Registra la compra en la tabla bougth---
-           
-                //----ORIGINAL-----
-            // dispatch(postCompraUser(
-            //     {
-            //         idUser: "2e8704c6-747f-4244-a30e-53f687b7cc92",
-            //         idPlan: productos[0].idPlan,
-            //         amount: mont
-            //     }
-            // ))
-                //----FIN ORIGINAL---
-            
-            
-                productos.forEach(producto => {
+            productos.forEach(producto => {
                 dispatch(postCompraUser({
-                  idUser: user,
-                  idPlan: producto.idPlan,
-                  amount: mont
+                    idUser: user,
+                    idPlan: producto.idPlan,
+                    amount: mont
                 }));
-              });
+            });
             //---------FIN---------
 
 
@@ -155,26 +118,23 @@ const CheckoutForm = ({ productos }) => {
 
     return (
         <div style={{ textAlign: 'center', display: "flex", justifyContent: "center" }}>
+            <div>
+                <form style={{ display: "flex", flexDirection: "column"}} ref={form} className="card card-body" onSubmit={event => handleSubmit(event)}>
+                    <h2 htmlFor="">Completa los datos para la factura</h2>
+                    <label>Nombre del comprador</label>
+                    <input type="text" name="to_name" placeholder={displayName ? `${displayName}...` : ""} />
+                    <label>Email al que enviar factura</label>
+                    <input style={{height: "25px"}} type="email" name="user_email" placeholder={auth?.user.email ? `${auth.user.email}...` : ""} />
 
-            <form ref={form} className="card card-body" onSubmit={event => handleSubmit(event)}>
-
-
-
-                <label htmlFor="">Completa los datos para la factura</label>
-                <label>Nombre del comprador</label>
-                <input type="text" name="to_name" placeholder={displayName ? `${displayName}...` : ""} />
-                <label>Email al que enviar factura</label>
-                <input type="email" name="user_email" placeholder={auth?.user.email ? `${auth.user.email}...` : ""} />
-
-                <h3 className="text-center">TOTAL: $ {total}</h3>
-                <div className="form-group">
-                    <CardElement className="form-control" />
-                </div>
-                <button className="btn btn-success" >
-                    COMPRAR
-                </button>
-
-            </form>
+                    <h3 className="text-center">TOTAL: $ {total}</h3>
+                    <div style={{borderStyle: "solid", borderColor: "black", backgroundColor: "gold"}}>
+                        <CardElement className="form-control" />
+                    </div>
+                    <button className={estilo.btn} >
+                        CONFIRMAR COMPRA
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }

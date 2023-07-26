@@ -8,10 +8,11 @@ const Pay = () => {
     const productos = useSelector((state) => state.clases.listProducts)
     console.log("BANDERA PAYPAGE", productos); 
     return (
-        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column"  }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", backgroundColor: "slategray"}}>
+            <h1>PRODUCTOS SELECCIONADOS: </h1>
             {productos.map((index) => (
             <div className={estilo.contenedor}>
-                <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>{`${index.title} $${index.price}`}
+                <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>{`${index.title}: $${index.price}`}
                 </h1>
             </div>
             ))}
