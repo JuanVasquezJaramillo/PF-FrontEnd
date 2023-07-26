@@ -4,6 +4,7 @@ import { useAuth } from "../context/authContext";
 // import SearchBar from "./SearchBar/SearchBar";
 import style from "../modules/navbar.module.css";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import {
   AppBar,
