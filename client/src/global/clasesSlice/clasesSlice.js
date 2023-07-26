@@ -91,7 +91,7 @@ export const clasesSlice = createSlice({
             state.error = null;
         })
             .addCase(getById.fulfilled, (state, action) => {
-                state.clase = action.payload;
+                state.list = action.payload;
                 state.loading = false;
             })
             .addCase(getById.rejected, (state, action) => {
