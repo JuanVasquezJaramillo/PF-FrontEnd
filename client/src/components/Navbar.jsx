@@ -47,6 +47,7 @@ const logoutButtonStyles = {
 };
 export default function Navbar() {
   const auth = useAuth();
+  const user = useSelector((state) => state.user.user);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
