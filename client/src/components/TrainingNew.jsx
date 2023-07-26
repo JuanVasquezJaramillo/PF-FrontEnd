@@ -18,8 +18,8 @@ import {
 } from "@mui/material";
 
 const TrainingNew = () => {
-  Proteccion()
-  const user = useSelector(state=> state.user.user)
+  Proteccion();
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
   const disable = () => {
@@ -90,6 +90,8 @@ const TrainingNew = () => {
     description: "",
     videos: [],
   });
+
+  console.log("aaaaaaaaaaaaaaaas", inputs.idUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();

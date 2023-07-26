@@ -43,7 +43,7 @@ export default function AboutUs() {
       </div>
       <section className={style.section}>
         <div className={style.caracteristicas}>
-          <h3>Entrená!</h3>
+          <h3>Entrená con los mejores entrenadores!</h3>
           <img
             src="https://cdn-icons-png.flaticon.com/128/2936/2936886.png"
             alt=""
@@ -51,10 +51,11 @@ export default function AboutUs() {
             height="50px"
           />
           <p className={style.parrafoSection}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus,
-            voluptatum! Ad ipsam praesentium reprehenderit, temporibus libero
-            non consequatur deserunt corrupti odio eaque perferendis, sunt
-            tenetur provident amet ea facilis consequuntur?
+            En OnlyTrainers, te brindamos la oportunidad de entrenar con los
+            mejores profesionales del fitness. Nuestros entrenadores altamente
+            calificados están listos para guiarte y ayudarte a alcanzar tus
+            objetivos de acondicionamiento físico. Ya sea que seas principiante
+            o tengas experiencia, encontrarás un entrenador perfecto para ti.
           </p>
         </div>
         <div className={style.caracteristicas}>
@@ -68,7 +69,9 @@ export default function AboutUs() {
           <p className={style.parrafoSection}>
             Nuestro enfoque virtual te permite acceder a una amplia variedad de
             entrenamientos desde la comodidad de tu hogar. Puedes entrenar con
-            instructores de primer nivel sin importar tu ubicación.
+            instructores de primer nivel sin importar tu ubicación. Esta nueva
+            tendencia ha llegado para quedarse, brindándonos una experiencia de
+            ejercicio cómoda, flexible y altamente efectiva.
           </p>
         </div>
         <div className={style.caracteristicas}>
@@ -80,10 +83,11 @@ export default function AboutUs() {
             height="50px"
           />
           <p className={style.parrafoSection}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus,
-            voluptatum! Ad ipsam praesentium reprehenderit, temporibus libero
-            non consequatur deserunt corrupti odio eaque perferendis, sunt
-            tenetur provident amet ea facilis consequuntur?
+            Con OnlyTrainers, la ubicación ya no es un obstáculo para entrenar.
+            Puedes realizar tus sesiones de entrenamiento en casa o en cualquier
+            lugar que elijas. Nuestro objetivo es brindarte la máxima
+            flexibilidad para que puedas mantener una rutina de ejercicio
+            constante y alcanzar tus metas sin complicaciones.
           </p>
         </div>
       </section>
