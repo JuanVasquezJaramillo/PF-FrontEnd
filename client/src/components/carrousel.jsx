@@ -13,6 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { addProduct, getById } from "../global/clasesSlice/clasesSlice";
+import { getComprasUser } from "../global/pagosSlice/pagosSlice";
 
 
 
@@ -25,7 +26,14 @@ const Carrousel = ({ videos }) => {
   
   const pago = useSelector(state => state.pagos.aprobado);
   const detail = useSelector((state) => state.clases.list)
+  const compras = useSelector(state => state.pagos.pagos);
+  const hola = compras.boughts?.filter(obj => obj.PlanIdPlan == id)
 
+  console.log("PRUEBA222222", compras);
+  //console.log("PRUEBA3333", compras.boughts?.[0].PlanIdPlan);
+  //console.log("PRUEBA3333", compras.boughts.filter(obj => obj.PlanIdPlan == id));
+  //console.log("PRUEBA3333", hola[0].PlanIdPlan);
+  
   const nextVideo = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % videos.length);
   };
@@ -47,7 +55,8 @@ const Carrousel = ({ videos }) => {
 
   useEffect(() => {
     dispatch(getById(id));
-  }, [dispatch, id])
+    dispatch(getComprasUser("51025abd-d144-4cf1-b7a0-2835e5130b8c"))
+  }, [])
 
   return (
     <Grid
@@ -76,7 +85,7 @@ const Carrousel = ({ videos }) => {
           >
             Video anterior
           </Button>
-          {pago ?
+          {pago && hola[0]?.PlanIdPlan == id ?
             <Button
               onClick={nextVideo}
               className={style.button}

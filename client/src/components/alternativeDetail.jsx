@@ -16,11 +16,11 @@ const Detail = () => {
     const detail = useSelector((state) => state.clases.list)
     useEffect(() => {
         dispatch(getById(id));
-    }, [dispatch, id])
+    }, [])
 
-    const handleAdd = (plan) => {
-        dispatch(addProduct(plan))
-    }
+    // const handleAdd = (plan) => {
+    //     dispatch(addProduct(plan))
+    // }
 
     return (
         <div className={style.container}>
@@ -37,7 +37,7 @@ const Detail = () => {
                             <p className={style.parrafos}>Precio: {detail.price}</p>
                             <p className={style.parrafos}>Tipo: {detail.tags}</p>
                             <p className={style.parrafos}>Etiquetas: {detail.tags}</p>
-                            <button onClick={() => handleAdd(detail)}>Añadir plan a carrito</button>
+                            {/* <button onClick={() => handleAdd(detail)}>Añadir plan a carrito</button> */}
                         </div>
                         <textarea
                             name="comentario"
