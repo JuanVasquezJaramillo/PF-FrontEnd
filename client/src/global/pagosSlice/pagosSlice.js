@@ -5,8 +5,14 @@ const pagosSlice = createSlice({
     name: "pagos",
     initialState: {
         pagos: [],
+        aprobado: false,
         loading: false,
         error: null,
+    },
+    reducers: {
+        aprobarPago: (state) => {
+            state.aprobado = true;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(postCheckoutId.pending, (state) => {
@@ -30,6 +36,19 @@ const pagosSlice = createSlice({
             state.loading = false;
         })
         builder.addCase(postCompraUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = state.error.message;
+        })
+        builder.addCase(getComprasUser.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(getComprasUser.fulfilled, (state, action) => {
+            state.pagos = action.payload;
+            state.aprobado = true
+            state.loading = false;
+        })
+        builder.addCase(getComprasUser.rejected, (state, action) => {
             state.loading = false;
             state.error = state.error.message;
         })
@@ -87,3 +106,6 @@ export const getComprasUser = createAsyncThunk("pagos/getCompraUser", async (pay
         })
     }
 })
+
+export const {aprobarPago} = pagosSlice.actions;
+export default pagosSlice.reducer
