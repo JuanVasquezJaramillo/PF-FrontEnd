@@ -16,9 +16,13 @@ import Footer from "./components/footer";
 axios.defaults.baseURL = "http://localhost:5000";
 import { CloudinaryContext } from "cloudinary-react";
 import { useAuth } from "./context/authContext";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector(state=> state.user.user)
+
   const auth = useAuth();
+ 
 
   return (
     <>
@@ -26,39 +30,37 @@ function App() {
         <Navbar />
         <Routes>
           {/* rutas publicas */}
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/login"
-            element={!auth.user ? <LoginPage /> : <RegisterPage />}
-          />
+
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/login" element={!auth.user  ?<LoginPage/>:<RegisterPage/>}/>
+
           {/* <Route path="/register" element={<RegisterPage />} /> */}
           <Route path="/nosotros" element={<AboutUs />} />
 
           {/* rutas privadas */}
           <Route
             path="/profile"
-            element={auth.user ? <UserProfile /> : <LoginPage />}
+            element={ <UserProfile /> }
           />
           <Route
             path="/trainingnew"
-            element={auth.user ? <TrainingNew /> : <LoginPage />}
+            element={ <TrainingNew /> }
           />
           <Route
             path="/paycheck"
-            element={auth.user ? <Pay /> : <LoginPage />}
+            element={ <Pay /> }
           />
           <Route
             path="/alternativeProfile/:idUser"
-            element={auth.user ? <ViewProfile /> : <alternativeProfile />}
+            element={  <ViewProfile />}
           />
           <Route
             path="/alternativeDetail/:id"
-            element={auth.user ? <Detail /> : <LoginPage />}
+            element={ <Detail /> }
           />
           <Route
             path="/IdDetailsTraining/:id"
-            element={
-              auth.useAuth ? <IdDetailsTraining /> : <IdDetailsTraining />
+            element={ <IdDetailsTraining /> 
             }
           />
         </Routes>

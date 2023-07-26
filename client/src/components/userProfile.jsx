@@ -6,6 +6,8 @@ import style from "./UserProfile.module.css";
 import { useParams } from "react-router-dom";
 import { getUserId } from "../global/userSlice/getUsersId";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useNavigate } from "react-router-dom";
+import { Proteccion } from "./Proteccion";
 import {
   Typography,
   TextField,
@@ -18,15 +20,22 @@ import {
 } from "@mui/material";
 
 const UserProfile = () => {
+  Proteccion()
+  const navigate = useNavigate()
   const { id } = useParams();
   console.log(id);
-  const usersId = useSelector((state) => state.userId.listId);
-  console.log("APAAAAA", usersId);
+  const user = useSelector(state=> state.user.user)
+
+ 
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserId(id));
   }, [dispatch, id]);
+
+
+ 
 
   const validate = (inputs, name) => {
     if (name === "userName") {

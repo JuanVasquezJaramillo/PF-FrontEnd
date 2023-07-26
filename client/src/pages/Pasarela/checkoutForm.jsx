@@ -1,20 +1,21 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"; //CONFIG STRIPE
 //import "bootswatch/dist/Lux/bootstrap.min.css" //Importación de tema predeterminado de bootstrap //Comentar esta línea si genera conflicto en los estilos
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { postCheckoutId, postCompraUser } from "../../global/pagosSlice/pagosSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { aprobarPago, postCheckoutId, postCompraUser } from "../../global/pagosSlice/pagosSlice";
 import { useAuth } from "../../context/authContext"; //Para que se agregue el nombre del comprador
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from "sweetalert2";
+import { deleteProducts } from "../../global/clasesSlice/clasesSlice";
 
 
 const CheckoutForm = ({ productos }) => {
 
     const auth = useAuth(); //borrar 
     const { displayName } = auth.user; //borrar
-
-
+    const pago = useSelector(state => state.pagos.aprobado)
+    console.log("APROBADO?", pago);
     //--mail--
     const form = useRef();
     //--fin--
@@ -30,7 +31,21 @@ const CheckoutForm = ({ productos }) => {
     const dispatch = useDispatch();
 
 
-    //Método handle
+    //---------MÉTODO QUE TRANSFORMA STRING A FORMATO uuID------------
+    const stringToUuid = (str) => {
+        str = str.replace('-', '');
+        return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
+          return str[p % str.length];
+        });
+      }
+      var input  = auth.user.uid;
+      var output = stringToUuid(input);
+      console.log("OUTPUUUUUT",output);
+    //------------------FIN------------------
+
+    
+    
+    //-----------------------Método handle--------------------------
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -44,10 +59,10 @@ const CheckoutForm = ({ productos }) => {
         //-------FIN-------- 
         console.log("BANDER CHECKOUT", paymentMethod);
 
-        //LOGICA PAGO    
+        //-------------LOGICA PAGO--------------   
 
         if (!error) {
-
+            
             if (displayName) {
                 paymentMethod.customer = displayName;
             } else {
@@ -65,38 +80,27 @@ const CheckoutForm = ({ productos }) => {
 
             dispatch(postCheckoutId(objPay))
 
-            //FIN
+            //------------FIN------------------
 
 
-            //Lógica de mail 
+            //--------------Lógica de mail------------ 
             emailjs.sendForm('service_6sqygb3', 'template_56xanjh', form.current, '1PabAE487WZsuh6hh')
                 .then((result) => {
                     console.log(result.text);
                 }, (error) => {
                     console.log(error.text);
                 });
-            //fin
+            //----------fin-----------
             
-            //FUNCION 
-            const stringToUuid = (str) => {
-                str = str.replace('-', '');
-                return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
-                  return str[p % str.length];
-                });
-              }
-              
-              var input  = auth.user.uid;
-              var output = stringToUuid(input);
-              console.log("OUTPUUUUUT",output);
-
-            //FIN FUNCION  
-
             // dispatch(postCompraUser(
             //     {
             //         idUser: auth.user.uid,
             //         idPlan: productos[0].idPlan
             //     }
             // ))
+            //94 a 99 fue una prueba
+            
+            //----Registra la compra en la tabla bougth---
             dispatch(postCompraUser(
                 {
                     idUser: "51025abd-d144-4cf1-b7a0-2835e5130b8c",
@@ -104,7 +108,12 @@ const CheckoutForm = ({ productos }) => {
                     amount: mont
                 }
             ))
+            //---------FIN---------
 
+
+            dispatch(aprobarPago()); //Setea la aprobación en true
+            console.log("APROBADO PASANDO A: ", pago);
+            dispatch(deleteProducts())
         } else {
             Swal.fire({
                 title: 'Error',

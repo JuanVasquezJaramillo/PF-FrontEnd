@@ -64,11 +64,11 @@ export default function HomePage() {
   }
 
   const submitFilterPrice = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     if (+defaultPrice.min < +defaultPrice.max) {
       dispatch(filterPrice({ min: +defaultPrice.min, max: +defaultPrice.max }));
       setCurrentPag(1);
-      setDefaultPrice({ min: 0, max: 0})
+      setDefaultPrice({ min:"", max: ""})
     } else {
       Swal.fire({
       title: "Filter by price",
@@ -151,8 +151,8 @@ export default function HomePage() {
             <option value="	Ciclismo de ruta"> Ciclismo de ruta</option>
           </select>
           <label>
-            <input placeholder="min" autoComplete="true" type="number" name="min" onChange={handleFilterPrice} />
-            <input placeholder="max" autoComplete="true" type="number" name="max" onChange={handleFilterPrice} />
+            <input placeholder="min" autoComplete="true" type="number" name="min" value={defaultPrice.min} onChange={handleFilterPrice} />
+            <input placeholder="max" autoComplete="true" type="number" name="max" value={defaultPrice.max} onChange={handleFilterPrice} />
             <button onClick={submitFilterPrice} disabled={defaultPrice.min !== "" && defaultPrice.max !== "" ? false : true}>Filter</button>
           </label>
         </div>

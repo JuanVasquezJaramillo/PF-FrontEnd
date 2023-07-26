@@ -80,7 +80,7 @@ export default function Navbar() {
               </NavLink>
             </Typography>
 
-            {auth.user || (user && user.idUser) ? (
+            {auth.user ? (
               <div style={linksContainerStyles}>
                 {/* Rutas de usuario logeado */}
                 <Button component={NavLink} to="/" color="inherit">
