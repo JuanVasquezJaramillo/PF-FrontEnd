@@ -1,4 +1,7 @@
 .contenedor{
+    border-radius: 10%;
     border-style: solid;
-    border-color:black;
+    border-color:rgb(0, 0, 0);
+    background-color: #2a53ac;
+    height: 150px;
 }
