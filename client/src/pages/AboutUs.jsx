@@ -32,13 +32,12 @@ export default function AboutUs() {
         <div className={style.somos}>
           <h3 className={style.titleBis}>¿A qué apuntamos?</h3>
           <p className={style.parrafo}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. In quisquam
-            quia cumque magnam, obcaecati nemo cum voluptate sequi ipsa eos,
-            blanditiis tempora nam beatae illum itaque facilis pariatur magni
-            nulla Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-            nulla sapiente amet, libero voluptas beatae pariatur repudiandae
-            exercitationem voluptatem, quasi animi nihil illo quis aliquid
-            necessitatibus sit rem dicta ea.
+            En OnlyTrainers, nuestra misión es facilitar el acceso a
+            entrenamientos de calidad y ofrecer una experiencia única en el
+            mundo del fitness. Queremos brindar la oportunidad a personas de
+            todos los niveles de acondicionamiento físico para alcanzar sus
+            objetivos con el apoyo de entrenadores calificados y una comunidad
+            activa.
           </p>
         </div>
       </div>
@@ -67,10 +66,9 @@ export default function AboutUs() {
             height="50px"
           />
           <p className={style.parrafoSection}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus,
-            voluptatum! Ad ipsam praesentium reprehenderit, temporibus libero
-            non consequatur deserunt corrupti odio eaque perferendis, sunt
-            tenetur provident amet ea facilis consequuntur?
+            Nuestro enfoque virtual te permite acceder a una amplia variedad de
+            entrenamientos desde la comodidad de tu hogar. Puedes entrenar con
+            instructores de primer nivel sin importar tu ubicación.
           </p>
         </div>
         <div className={style.caracteristicas}>
