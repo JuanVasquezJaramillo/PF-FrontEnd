@@ -1,7 +1,7 @@
 import style from "./Login.module.css";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { postUsers } from "../global/userSlice/postUsers";
+ import { useDispatch } from "react-redux";
+ import { postUsers } from "../global/userSlice/postUsers";
 // import { useLocalStorage } from "../hooks/useLocalStorage";
 import UploadImages from "./uploadImages";
 import {
@@ -17,9 +17,10 @@ import {
 import { useAuth } from "../context/authContext";
 
 export default function Register() {
-  // const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
   const auth = useAuth();
+  console.log("DATOSSSSSSS", auth)
 
   const validate = (inputs, name) => {
     if (name === "firstName") {
@@ -67,7 +68,9 @@ export default function Register() {
   };
 
   const [inputs, setInputs] = useState({
-    id: auth.user.uid,
+    userName: "",
+    email: auth.user.email,
+    password:"",
     firstName: "",
     lastName: "",
     Birthdate: "",
@@ -78,12 +81,14 @@ export default function Register() {
   });
 
   const [errors, setErrors] = useState({
+    userName:"",
     firstName: "",
     lastName: "",
     Birthdate: "",
     nationality: "",
     sex: "",
     typeUser: "",
+    password:""
   });
 
   function inputsChange(event) {
@@ -102,19 +107,21 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    // dispatch(postUsers(inputs));
-
+    console.log("LISTONES",inputs)
+     dispatch(postUsers(inputs));
     console.log("inputs login", inputs);
-    setInputs({
-      uid: auth.user.uid,
-      firstName: "",
-      lastName: "",
-      Birthdate: "",
-      nationality: "",
-      sex: "",
-      typeUser: "",
-      profileImage: null,
-    });
+    
+    // setInputs({
+     
+    //   firstName: "",
+    //   lastName: "",
+    //   Birthdate: "",
+    //   nationality: "",
+    //   sex: "",
+    //   typeUser: "",
+    //   profileImage: null,
+    //   password:""
+    // });
   };
 
   const handleImageChange = (file) => {
@@ -155,8 +162,22 @@ export default function Register() {
                 boxShadow={2}
                 bgcolor="#8ecae671"
               >
-                <h1 className={style.h1}>Completa tus datos.</h1>
+                <h1 className={style.h1}>Completa tus datosss.</h1>
                 <Box display="flex" flexDirection="column" alignItems="center">
+                <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="userName"
+                      name="userName"
+                      value={inputs.userName}
+                      onChange={inputsChange}
+                      type="text"
+                      error={!!errors.userName}
+                      helperText={errors.userName}
+                      fullWidth
+                    />
+                  </Box>
                   <Box mb={2}>
                     <TextField
                       autoComplete="true"
@@ -184,6 +205,20 @@ export default function Register() {
                       helperText={errors.lastName}
                     />
                   </Box>
+                  <Box mb={2}>
+                    <TextField
+                      autoComplete="true"
+                      variant="filled"
+                      label="password"
+                      name="password"
+                      value={inputs.password}
+                      onChange={inputsChange}
+                      type="text"
+                      error={!!errors.password}
+                      helperText={errors.password}
+                    />
+                  </Box>
+
                   <Box mb={2}>
                     <TextField
                       autoComplete="true"
@@ -246,6 +281,7 @@ export default function Register() {
                 </Box>
                 <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
                   <Button
+                  onChange={handleSubmit}
                     type="submit"
                     fullWidth
                     disabled={disable()}

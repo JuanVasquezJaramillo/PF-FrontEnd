@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import Market from "./market";
 import estilo from "./payPage.module.css"
-
+import { Proteccion } from "../../components/Proteccion";
 const Pay = () => {
+    Proteccion()
     
     const productos = useSelector((state) => state.clases.listProducts)
     console.log("BANDERA PAYPAGE", productos); 
