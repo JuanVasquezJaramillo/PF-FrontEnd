@@ -16,6 +16,7 @@ const CheckoutForm = ({ productos }) => {
     const { displayName } = auth.user; //borrar
     const pago = useSelector(state => state.pagos.aprobado)
     console.log("APROBADO?", pago);
+    console.log("CANASTA", productos);
     //--mail--
     const form = useRef();
     //--fin--
@@ -34,17 +35,17 @@ const CheckoutForm = ({ productos }) => {
     //---------MÉTODO QUE TRANSFORMA STRING A FORMATO uuID------------
     const stringToUuid = (str) => {
         str = str.replace('-', '');
-        return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function(c, p) {
-          return str[p % str.length];
+        return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, function (c, p) {
+            return str[p % str.length];
         });
-      }
-      var input  = auth.user.uid;
-      var output = stringToUuid(input);
-      console.log("OUTPUUUUUT",output);
+    }
+    var input = auth.user.uid;
+    var output = stringToUuid(input);
+    console.log("OUTPUUUUUT", output);
     //------------------FIN------------------
 
-    
-    
+
+
     //-----------------------Método handle--------------------------
 
     const handleSubmit = async (event) => {
@@ -62,7 +63,7 @@ const CheckoutForm = ({ productos }) => {
         //-------------LOGICA PAGO--------------   
 
         if (!error) {
-            
+
             if (displayName) {
                 paymentMethod.customer = displayName;
             } else {
@@ -91,7 +92,7 @@ const CheckoutForm = ({ productos }) => {
                     console.log(error.text);
                 });
             //----------fin-----------
-            
+
             // dispatch(postCompraUser(
             //     {
             //         idUser: auth.user.uid,
@@ -99,15 +100,27 @@ const CheckoutForm = ({ productos }) => {
             //     }
             // ))
             //94 a 99 fue una prueba
-            
+
             //----Registra la compra en la tabla bougth---
-            dispatch(postCompraUser(
-                {
-                    idUser: "51025abd-d144-4cf1-b7a0-2835e5130b8c",
-                    idPlan: productos[0].idPlan,
-                    amount: mont
-                }
-            ))
+           
+                //----ORIGINAL-----
+            // dispatch(postCompraUser(
+            //     {
+            //         idUser: "2e8704c6-747f-4244-a30e-53f687b7cc92",
+            //         idPlan: productos[0].idPlan,
+            //         amount: mont
+            //     }
+            // ))
+                //----FIN ORIGINAL---
+            
+            
+                productos.forEach(producto => {
+                dispatch(postCompraUser({
+                  idUser: "2e8704c6-747f-4244-a30e-53f687b7cc92",
+                  idPlan: producto.idPlan,
+                  amount: mont
+                }));
+              });
             //---------FIN---------
 
 
