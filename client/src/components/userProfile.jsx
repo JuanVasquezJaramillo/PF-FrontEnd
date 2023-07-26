@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postUsers } from "../global/userSlice/postUsers";
+import { updateUser } from "../global/userSlice/updateUser";
 import style from "./UserProfile.module.css";
 
 import { useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { getUserId } from "../global/userSlice/getUsersId";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
 import { Proteccion } from "./Proteccion";
+import { deleteUser } from "../global/userSlice/deleteUser";
 import {
   Typography,
   TextField,
@@ -20,21 +21,14 @@ import {
 } from "@mui/material";
 
 const UserProfile = () => {
-  Proteccion()
+   Proteccion()
   const navigate = useNavigate()
-  const { id } = useParams();
-  console.log(id);
+ 
   const user = useSelector(state=> state.user.user)
-
+  
  
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserId(id));
-  }, [dispatch, id]);
-
-
  
 
   const validate = (inputs, name) => {
@@ -83,24 +77,26 @@ const UserProfile = () => {
       else setErrors({ ...errors, typeUser: "campo requerido" });
     }
   };
-  const [inputs, setInputs] = useLocalStorage({
-    userName: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    Birthdate: "",
-    nationality: "",
-    sex: "",
-    typeUser: "",
+  const [inputs, setInputs] = useState({
+    idUser: user.idUser,
+    userName: user.userName,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    password: user.password,
+  //  Birthdate: user.Birthdate,
+    nationality: user.nationality,
+    sex: user.sex,
+    typeUser: user.typeUser
+
   });
+  
+
   const [errors, setErrors] = useState({
     userName: "",
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
-    Birthdate: "",
     nationality: "",
     sex: "",
     typeUser: "",
@@ -119,11 +115,13 @@ const UserProfile = () => {
       event.target.name
     );
   }
-  const handleSubmit = (event) => {
+
+  const handleSubmitDelete = (event) => {
     event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
-    dispatch(postUsers(inputs));
-    console.log("inputs login", inputs);
-    setInputs({
+       dispatch(deleteUser(inputs.idUser));
+   
+   
+    setErrors({
       userName: "",
       firstName: "",
       lastName: "",
@@ -134,6 +132,13 @@ const UserProfile = () => {
       sex: "",
       typeUser: "",
     });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Esta funcion no permite que el formulario se  resetee cuando se hace el submit
+     dispatch(updateUser(inputs));
+     console.log("inputs login", inputs);
+   
     setErrors({
       userName: "",
       firstName: "",
@@ -161,7 +166,7 @@ const UserProfile = () => {
 
   return (
     <div className={style.container}>
-      <form className={style.form} onSubmit={handleSubmit}>
+      <form className={style.form} onSubmit={handleSubmitDelete}>
         <h1 className={style.h1}>Details Users</h1>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -171,6 +176,7 @@ const UserProfile = () => {
               autoComplete="true"
               type="text"
               name="userName"
+              value={inputs.userName}
               onChange={inputsChange}
               placeholder="User Name"
               label="User Name"
@@ -184,6 +190,7 @@ const UserProfile = () => {
               label="First Name"
               autoComplete="true"
               type="text"
+              value={inputs.firstName}
               name="firstName"
               onChange={inputsChange}
               placeholder="First Name"
@@ -198,6 +205,7 @@ const UserProfile = () => {
               autoComplete="true"
               type="text"
               name="lastName"
+              value={inputs.lastName}
               onChange={inputsChange}
               placeholder="Last Name"
               error={Boolean(errors.lastName)}
@@ -210,6 +218,7 @@ const UserProfile = () => {
               autoComplete="true"
               type="email"
               name="email"
+              value={inputs.email}
               onChange={inputsChange}
               placeholder="example@example.com"
               label="Email"
@@ -223,6 +232,7 @@ const UserProfile = () => {
               autoComplete="true"
               type="password"
               name="password"
+              value={inputs.password}
               onChange={inputsChange}
               placeholder="********"
               label="Password"
@@ -230,18 +240,19 @@ const UserProfile = () => {
               helperText={errors.password}
             />
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControl fullWidth>
               <TextField
                 autoComplete="true"
                 type="date"
                 name="Birthdate"
+                value={inputs.Birthdate}
                 onChange={inputsChange}
                 error={Boolean(errors.Birthdate)}
                 helperText={errors.Birthdate}
               />
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <TextField
               fullWidth
@@ -251,6 +262,7 @@ const UserProfile = () => {
               onChange={inputsChange}
               placeholder="Ej: Argentina"
               label="Nationality"
+              value={inputs.nationality}
               error={Boolean(errors.nationality)}
               helperText={errors.nationality}
             />
@@ -261,6 +273,7 @@ const UserProfile = () => {
               <Select
                 className={style.select}
                 name="sex"
+                value={inputs.sex}
                 onChange={inputsChange}
                 error={Boolean(errors.sex)}
               >
@@ -277,6 +290,7 @@ const UserProfile = () => {
               <Select
                 className={style.select}
                 name="typeUser"
+                value={inputs.typeUser}
                 onChange={inputsChange}
                 error={Boolean(errors.typeUser)}
               >
@@ -289,13 +303,27 @@ const UserProfile = () => {
         </Grid>
 
         <Button
-          disabled={disableButton()}
+          // disabled={disableButton()}
+          
           className={style.button}
           variant="contained"
           color="primary"
           style={{ marginTop: "20px" }}
+          type="submit"
         >
-          Registrar
+          Actualizar
+        </Button>
+        <Button
+          // disabled={disableButton()}
+          
+          className={style.button}
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "20px" }}
+          type="submit"
+          
+        >
+          Eliminar 
         </Button>
       </form>{" "}
     </div>
