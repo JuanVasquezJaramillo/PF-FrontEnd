@@ -13,7 +13,7 @@ import axios from "axios";
 import Detail from "./components/alternativeDetail";
 import IdDetailsTraining from "./components/IdDetailsTraining";
 import Footer from "./components/footer";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://deploy-back-production-e46b.up.railway.app/";
 import { CloudinaryContext } from "cloudinary-react";
 import { useAuth } from "./context/authContext";
 import { useSelector } from "react-redux";
